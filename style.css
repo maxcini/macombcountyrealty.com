@@ -1,0 +1,623 @@
+/* --- Base Resets --- */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    line-height: 1.6;
+    color: #333333;
+}
+
+/* Accessibility - Screen Reader Only */
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    border: 0;
+}
+
+.site-header {
+    background-color: #ffffff;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+    position: sticky;
+    top: 0; /* This line is crucial for mobile anchoring! */
+    width: 100%;
+    z-index: 1000;
+}
+
+.header-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 10px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.brand-container {
+    display: flex;
+    align-items: center;
+}
+
+.brand {
+    text-decoration: none;
+    display: inline-block;
+}
+
+.brand-logo {
+    display: block;
+    max-width: 100%;
+    height: auto;
+}
+
+.nav-and-actions {
+    display: flex;
+    align-items: center;
+    gap: 36px;
+}
+
+/* Navigation Links */
+.nav-menu {
+    list-style: none;
+    display: flex;
+    align-items: center;
+    gap: 36px; /* Increased gap to let links breathe */
+}
+
+/* Navigation Links - Matching the Premium Bold, Underlined Look */
+.nav-menu a {
+    color: #000000;
+    text-decoration: none;
+    font-size: 17px; /* Increased font size slightly */
+    font-weight: 700;
+    white-space: nowrap;
+    vertical-align: top;
+    display: inline-block;
+    position: relative;
+    padding: 4px 8px; /* Added horizontal padding */
+    border-bottom: 3px solid transparent; 
+    transition: color 0.2s ease, border-color 0.2s ease;
+}
+
+/* Hover state and Active Page State (recreates the red bar under "Sell a Home") */
+.nav-menu a:hover,
+.nav-menu li.current-menu-item a {
+    color: #000000;
+    border-bottom-color: #e5243b; /* Seamless integration with your brand conversion red */
+}
+
+/* Header Action Right Block */
+.header-actions {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+}
+
+.contact-phone {
+    display: flex;
+    text-decoration: none;
+    color: #111111;
+}
+
+.contact-phone-desktop {
+    display: flex;
+    flex-direction: column;
+    text-align: right;
+}
+
+.contact-phone-mobile {
+    display: none; /* Hidden on desktop */
+    align-items: center;
+    justify-content: center;
+    background-color: #fdf3f4; /* Light red background to make icon pop */
+    padding: 10px;
+    border-radius: 50%;
+}
+
+.contact-phone-text {
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    color: #777777;
+    margin-bottom: -2px;
+}
+
+.contact-phone-number b {
+    font-size: 21px;
+    font-weight: 900;
+}
+
+/* Consolidated Primary Brand Accent CTA (Pill Shape Match) */
+.btn-cta {
+    background-color: #e5243b; 
+    color: #ffffff;
+    text-decoration: none;
+    padding: 12px 24px;
+    border-radius: 50px;
+    font-size: 15px;
+    font-weight: 700;
+    box-shadow: 0 4px 12px rgba(229, 36, 59, 0.2);
+    transition: background-color 0.2s ease, transform 0.15s ease;
+}
+
+.btn-cta:hover {
+    background-color: #cc1f33;
+    transform: translateY(-1px);
+}
+
+.menu-toggle {
+    display: none;
+    background-color: transparent;
+    color: #333333;
+    border: 2px solid #333333;
+    padding: 8px 16px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 700;
+}
+
+/* ========================================== */
+/* OPTIMIZED HERO SECTION (Frosted Glassmorphism UI) */
+/* ========================================== */
+
+.hero-section {
+    position: relative;
+    /* Darkened gradient veil for crisp text contrast without an aggressive black overlay box */
+    background: linear-gradient(rgba(0, 0, 0, 0.35), rgba(0, 0, 0, 0.45)), 
+                url('https://cdn.prod.website-files.com/66c5182e103fee02305eb7d5/69bcb4aa169b717083b3ad09_home-buyers-indianapolis.avif') no-repeat center center/cover;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    min-height: 588px;
+    overflow: hidden;
+}
+
+.hero-container {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    max-width: 1200px;
+    width: 100%;
+    padding: 0 20px;
+}
+
+/* --- Left Column: Team Cutout Placement --- */
+.hero-image-wrapper {
+    flex: 0 0 50%; /* Increased from 38% to give the cutout a much larger presence */
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-end;
+}
+
+.hero-person-img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin-bottom: -5px; 
+}
+
+/* --- Right Column: High-End Frosted UI Card --- */
+.hero-card {
+    flex: 0 0 52%; /* Gives the card an explicit width budget so it never overlaps the image */
+    max-width: 600px; /* Reduced from 720px to make the layout feel perfectly balanced */
+    background-color: rgba(0, 0, 0, 0.45);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 2px solid rgba(255, 255, 255, 0.88);
+    border-radius: 24px;
+    padding: 40px 30px; /* Slightly refined padding to keep the text inside perfectly proportioned */
+    margin-bottom: 45px; 
+    text-align: center;
+    color: #ffffff;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
+}
+
+.hero-card-title {
+    font-size: 38px;
+    font-weight: 800;
+    line-height: 1.2;
+    margin-bottom: 20px;
+    color: #ffffff;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+/* UI Bullet Lists (Conversion Elements) */
+.hero-bullets {
+    list-style: none;
+    display: inline-flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+    margin: 0 auto 30px auto;
+    text-align: left;
+}
+
+.bullet-item {
+    font-size: 18px;
+    font-weight: 600;
+    color: #ffffff;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    text-shadow: 0 1px 3px rgba(0,0,0,0.5);
+}
+
+.checkmark {
+    color: #39ff14; /* Brighter neon green for stronger contrast */
+    font-size: 20px;
+    font-weight: 900;
+}
+
+/* --- Golden Standard Pill Address Form --- */
+.hero-inline-form {
+    width: 100%;
+    max-width: 580px;
+    margin: 0 auto 28px auto;
+}
+
+.inline-form-group {
+    display: flex;
+    background-color: #ffffff;
+    border-radius: 50px;
+    padding: 6px;
+    align-items: center;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.25);
+}
+
+.form-input-address {
+    flex: 1;
+    border: none;
+    outline: none;
+    padding: 12px 22px;
+    font-size: 16px;
+    color: #222222;
+    background: transparent;
+    font-family: inherit;
+}
+
+.form-input-address::placeholder {
+    color: #888888;
+}
+
+.btn-next {
+    background-color: #e5243b;
+    color: #ffffff;
+    font-size: 16px;
+    font-weight: 700;
+    border: none;
+    border-radius: 50px;
+    
+    /* Slightly streamlined padding to keep the longer button text looking balanced */
+    padding: 13px 28px; 
+    
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    white-space: nowrap; /* Prevents text from awkwardly wrapping inside the input bar */
+    box-shadow: 0 4px 12px rgba(229, 36, 59, 0.3);
+    transition: background-color 0.2s ease, transform 0.1s ease;
+}
+
+.btn-next:hover {
+    background-color: #cc1f33;
+    transform: scale(1.02);
+}
+
+.btn-next:active {
+    transform: scale(0.98);
+}
+
+.btn-next .arrow {
+    font-size: 14px;
+}
+
+/* --- Social Proof & Badge Layout Elements --- */
+.hero-trusted-tagline {
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    color: #ffffff;
+    opacity: 0.9;
+    margin-bottom: 18px;
+    text-transform: uppercase;
+}
+
+.hero-ratings-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 35px;
+    flex-wrap: wrap;
+}
+
+.rating-badge-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    text-decoration: none;
+    color: #ffffff;
+    background-color: rgba(255, 255, 255, 0.1);
+    padding: 8px 16px;
+    border-radius: 50px;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    transition: background-color 0.2s ease, transform 0.2s ease;
+}
+
+.rating-badge-item:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+    transform: translateY(-2px);
+}
+
+.badge-icon-google {
+    width: 22px;
+    height: 22px;
+}
+
+.badge-icon-bbb {
+    width: 24px;
+    height: 24px;
+    object-fit: contain;
+}
+
+.stars-row {
+    display: flex;
+    color: #ffb400; 
+    font-size: 15px;
+    gap: 2px;
+}
+
+.rating-score {
+    font-size: 14px;
+    font-weight: 700;
+}
+
+/* ========================================== */
+/* PRECISION RESPONSIVE BREAKPOINTS */
+/* ========================================== */
+
+/* --- CSS Hamburger Icon Base Setup --- */
+.menu-toggle {
+    display: none;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 8px;
+    width: 40px;
+    height: 40px;
+    align-items: center;
+    justify-content: center;
+    z-index: 1001;
+}
+
+.hamburger-box {
+    width: 24px;
+    height: 18px;
+    display: inline-block;
+    position: relative;
+}
+
+.hamburger-inner,
+.hamburger-inner::before,
+.hamburger-inner::after {
+    width: 24px;
+    height: 3px;
+    background-color: #000000;
+    border-radius: 4px;
+    position: absolute;
+    transition: transform 0.2s ease, opacity 0.2s ease;
+}
+
+.hamburger-inner {
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.hamburger-inner::before {
+    content: "";
+    top: -7px;
+    left: 0;
+}
+
+.hamburger-inner::after {
+    content: "";
+    bottom: -7px;
+    left: 0;
+}
+
+/* Dynamic Morph Animation into an X */
+.menu-toggle.is-active .hamburger-inner {
+    background-color: transparent;
+}
+
+.menu-toggle.is-active .hamburger-inner::before {
+    transform: translateY(7px) rotate(45deg);
+}
+
+.menu-toggle.is-active .hamburger-inner::after {
+    transform: translateY(-7px) rotate(-45deg);
+}
+
+/* ========================================== */
+/* PRECISION RESPONSIVE BREAKPOINTS */
+/* ========================================== */
+
+@media (max-width: 992px) {
+    .header-container {
+        padding: 12px 16px;
+    }
+
+    .nav-and-actions {
+        gap: 16px; /* Prevents crowding against the logo */
+    }
+
+    .menu-toggle {
+        display: flex; /* Displays hamburger on tablet/mobile */
+    }
+
+    .nav-menu {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        background-color: #ffffff;
+        flex-direction: column;
+        align-items: center; /* Keeps the text perfectly centered */
+        padding: 24px 0;
+        gap: 20px; /* Overrides the large desktop gap so they fit nicely */
+        box-shadow: 0 10px 15px rgba(0,0,0,0.05);
+        border-top: 1px solid #f0f0f0; /* Adds a clean separator line under the header */
+    }
+
+    .nav-menu.active {
+        display: flex;
+    }
+
+    .nav-menu a {
+        padding: 14px 20px;
+        width: 100%;
+        text-align: center;
+        border-bottom: 1px solid #f7f7f7;
+    }
+
+    .hero-section {
+        padding: 50px 0 0 0; /* Removed bottom padding so the image sits directly on the bottom line */
+        align-items: center;
+    }
+    
+    .hero-container {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .hero-image-wrapper {
+        display: flex; /* Changed from 'none' so the image appears */
+        order: 2; /* Pushes the image underneath the form */
+        width: 100%;
+        justify-content: center;
+        margin-top: 40px; /* Adds breathing room between the form and the image */
+    }
+
+    .hero-person-img {
+        max-width: 90%; /* Prevents the image from being overwhelmingly large on small screens */
+        margin-bottom: 0; /* Keeps it flush to the bottom */
+        transform: none; /* Resets the slight scaling applied on desktop */
+    }
+
+    .hero-card {
+        width: 100%;
+        max-width: 640px;
+        margin-bottom: 0;
+        padding: 40px 24px;
+        order: 1; /* Ensures the form stays on top */
+    }
+
+    .hero-card-title {
+        font-size: 32px;
+    }
+}
+
+@media (max-width: 600px) {
+    .header-container {
+        padding: 10px 12px;
+    }
+
+    /* Constrain logo width so it stays out of the phone layout path */
+    .brand-logo {
+        max-width: 135px;
+        height: auto;
+    }
+
+    .nav-and-actions {
+        gap: 12px;
+    }
+
+    .header-actions {
+        gap: 0;
+    }
+
+    /* Force the telephone node to remain on a single line */
+    .contact-phone-desktop {
+        display: none; /* Hides the text layout entirely */
+    }
+
+    .contact-phone-mobile {
+        display: flex; /* Displays the icon */
+        margin-right: 4px;
+    }
+
+    .btn-cta {
+        display: none; 
+    }
+
+    .inline-form-group {
+        flex-direction: column;
+        background: transparent;
+        box-shadow: none;
+        padding: 0;
+        gap: 12px;
+    }
+
+    .form-input-address {
+        width: 100%;
+        background-color: #ffffff;
+        border-radius: 50px;
+        padding: 15px 20px;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+    }
+
+/* Tighter Hero Card Padding */
+    .hero-card {
+        padding: 24px 20px; 
+    }
+
+    .btn-next {
+        width: 100%;
+        justify-content: center;
+        padding: 12px; /* Slightly thinner button */
+    }
+
+    /* Tighter Spacing Below Elements */
+    .hero-inline-form {
+        margin: 0 auto 20px auto; 
+    }
+
+    .hero-trusted-tagline {
+        margin-bottom: 12px;
+    }
+
+    /* Tighter Bullet Points */
+    .hero-bullets {
+        align-items: center;
+        gap: 8px; 
+        margin: 0 auto 20px auto;
+    }
+
+    .bullet-item {
+        font-size: 15px; /* Slightly smaller text for mobile */
+    }
+
+    .bullet-item {
+        font-size: 16px;
+    }
+
+    .hero-ratings-container {
+        flex-direction: column;
+        gap: 12px;
+    }
+    
+    .rating-badge-item {
+        width: 100%;
+        justify-content: center;
+    }
+}
