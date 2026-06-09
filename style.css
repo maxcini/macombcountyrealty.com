@@ -172,8 +172,10 @@ body {
 .hero-section {
     position: relative;
     /* Darkened gradient veil for crisp text contrast without an aggressive black overlay box */
-    background: linear-gradient(rgba(0, 0, 0, 0.35), rgba(0, 0, 0, 0.45)), 
-                url('https://cdn.prod.website-files.com/66c5182e103fee02305eb7d5/69bcb4aa169b717083b3ad09_home-buyers-indianapolis.avif') no-repeat center center/cover;
+
+    background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.509)), 
+            url('hero-img.jpg') no-repeat center center/cover;
+
     display: flex;
     justify-content: center;
     align-items: flex-end;
@@ -273,19 +275,80 @@ body {
     box-shadow: 0 8px 25px rgba(0, 0, 0, 0.25);
 }
 
-.form-input-address {
+/* Update your existing wrapper to include min-width: 0 */
+gmp-place-autocomplete.form-input-address {
+    background: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
+    outline: none !important;
     flex: 1;
-    border: none;
-    outline: none;
-    padding: 12px 22px;
-    font-size: 16px;
-    color: #222222;
-    background: transparent;
-    font-family: inherit;
+    width: 100%;
+    min-width: 0; /* CRITICAL: Allows flex item to shrink and prevents container blowout */
 }
 
-.form-input-address::placeholder {
-    color: #888888;
+/* Update your existing input part to truncate text */
+gmp-place-autocomplete.form-input-address::part(input) {
+    background-color: transparent !important;
+    border: none !important;
+    outline: none !important;
+    padding: 15px 20px !important;
+    box-sizing: border-box !important;
+    font-family: inherit !important;
+    font-size: 16px !important;
+    color: #333333 !important;
+    width: 100% !important;
+
+    /* Add these to truncate long addresses with an ellipsis (...) */
+    white-space: nowrap !important;
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
+}
+
+gmp-place-autocomplete.form-input-address::part(input)::placeholder {
+    color: #888888 !important;
+}
+
+/* Target Google's dedicated internal focus-ring element and eliminate it completely */
+gmp-place-autocomplete.form-input-address::part(focus-ring) {
+    outline: none !important;
+    box-shadow: none !important;
+    border: none !important;
+    display: none !important;
+}
+
+/* Target the individual dropdown list items to format them nicely */
+gmp-place-autocomplete.form-input-address::part(prediction-item) {
+    text-align: left !important;
+    background-color: #ffffff !important; /* Restores the solid background */
+    color: #333333 !important;
+    /* padding: 12px 16px !important;  */
+    border-bottom: 1px solid #f0f0f0 !important; /* Adds a clean divider between options */
+    margin: 0 !important;
+}
+
+gmp-place-autocomplete.form-input-address::part(prediction-item-main-text) {
+    font-weight: 700 !important;
+    color: #1a1a1a !important;
+}
+
+gmp-place-autocomplete.form-input-address::part(prediction-item-secondary-text) {
+    font-weight: 400 !important;
+    color: #888888 !important;
+    font-size: 13px !important;
+}
+
+
+
+/* Add a subtle hover effect to the dropdown options */
+gmp-place-autocomplete.form-input-address::part(prediction-item):hover {
+    background-color: #f9f9f9 !important;
+    cursor: pointer;
+}
+
+/* Optional: Keep the Google pin icon aligned and spaced properly */
+gmp-place-autocomplete.form-input-address::part(prediction-item-icon) {
+    margin-right: 12px !important;
+    color: #888888 !important;
 }
 
 .btn-next {
@@ -447,6 +510,8 @@ body {
     transform: translateY(-7px) rotate(-45deg);
 }
 
+
+
 /* ========================================== */
 /* PRECISION RESPONSIVE BREAKPOINTS */
 /* ========================================== */
@@ -464,30 +529,44 @@ body {
         display: flex; /* Displays hamburger on tablet/mobile */
     }
 
-    .nav-menu {
+.nav-menu {
         display: none;
         position: absolute;
         top: 100%;
         left: 0;
         width: 100%;
-        background-color: #ffffff;
+        background-color: #f8f9fa; /* Light gray background to make the white buttons pop */
         flex-direction: column;
-        align-items: center; /* Keeps the text perfectly centered */
-        padding: 24px 0;
-        gap: 20px; /* Overrides the large desktop gap so they fit nicely */
-        box-shadow: 0 10px 15px rgba(0,0,0,0.05);
-        border-top: 1px solid #f0f0f0; /* Adds a clean separator line under the header */
+        align-items: stretch; /* Forces the buttons to stretch full width */
+        padding: 20px; /* Adds padding around the edges of the menu */
+        gap: 12px; /* Tighter spacing between buttons */
+        box-shadow: 0 10px 15px rgba(0,0,0,0.08);
+        border-top: 1px solid #e5e5e5;
+    }
+
+    /* Target the list items in the mobile menu */
+    .nav-menu li {
+        width: 100%;
+        list-style: none;
+    }
+
+    /* Style the links to look like distinct white cards */
+    .nav-menu a {
+        display: block;
+        width: 100%;
+        background-color: #ffffff;
+        border: 1px solid #e5e5e5;
+        border-radius: 8px;
+        padding: 16px;
+        text-align: center;
+        font-weight: 600;
+        color: #333333;
+        text-decoration: none;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.02);
     }
 
     .nav-menu.active {
         display: flex;
-    }
-
-    .nav-menu a {
-        padding: 14px 20px;
-        width: 100%;
-        text-align: center;
-        border-bottom: 1px solid #f7f7f7;
     }
 
     .hero-section {
@@ -568,12 +647,12 @@ body {
         gap: 12px;
     }
 
-    .form-input-address {
-        width: 100%;
-        background-color: #ffffff;
-        border-radius: 50px;
-        padding: 15px 20px;
-        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+    /* On mobile, the input itself becomes the white standalone pill */
+    gmp-place-autocomplete.form-input-address::part(input) {
+        background-color: #ffffff !important;
+        border-radius: 50px !important;
+        padding: 15px 20px !important;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15) !important;
     }
 
 /* Tighter Hero Card Padding */

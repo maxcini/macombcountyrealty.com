@@ -74,7 +74,15 @@
                     
                     <form class="hero-inline-form" action="#" method="GET">
                         <div class="inline-form-group">
-                            <input type="text" name="address" placeholder="Enter your address..." required class="form-input-address" autocomplete="street-address">
+                            
+                            <gmp-place-autocomplete 
+                                id="address-input" 
+                                class="form-input-address" 
+                                name="address" 
+                                placeholder="Enter your property address..." 
+                                no-input-icon 
+                                no-clear-button>
+                            </gmp-place-autocomplete>
                             <button type="submit" class="btn-next">
                                 Get My Options <span class="arrow">➔</span>
                             </button>
@@ -98,6 +106,8 @@
         </section>
     </main>
 
-    <script src="script.js"></script>
+<script src="script.js"></script>
+
+<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVONT4LRbhFxSLXnH9XOXAMzRyedjlnxM&libraries=places&loading=async&callback=initAutocomplete"></script>
 </body>
 </html>
