@@ -700,3 +700,160 @@ gmp-place-autocomplete.form-input-address::part(prediction-item-icon) {
         justify-content: center;
     }
 }
+
+/* ========================================== */
+/* BENEFITS SECTION (How We Make It Easy)     */
+/* ========================================== */
+
+.benefits-section {
+    background-color: #ffffff;
+    padding: 80px 20px;
+}
+
+.benefits-container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.benefits-header {
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+.benefits-pill {
+    display: inline-block;
+    background-color: #fdf3f4; /* Using your existing light red background */
+    color: #e5243b; /* Using your existing brand red */
+    font-size: 13px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    padding: 8px 18px;
+    border-radius: 50px;
+    margin-bottom: 20px;
+}
+
+.benefits-title {
+    font-size: 42px;
+    font-weight: 800;
+    color: #111111;
+    line-height: 1.2;
+}
+
+.benefits-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+}
+
+.benefits-card {
+    background-color: #ffffff;
+    border: 1px solid #f0f0f0;
+    border-radius: 24px;
+    padding: 40px 30px;
+    text-align: center;
+    box-shadow: 0 4px 25px rgba(0, 0, 0, 0.03);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.benefits-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.06);
+}
+
+.benefits-icon {
+    width: 80px;
+    height: 80px;
+    margin: 0 auto 24px auto;
+    display: block;
+}
+
+.benefits-card-title {
+    font-size: 24px;
+    font-weight: 700;
+    color: #111111;
+    margin-bottom: 16px;
+}
+
+.benefits-card-text {
+    font-size: 16px;
+    line-height: 1.7;
+    color: #555555;
+}
+
+.benefits-subtitle {
+    font-size: 18px;
+    color: #555555;
+    max-width: 750px; /* Constrains the width so it reads naturally like a paragraph */
+    margin: 16px auto 0 auto; /* Adds space above and centers it perfectly */
+    line-height: 1.6;
+    font-weight: 400;
+}
+
+/* Premium Hand-Drawn Underline Effect */
+.premium-underline {
+    position: relative;
+    display: inline-block;
+    white-space: nowrap;
+    isolation: isolate; /* CRITICAL: Creates a local layer so z-index won't hide it behind the section background */
+}
+
+.premium-underline::after {
+    content: "";
+    position: absolute;
+    left: -4%;       /* Extends slightly left of the letter 'E' */
+    bottom: -6px;    /* Positions it perfectly beneath the letters */
+    width: 108%;     /* Makes it slightly wider than the word for a premium look */
+    height: 14px;    /* Adjusts the thickness of the brush stroke */
+    
+    /* 100% Browser-Safe URL Encoded SVG Brush Stroke matching your brand red (#e5243b) */
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 10' preserveAspectRatio='none'%3E%3Cpath d='M 0,5 Q 50,8 100,3' stroke='%23e5243b' stroke-width='5' stroke-linecap='round' fill='none'/%3E%3C/svg%3E");
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    z-index: -1;     /* Sits cleanly behind the letters without blocking them */
+}
+
+/* ========================================== */
+/* BENEFITS SECTION RESPONSIVE QUERIES        */
+/* ========================================== */
+
+@media (max-width: 992px) {
+    .benefits-grid {
+        gap: 20px;
+    }
+    
+    .benefits-card {
+        padding: 40px 20px;
+    }
+
+    .benefits-title {
+        font-size: 36px;
+    }
+}
+
+@media (max-width: 768px) {
+    .benefits-section {
+        padding: 40px 20px;
+    }
+
+    .benefits-grid {
+        grid-template-columns: 1fr; /* Stacks cards on mobile */
+        gap: 24px;
+    }
+}
+
+@media (max-width: 600px) {
+    .benefits-title {
+        font-size: 32px;
+    }
+    
+    .benefits-header {
+        margin-bottom: 40px;
+    }
+    
+    .benefits-subtitle {
+        font-size: 16px;
+        margin-top: 12px;
+        padding: 0 20px;
+    }
+}
