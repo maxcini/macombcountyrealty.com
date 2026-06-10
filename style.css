@@ -750,7 +750,7 @@ gmp-place-autocomplete.form-input-address::part(prediction-item-icon) {
     background-color: #ffffff;
     border: 1px solid #f0f0f0;
     border-radius: 24px;
-    padding: 40px 30px;
+    padding: 35px 25px;
     text-align: center;
     box-shadow: 0 4px 25px rgba(0, 0, 0, 0.03);
     transition: transform 0.2s ease, box-shadow 0.2s ease;
@@ -801,7 +801,7 @@ gmp-place-autocomplete.form-input-address::part(prediction-item-icon) {
 .premium-underline::after {
     content: "";
     position: absolute;
-    left: -4%;       /* Extends slightly left of the letter 'E' */
+    left: -2%;       /* Extends slightly left of the letter 'E' */
     bottom: -6px;    /* Positions it perfectly beneath the letters */
     width: 108%;     /* Makes it slightly wider than the word for a premium look */
     height: 14px;    /* Adjusts the thickness of the brush stroke */
