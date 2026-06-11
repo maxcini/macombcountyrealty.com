@@ -43,3 +43,54 @@ function initAutocomplete() {
         });
     }
 }
+
+// ==========================================
+// BEFORE & AFTER LIGHTBOX MODAL CAPABILITIES
+// ==========================================
+document.addEventListener("DOMContentLoaded", function () {
+    const modal = document.getElementById("image-modal");
+    const modalImg = document.getElementById("modal-img");
+    const closeBtn = document.querySelector(".lightbox-close");
+    const triggerImages = document.querySelectorAll(".image-wrapper img");
+
+    if (!modal || !modalImg || triggerImages.length === 0) return;
+
+    // Loop through before and after images to register open commands
+    triggerImages.forEach(img => {
+        img.addEventListener("click", function () {
+            modalImg.src = this.src;
+            modalImg.alt = this.alt;
+            modal.classList.add("show");
+            modal.setAttribute("aria-hidden", "false");
+            document.body.style.overflow = "hidden"; // Stop background page scrolling
+        });
+    });
+
+    // Close window execution when clicking the 'X' button
+    closeBtn.addEventListener("click", closeModal);
+
+    // Close window execution when clicking anywhere in the dark backdrop space
+    modal.addEventListener("click", function (e) {
+        if (e.target === modal) {
+            closeModal();
+        }
+    });
+
+    // Close window execution if escape button key is tapped
+    document.addEventListener("keydown", function (e) {
+        if (e.key === "Escape" && modal.classList.contains("show")) {
+            closeModal();
+        }
+    });
+
+    function closeModal() {
+        modal.classList.remove("show");
+        modal.setAttribute("aria-hidden", "true");
+        document.body.style.overflow = ""; // Re-enable background page scrolling
+        
+        // Wait for the fade fade-out style transition to conclude before stripping out source asset target maps
+        setTimeout(() => {
+            modalImg.src = "";
+        }, 300);
+    }
+});

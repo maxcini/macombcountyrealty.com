@@ -752,13 +752,44 @@ gmp-place-autocomplete.form-input-address::part(prediction-item-icon) {
     border-radius: 24px;
     padding: 35px 25px;
     text-align: center;
-    box-shadow: 0 4px 25px rgba(0, 0, 0, 0.03);
+    box-shadow: 0 4px 25px rgba(0, 0, 0, 0.10);
     transition: transform 0.2s ease, box-shadow 0.2s ease;
+    
+    /* NEW FLEX PROPERTIES TO PUSH BUTTON TO BOTTOM */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
-.benefits-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.06);
+.benefits-card-text {
+    font-size: 16px;
+    line-height: 1.7;
+    color: #555555;
+    
+    /* NEW FLEX PROPERTY */
+    flex-grow: 1; 
+    margin-bottom: 24px; /* Adds breathing room before the button */
+}
+
+/* NEW BUTTON STYLES */
+.btn-card-cta {
+    display: inline-block;
+    background-color: #e5243b; /* Your Brand Red */
+    color: #ffffff;
+    text-decoration: none;
+    padding: 12px 30px;
+    border-radius: 50px;
+    font-size: 16px;
+    font-weight: 700;
+    width: 50%; /* Stretches the pill across the card horizontally */
+    box-shadow: 0 4px 15px rgba(229, 36, 59, 0.2);
+    transition: background-color 0.2s ease, transform 0.15s ease;
+    margin-top: auto; /* Anchors it to the bottom */
+}
+
+.btn-card-cta:hover {
+    background-color: #cc1f33;
+    transform: translateY(-2px);
 }
 
 .benefits-icon {
@@ -855,5 +886,656 @@ gmp-place-autocomplete.form-input-address::part(prediction-item-icon) {
         font-size: 16px;
         margin-top: 12px;
         padding: 0 20px;
+    }
+}
+
+/* ========================================== */
+/* COMPARISON SECTION                         */
+/* ========================================== */
+
+.comparison-section {
+    background-color: #f8f9fa; 
+    padding: 80px 20px;
+}
+
+.comparison-container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.comparison-header {
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+.comparison-title {
+    font-size: 42px;
+    font-weight: 800;
+    color: #111111;
+    line-height: 1.2;
+}
+
+.comparison-subtitle {
+    font-size: 18px;
+    color: #555555;
+    max-width: 750px;
+    margin: 16px auto 0 auto;
+    line-height: 1.6;
+}
+
+/* Table Design */
+.comparison-table-wrapper {
+    background-color: #ffffff;
+    border-radius: 24px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.04);
+    border: 1px solid #e5e5e5;
+    overflow: hidden;
+    margin: 0 auto 40px auto;
+    max-width: 900px; /* Reduced width to bring text closer together */
+}
+
+.comparison-table {
+    width: 100%;
+    border-collapse: collapse;
+    text-align: left;
+}
+
+.comparison-table th, 
+.comparison-table td {
+    padding: 22px 28px;
+    font-size: 16px;
+    border-bottom: 1px solid #eeeeee;
+}
+
+.comparison-table th {
+    background-color: #2E347A; /* Brand Navy */
+    color: #ffffff;
+    font-size: 20px;
+    font-weight: 700;
+}
+
+/* Highlighting the Cash column dynamically with Teal */
+.comparison-table th.cash-highlight {
+    background-color: #00A79D; /* Brand Teal */
+}
+
+.comparison-table td.cash-cell {
+    background-color: rgba(0, 167, 157, 0.05); /* Very light teal tint */
+}
+
+.feature-col {
+    width: 30%; 
+}
+
+.option-col {
+    width: 35%;
+}
+
+.feature-title {
+    font-weight: 700;
+    color: #2E347A;
+}
+
+/* Bottom CTA wrapper */
+.comparison-action {
+    text-align: center;
+    margin-top: 30px;
+}
+
+.btn-cta-comparison {
+    display: inline-block;
+    background-color: #e5243b; /* Kept CTA Red */
+    color: #ffffff;
+    text-decoration: none;
+    padding: 16px 40px;
+    border-radius: 50px;
+    font-size: 18px;
+    font-weight: 700;
+    box-shadow: 0 6px 20px rgba(229, 36, 59, 0.25);
+    transition: background-color 0.2s ease, transform 0.15s ease;
+}
+
+.btn-cta-comparison:hover {
+    background-color: #cc1f33;
+    transform: translateY(-2px);
+}
+
+/* ========================================== */
+/* MOBILE RESPONSIVE TRANSFORMATION           */
+/* ========================================== */
+
+@media (max-width: 768px) {
+    .comparison-section {
+        padding: 60px 15px;
+    }
+
+    .comparison-title {
+        font-size: 32px;
+    }
+
+    /* Force table to behave like block stacks instead of breaking rows */
+    .comparison-table, 
+    .comparison-table thead, 
+    .comparison-table tbody, 
+    .comparison-table th, 
+    .comparison-table td, 
+    .comparison-table tr {
+        display: block;
+    }
+
+    /* Hide traditional header row on mobile */
+    .comparison-table thead tr {
+        position: absolute;
+        top: -9999px;
+        left: -9999px;
+    }
+
+    .comparison-table tr {
+        border: 1px solid #e5e5e5;
+        border-radius: 16px;
+        margin-bottom: 24px;
+        background-color: #ffffff;
+        box-shadow: 0 4px 15px rgba(0,0,0,0.02);
+        overflow: hidden;
+    }
+
+    /* Fixed mobile cells to stack vertically and prevent overlapping text */
+    .comparison-table td {
+        border: none;
+        border-bottom: 1px solid #eeeeee;
+        padding: 16px 20px;
+        text-align: left;
+        font-size: 15px;
+        display: flex;
+        flex-direction: column;
+        gap: 6px;
+    }
+
+    .comparison-table td:last-child {
+        border-bottom: none;
+    }
+
+    /* Transform feature titles into banner bars inside the mobile card */
+    .comparison-table td.feature-title {
+        background-color: #2E347A;
+        color: #ffffff;
+        text-align: center;
+        padding: 14px;
+        font-size: 16px;
+        display: block;
+    }
+
+    /* Inject labels dynamically and format them like mini-headers above the text */
+    .comparison-table td:not(.feature-title)::before {
+        content: attr(data-label);
+        font-weight: 800;
+        color: #555555;
+        font-size: 12px;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+    }
+
+    /* Style the cash option row prefix label specifically */
+    .comparison-table td.cash-cell::before {
+        color: #00A79D;
+    }
+}
+/* ========================================== */
+/* WHY CHOOSE US (TRUST SECTION)              */
+/* ========================================== */
+
+.trust-section {
+    background-color: #f2f7f7; /* Soft, airy off-white tinted with your brand teal */
+    color: #333333;
+    padding: 90px 20px;
+}
+
+.trust-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    gap: 60px;
+    align-items: center;
+}
+
+.trust-header {
+    flex: 0 0 42%;
+}
+
+.trust-pill {
+    display: inline-block;
+    background-color: rgba(0, 167, 157, 0.1); /* Very soft teal background */
+    color: #007a73; /* Darker teal for readability */
+    font-size: 13px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    padding: 6px 16px;
+    border-radius: 50px;
+    margin-bottom: 20px;
+    border: 1px solid rgba(0, 167, 157, 0.2);
+}
+
+.trust-title {
+    font-size: 40px;
+    font-weight: 800;
+    line-height: 1.2;
+    margin-bottom: 20px;
+    color: #000000; /* Deep Navy from your logo text */
+}
+
+.trust-subtitle {
+    font-size: 17px;
+    color: #555555;
+    line-height: 1.6;
+}
+
+.trust-grid {
+    flex: 1;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 45px 30px;
+}
+
+.trust-item {
+    display: flex;
+    gap: 20px;
+    align-items: flex-start;
+}
+
+.trust-icon-box {
+    flex: 0 0 52px;
+    height: 52px;
+    background-color: #ffffff;
+    border: 1px solid rgba(0, 167, 157, 0.25);
+    border-radius: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #00A79D; /* Vibrant Teal from your logo roof */
+    transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+/* Elegant micro-interactions on hover */
+.trust-item:hover .trust-icon-box {
+    transform: translateY(-2px);
+    border-color: #00A79D;
+    box-shadow: 0 4px 15px rgba(0, 167, 157, 0.15);
+}
+
+.trust-icon-box svg {
+    width: 24px;
+    height: 24px;
+}
+
+.trust-content {
+    flex: 1;
+}
+
+.trust-item-title {
+    font-size: 20px;
+    font-weight: 700;
+    margin-bottom: 10px;
+    color: #2E347A; /* Brand Navy */
+}
+
+.trust-item-text {
+    font-size: 15px;
+    line-height: 1.65;
+    color: #555555;
+}
+
+.trust-item-text b {
+    color: #2E347A; /* Keep highlighted words crisp against the light background */
+}
+
+/* ========================================== */
+/* RESPONSIVE ADAPTATIONS                     */
+/* ========================================== */
+
+@media (max-width: 992px) {
+    .trust-container {
+        flex-direction: column;
+        gap: 50px;
+        text-align: center;
+    }
+
+    .trust-header {
+        width: 100%;
+        max-width: 700px;
+    }
+
+    .trust-grid {
+        width: 100%;
+    }
+}
+
+@media (max-width: 650px) {
+    .trust-section {
+        padding: 60px 15px;
+    }
+
+    .trust-title {
+        font-size: 32px;
+    }
+
+    .trust-grid {
+        grid-template-columns: 1fr;
+        gap: 35px;
+    }
+
+    .trust-item {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+
+    .trust-icon-box {
+        margin-bottom: 5px;
+    }
+}
+
+/* ========================================== */
+/* TRUST BADGES SECTION                       */
+/* ========================================== */
+
+.trust-badges-section {
+    background-color: #fcfcfc;
+    padding: 20px 15px; 
+    border-top: 1px solid #eaeaea;
+    border-bottom: 1px solid #eaeaea;
+}
+
+.section-container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.trust-badges-grid {
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: space-evenly; /* Spaces all logos perfectly evenly */
+    align-items: center;
+    gap: 10px; 
+    width: 100%;
+}
+
+.trust-badges-grid img {
+    flex: 1 1 0; /* Gives every logo an exactly equal share of the row */
+    min-width: 0; 
+    max-height: 35px; /* This is the key: forces the wide logo to shrink down to the same visual size as the others */
+    width: 100%;
+    object-fit: contain; 
+    filter: grayscale(100%);
+    opacity: 0.6;
+    transition: all 0.3s ease;
+}
+
+.trust-badges-grid img:hover {
+    filter: grayscale(0%);
+    opacity: 1;
+}
+
+/* Responsive Desktop Layout - Centers and scales back up uniformly */
+@media (min-width: 768px) {
+    .trust-badges-section {
+        padding: 30px 20px;
+    }
+    
+    .trust-badges-grid {
+        justify-content: center;
+        gap: 50px; /* Wider, even spacing for desktop */
+    }
+
+    .trust-badges-grid img {
+        flex: 0 1 auto; 
+        max-height: 60px; /* Scales everything up evenly for desktop */
+        max-width: 140px; 
+    }
+}
+/* ========================================== */
+/* WE BUY HOUSES ABOUT SECTION                */
+/* ========================================== */
+
+.about-we-buy-section {
+    padding: 60px 20px;
+    background-color: #ffffff;
+}
+
+.about-container {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+    align-items: center;
+}
+
+.about-content h2 {
+    font-size: 32px;
+    color: #2E347A; /* Brand Navy */
+    margin-bottom: 25px;
+    line-height: 1.3;
+}
+
+.about-content p {
+    font-size: 16px;
+    line-height: 1.8;
+    color: #555555;
+    margin-bottom: 20px;
+}
+
+.about-content a {
+    color: #00A79D; /* Brand Teal */
+    text-decoration: none;
+    transition: color 0.2s ease;
+}
+
+.about-content a:hover {
+    text-decoration: underline;
+    color: #2E347A;
+}
+
+.about-image img {
+    width: 100%;
+    max-width: 600px; /* Prevents the image from getting overly massive on large screens */
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08); /* Soft shadow for depth */
+    display: block;
+    margin: 0 auto;
+}
+
+/* Responsive Desktop Layout */
+@media (min-width: 992px) {
+    .about-container {
+        flex-direction: row;
+        align-items: center; /* Aligns text and image vertically */
+        gap: 60px;
+    }
+
+    .about-content {
+        flex: 1;
+        padding-right: 20px;
+    }
+
+    .about-image {
+        flex: 1;
+    }
+}
+
+/* ========================================== */
+/* BEFORE & AFTER IMAGE GRID                  */
+/* ========================================== */
+
+.before-after-container {
+    display: grid;
+    /* Stacks vertically on mobile, side-by-side on tablet/desktop */
+    grid-template-columns: 1fr; 
+    gap: 20px;
+    width: 100%;
+    margin: 0 auto;
+}
+
+.image-wrapper {
+    position: relative;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.12);
+    /* Forces both containers to be the exact same uniform size */
+    aspect-ratio: 4 / 3; 
+    width: 100%;
+    background-color: #f4f4f4; /* Placeholder color while loading */
+}
+
+.image-wrapper img {
+    display: block;
+    width: 100%;
+    height: 100%; /* Forces image to fill the aspect-ratio container */
+    object-fit: cover; /* Crops gracefully without stretching */
+    object-position: center; /* Keeps the center of the image visible */
+    transition: transform 0.4s ease;
+}
+/* Specific adjustment for the BEFORE image only */
+.image-wrapper.before img {
+    /* Shifts the visible area UP by anchoring the image's top edge to the frame's top edge */
+    object-position: center top; 
+}
+
+/* Subtle zoom effect on hover */
+.image-wrapper:hover img {
+    transform: scale(1.05);
+}
+
+.image-wrapper .label {
+    position: absolute;
+    bottom: 15px;
+    left: 15px;
+    background-color: #2E347A; /* Brand Navy */
+    color: #ffffff;
+    padding: 6px 16px;
+    border-radius: 4px;
+    font-weight: 700;
+    font-size: 14px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    z-index: 2;
+}
+
+/* Make the 'After' label stand out with Brand Teal */
+.image-wrapper.after .label {
+    background-color: #00A79D; 
+}
+
+/* Responsive adjustments */
+@media (min-width: 600px) {
+    .before-after-container {
+        /* Puts images side-by-side on screens larger than mobile */
+        grid-template-columns: 1fr 1fr; 
+        gap: 15px;
+    }
+}
+
+@media (min-width: 992px) {
+    .before-after-container {
+        flex: 1;
+        gap: 20px;
+    }
+    
+    /* Slightly taller images for desktop layout */
+    .image-wrapper {
+        aspect-ratio: 3 / 4; 
+    }
+}
+
+/* Force the phone number link and the bold text inside it to be CTA red */
+a.cta-phone-link,
+a.cta-phone-link strong {
+    color: #dc3545 !important; 
+    text-decoration: none !important; 
+    /* Subtle red glow: horizontal offset, vertical offset, blur radius, color with transparency */
+    text-shadow: 0 0 6px rgba(220, 53, 69, 0.3); 
+    transition: all 0.2s ease !important;
+}
+
+/* Hover styles */
+a.cta-phone-link:hover,
+a.cta-phone-link:hover strong {
+    color: #bd2130 !important; 
+    text-decoration: underline !important; 
+    text-shadow: 0 0 10px rgba(220, 53, 69, 0.5); /* Intensifies slightly on hover */
+}
+
+/* ========================================== */
+/* LIGHTBOX MODAL OVERLAY                     */
+/* ========================================== */
+
+/* Signal to users that images can be clicked */
+.image-wrapper img {
+    cursor: pointer;
+}
+
+.lightbox-modal {
+    display: none; 
+    position: fixed;
+    z-index: 9999; /* Higher than headers/sticky components */
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.9); /* Dark background overlay */
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+/* Activated class via JavaScript */
+.lightbox-modal.show {
+    display: flex;
+    opacity: 1;
+}
+
+.lightbox-content {
+    margin: auto;
+    display: block;
+    max-width: 90%;
+    max-height: 85vh;
+    object-fit: contain; /* Forces the ENTIRE uncropped image to reveal gracefully */
+    border-radius: 6px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    transform: scale(0.95);
+    transition: transform 0.3s ease;
+}
+
+.lightbox-modal.show .lightbox-content {
+    transform: scale(1);
+}
+
+.lightbox-close {
+    position: absolute;
+    top: 20px;
+    right: 35px;
+    color: #ffffff;
+    font-size: 45px;
+    font-weight: 300;
+    cursor: pointer;
+    line-height: 1;
+    transition: color 0.2s ease;
+    user-select: none;
+}
+
+.lightbox-close:hover {
+    color: #dc3545; /* Changes to your CTA Red on hover */
+}
+
+/* Mobile adjustments for close layout button */
+@media (max-width: 768px) {
+    .lightbox-close {
+        top: 15px;
+        right: 25px;
+        font-size: 40px;
+    }
+    .lightbox-content {
+        max-width: 95%;
     }
 }
