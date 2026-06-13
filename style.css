@@ -707,7 +707,7 @@ gmp-place-autocomplete.form-input-address::part(prediction-item-icon) {
 
 .benefits-section {
     background-color: #ffffff;
-    padding: 80px 20px;
+    padding: 60px 20px;
 }
 
 .benefits-container {
@@ -750,7 +750,7 @@ gmp-place-autocomplete.form-input-address::part(prediction-item-icon) {
     background-color: #ffffff;
     border: 1px solid #f0f0f0;
     border-radius: 24px;
-    padding: 35px 25px;
+    padding: 25px 25px;
     text-align: center;
     box-shadow: 0 4px 25px rgba(0, 0, 0, 0.10);
     transition: transform 0.2s ease, box-shadow 0.2s ease;
@@ -795,7 +795,7 @@ gmp-place-autocomplete.form-input-address::part(prediction-item-icon) {
 .benefits-icon {
     width: 80px;
     height: 80px;
-    margin: 0 auto 24px auto;
+    margin: 0 auto 14px auto;
     display: block;
 }
 
@@ -889,351 +889,6 @@ gmp-place-autocomplete.form-input-address::part(prediction-item-icon) {
     }
 }
 
-/* ========================================== */
-/* COMPARISON SECTION                         */
-/* ========================================== */
-
-.comparison-section {
-    background-color: #f8f9fa; 
-    padding: 80px 20px;
-}
-
-.comparison-container {
-    max-width: 1200px;
-    margin: 0 auto;
-}
-
-.comparison-header {
-    text-align: center;
-    margin-bottom: 50px;
-}
-
-.comparison-title {
-    font-size: 42px;
-    font-weight: 800;
-    color: #111111;
-    line-height: 1.2;
-}
-
-.comparison-subtitle {
-    font-size: 18px;
-    color: #555555;
-    max-width: 750px;
-    margin: 16px auto 0 auto;
-    line-height: 1.6;
-}
-
-/* Table Design */
-.comparison-table-wrapper {
-    background-color: #ffffff;
-    border-radius: 24px;
-    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.04);
-    border: 1px solid #e5e5e5;
-    overflow: hidden;
-    margin: 0 auto 40px auto;
-    max-width: 900px; /* Reduced width to bring text closer together */
-}
-
-.comparison-table {
-    width: 100%;
-    border-collapse: collapse;
-    text-align: left;
-}
-
-.comparison-table th, 
-.comparison-table td {
-    padding: 22px 28px;
-    font-size: 16px;
-    border-bottom: 1px solid #eeeeee;
-}
-
-.comparison-table th {
-    background-color: #2E347A; /* Brand Navy */
-    color: #ffffff;
-    font-size: 20px;
-    font-weight: 700;
-}
-
-/* Highlighting the Cash column dynamically with Teal */
-.comparison-table th.cash-highlight {
-    background-color: #00A79D; /* Brand Teal */
-}
-
-.comparison-table td.cash-cell {
-    background-color: rgba(0, 167, 157, 0.05); /* Very light teal tint */
-}
-
-.feature-col {
-    width: 30%; 
-}
-
-.option-col {
-    width: 35%;
-}
-
-.feature-title {
-    font-weight: 700;
-    color: #2E347A;
-}
-
-/* Bottom CTA wrapper */
-.comparison-action {
-    text-align: center;
-    margin-top: 30px;
-}
-
-.btn-cta-comparison {
-    display: inline-block;
-    background-color: #e5243b; /* Kept CTA Red */
-    color: #ffffff;
-    text-decoration: none;
-    padding: 16px 40px;
-    border-radius: 50px;
-    font-size: 18px;
-    font-weight: 700;
-    box-shadow: 0 6px 20px rgba(229, 36, 59, 0.25);
-    transition: background-color 0.2s ease, transform 0.15s ease;
-}
-
-.btn-cta-comparison:hover {
-    background-color: #cc1f33;
-    transform: translateY(-2px);
-}
-
-/* ========================================== */
-/* MOBILE RESPONSIVE TRANSFORMATION           */
-/* ========================================== */
-
-@media (max-width: 768px) {
-    .comparison-section {
-        padding: 60px 15px;
-    }
-
-    .comparison-title {
-        font-size: 32px;
-    }
-
-    /* Force table to behave like block stacks instead of breaking rows */
-    .comparison-table, 
-    .comparison-table thead, 
-    .comparison-table tbody, 
-    .comparison-table th, 
-    .comparison-table td, 
-    .comparison-table tr {
-        display: block;
-    }
-
-    /* Hide traditional header row on mobile */
-    .comparison-table thead tr {
-        position: absolute;
-        top: -9999px;
-        left: -9999px;
-    }
-
-    .comparison-table tr {
-        border: 1px solid #e5e5e5;
-        border-radius: 16px;
-        margin-bottom: 24px;
-        background-color: #ffffff;
-        box-shadow: 0 4px 15px rgba(0,0,0,0.02);
-        overflow: hidden;
-    }
-
-    /* Fixed mobile cells to stack vertically and prevent overlapping text */
-    .comparison-table td {
-        border: none;
-        border-bottom: 1px solid #eeeeee;
-        padding: 16px 20px;
-        text-align: left;
-        font-size: 15px;
-        display: flex;
-        flex-direction: column;
-        gap: 6px;
-    }
-
-    .comparison-table td:last-child {
-        border-bottom: none;
-    }
-
-    /* Transform feature titles into banner bars inside the mobile card */
-    .comparison-table td.feature-title {
-        background-color: #2E347A;
-        color: #ffffff;
-        text-align: center;
-        padding: 14px;
-        font-size: 16px;
-        display: block;
-    }
-
-    /* Inject labels dynamically and format them like mini-headers above the text */
-    .comparison-table td:not(.feature-title)::before {
-        content: attr(data-label);
-        font-weight: 800;
-        color: #555555;
-        font-size: 12px;
-        text-transform: uppercase;
-        letter-spacing: 0.5px;
-    }
-
-    /* Style the cash option row prefix label specifically */
-    .comparison-table td.cash-cell::before {
-        color: #00A79D;
-    }
-}
-/* ========================================== */
-/* WHY CHOOSE US (TRUST SECTION)              */
-/* ========================================== */
-
-.trust-section {
-    background-color: #f2f7f7; /* Soft, airy off-white tinted with your brand teal */
-    color: #333333;
-    padding: 90px 20px;
-}
-
-.trust-container {
-    max-width: 1200px;
-    margin: 0 auto;
-    display: flex;
-    gap: 60px;
-    align-items: center;
-}
-
-.trust-header {
-    flex: 0 0 42%;
-}
-
-.trust-pill {
-    display: inline-block;
-    background-color: rgba(0, 167, 157, 0.1); /* Very soft teal background */
-    color: #007a73; /* Darker teal for readability */
-    font-size: 13px;
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 1.5px;
-    padding: 6px 16px;
-    border-radius: 50px;
-    margin-bottom: 20px;
-    border: 1px solid rgba(0, 167, 157, 0.2);
-}
-
-.trust-title {
-    font-size: 40px;
-    font-weight: 800;
-    line-height: 1.2;
-    margin-bottom: 20px;
-    color: #000000; /* Deep Navy from your logo text */
-}
-
-.trust-subtitle {
-    font-size: 17px;
-    color: #555555;
-    line-height: 1.6;
-}
-
-.trust-grid {
-    flex: 1;
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 45px 30px;
-}
-
-.trust-item {
-    display: flex;
-    gap: 20px;
-    align-items: flex-start;
-}
-
-.trust-icon-box {
-    flex: 0 0 52px;
-    height: 52px;
-    background-color: #ffffff;
-    border: 1px solid rgba(0, 167, 157, 0.25);
-    border-radius: 14px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: #00A79D; /* Vibrant Teal from your logo roof */
-    transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
-}
-
-/* Elegant micro-interactions on hover */
-.trust-item:hover .trust-icon-box {
-    transform: translateY(-2px);
-    border-color: #00A79D;
-    box-shadow: 0 4px 15px rgba(0, 167, 157, 0.15);
-}
-
-.trust-icon-box svg {
-    width: 24px;
-    height: 24px;
-}
-
-.trust-content {
-    flex: 1;
-}
-
-.trust-item-title {
-    font-size: 20px;
-    font-weight: 700;
-    margin-bottom: 10px;
-    color: #2E347A; /* Brand Navy */
-}
-
-.trust-item-text {
-    font-size: 15px;
-    line-height: 1.65;
-    color: #555555;
-}
-
-.trust-item-text b {
-    color: #2E347A; /* Keep highlighted words crisp against the light background */
-}
-
-/* ========================================== */
-/* RESPONSIVE ADAPTATIONS                     */
-/* ========================================== */
-
-@media (max-width: 992px) {
-    .trust-container {
-        flex-direction: column;
-        gap: 50px;
-        text-align: center;
-    }
-
-    .trust-header {
-        width: 100%;
-        max-width: 700px;
-    }
-
-    .trust-grid {
-        width: 100%;
-    }
-}
-
-@media (max-width: 650px) {
-    .trust-section {
-        padding: 60px 15px;
-    }
-
-    .trust-title {
-        font-size: 32px;
-    }
-
-    .trust-grid {
-        grid-template-columns: 1fr;
-        gap: 35px;
-    }
-
-    .trust-item {
-        flex-direction: column;
-        align-items: center;
-        text-align: center;
-    }
-
-    .trust-icon-box {
-        margin-bottom: 5px;
-    }
-}
 
 /* ========================================== */
 /* TRUST BADGES SECTION                       */
@@ -1537,5 +1192,195 @@ a.cta-phone-link:hover strong {
     }
     .lightbox-content {
         max-width: 95%;
+    }
+}
+
+
+
+/* ========================================== */
+/* MEET MAX SECTION                           */
+/* ========================================== */
+
+.meet-max-section {
+    background-color: #f0f8f8; /* A very light, soft teal/green tint */
+    padding: 60px 20px; 
+    border-top: 1px solid #eaeaea;
+}
+
+.meet-max-container {
+    display: flex;
+    flex-direction: column;
+    gap: 40px; 
+    align-items: center;
+}
+
+/* Forces the text to appear above the image on mobile */
+.meet-max-image {
+    order: 2;
+    width: 100%;
+    max-width: 380px; 
+}
+
+.meet-max-content {
+    order: 1;
+    flex: 1;
+    max-width: 650px;
+}
+
+/* Image Styling - Natural Framing */
+.meet-max-image img {
+    width: 100%;
+    aspect-ratio: 4 / 5; 
+    object-fit: cover;   
+    border-radius: 8px; 
+    box-shadow: 0 8px 24px rgba(0,0,0,0.08); 
+    display: block;
+}
+
+/* Typography & Layout */
+.meet-max-content h2 {
+    font-size: 36px;
+    color: #111111;
+    margin-bottom: 5px; 
+    line-height: 1.2;
+    font-weight: 800;
+}
+
+.meet-subtitle {
+    font-size: 18px;
+    color: #2E347A; /* Brand Navy */
+    font-weight: 700;
+    margin-bottom: 20px;
+    line-height: 1.4;
+}
+
+.meet-max-content p {
+    font-size: 16px;
+    line-height: 1.6;
+    color: #555555;
+    margin-bottom: 16px;
+}
+
+/* Bullet Point Formatting */
+.max-options-list {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 24px 0;
+}
+
+.max-options-list li {
+    position: relative;
+    padding-left: 28px;
+    margin-bottom: 12px;
+    font-size: 16px;
+    line-height: 1.5;
+    color: #444444;
+}
+
+.max-options-list li::before {
+    content: "✓";
+    position: absolute;
+    left: 0;
+    top: 0;
+    color: #00A79D; /* Brand Teal */
+    font-size: 18px;
+    font-weight: 900;
+}
+
+.max-options-list li strong {
+    color: #111111;
+}
+
+/* CTA Buttons */
+.meet-max-actions {
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+    align-items: center;
+    margin-top: 10px;
+}
+
+/* Added specific styling for the Call Button so it doesn't disappear */
+.meet-max-actions .btn-cta {
+    display: inline-block;
+    color: #ffffff;
+    text-decoration: none;
+    padding: 12px 28px;
+    border-radius: 50px;
+    font-size: 15px;
+    font-weight: 700;
+    transition: all 0.2s ease;
+    text-align: center;
+}
+
+/* CTA Buttons Layout */
+.meet-max-actions {
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+    align-items: center;
+    margin-top: 10px;
+}
+
+/* We leave your global .btn-cta alone and ONLY style the secondary email button here */
+.meet-max-actions .btn-secondary {
+    display: inline-block;
+    background-color: #ffffff;
+    color: #111111;
+    text-decoration: none;
+    padding: 12px 28px;
+    border-radius: 50px;
+    font-size: 15px;
+    font-weight: 700;
+    border: 2px solid #e5e5e5;
+    transition: all 0.2s ease;
+    text-align: center;
+}
+
+.meet-max-actions .btn-secondary:hover {
+    border-color: #111111;
+    background-color: #f9f9f9;
+    transform: translateY(-1px);
+}
+
+/* ========================================== */
+/* RESPONSIVE BREAKPOINTS                     */
+/* ========================================== */
+
+@media (min-width: 992px) {
+    .meet-max-container {
+        flex-direction: row;
+        align-items: center;
+        gap: 60px;
+    }
+
+    .meet-max-image {
+        order: 1;
+        flex: 0 0 380px;
+    }
+
+    .meet-max-content {
+        order: 2;
+    }
+}
+
+@media (max-width: 768px) {
+    .meet-max-content h2 {
+        font-size: 30px;
+    }
+
+    .meet-max-actions {
+        flex-direction: column;
+        width: 100%;
+        align-items: stretch; /* Stretches container to fit screen */
+    }
+
+    /* Forces BOTH buttons to stay visible, take up 100% width, and stack perfectly */
+    .meet-max-actions .btn-cta,
+    .meet-max-actions .btn-secondary {
+        width: 100%;
+        display: block; 
+        box-sizing: border-box; /* Prevents button padding from pushing it off the screen */
+        text-align: center;
     }
 }
