@@ -944,7 +944,7 @@ gmp-place-autocomplete.form-input-address::part(prediction-item-icon) {
 
     .trust-badges-grid img {
         flex: 0 1 auto; 
-        max-height: 60px; /* Scales everything up evenly for desktop */
+        max-height: 70px; /* Scales everything up evenly for desktop */
         max-width: 140px; 
     }
 }
@@ -1108,7 +1108,7 @@ a.cta-phone-link strong {
     color: #dc3545 !important; 
     text-decoration: none !important; 
     /* Subtle red glow: horizontal offset, vertical offset, blur radius, color with transparency */
-    text-shadow: 0 0 6px rgba(220, 53, 69, 0.3); 
+    text-shadow: 0 0 6px rgba(220, 53, 69, 0.2); 
     transition: all 0.2s ease !important;
 }
 
@@ -1347,6 +1347,10 @@ a.cta-phone-link:hover strong {
 /* RESPONSIVE BREAKPOINTS                     */
 /* ========================================== */
 
+/* ========================================== */
+/* RESPONSIVE BREAKPOINTS                     */
+/* ========================================== */
+
 @media (min-width: 992px) {
     .meet-max-container {
         flex-direction: row;
@@ -1365,6 +1369,12 @@ a.cta-phone-link:hover strong {
 }
 
 @media (max-width: 768px) {
+    /* Shrinks the photo specifically on mobile to reduce scrolling */
+    .meet-max-image {
+        max-width: 220px; 
+        margin: 0 auto; /* Keeps the photo centered */
+    }
+
     .meet-max-content h2 {
         font-size: 30px;
     }
@@ -1372,15 +1382,247 @@ a.cta-phone-link:hover strong {
     .meet-max-actions {
         flex-direction: column;
         width: 100%;
-        align-items: stretch; /* Stretches container to fit screen */
+        align-items: stretch; 
     }
 
-    /* Forces BOTH buttons to stay visible, take up 100% width, and stack perfectly */
     .meet-max-actions .btn-cta,
     .meet-max-actions .btn-secondary {
         width: 100%;
         display: block; 
-        box-sizing: border-box; /* Prevents button padding from pushing it off the screen */
+        box-sizing: border-box; 
         text-align: center;
+    }
+}
+
+/* ========================================== */
+/* SITUATIONS WE HELP WITH SECTION            */
+/* ========================================== */
+
+.situations-section {
+    padding: 60px 20px; /* Matched to previous sections */
+    background-color: #ffffff;
+}
+
+.section-header {
+    text-align: center;
+    max-width: 800px;
+    margin: 0 auto 40px; /* Tightened from 60px */
+}
+
+.section-header h2 {
+    font-size: 36px;
+    font-weight: 800;
+    color: #111111;
+    margin-bottom: 15px;
+    line-height: 1.2;
+}
+
+.section-header p {
+    font-size: 18px;
+    line-height: 1.6;
+    color: #555555;
+}
+
+.situations-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px; /* Reduced gap */
+    margin-bottom: 40px; /* Tightened from 60px */
+}
+
+.situation-card {
+    background-color: #ffffff;
+    border: 1px solid #f0f0f0; /* Matched to benefits-card */
+    border-radius: 12px;
+    padding: 24px 20px; /* Reduced padding for a more compact card */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05); /* Added subtle shadow matching theme */
+    transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.situation-card:hover {
+    border-color: #e5243b; /* Replaced missing variable with Brand Red */
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+}
+
+.situation-card h3 {
+    margin-bottom: 10px;
+    font-size: 20px;
+    font-weight: 700;
+    color: #2E347A; /* Brand Navy */
+}
+
+.situation-card p {
+    margin: 0;
+    color: #555555;
+    line-height: 1.6;
+    font-size: 15px; /* Slightly smaller to keep text blocks concise */
+}
+
+.situations-footer {
+    max-width: 800px;
+    margin: 20px auto;
+    text-align: center;
+}
+
+.situations-footer p {
+    font-size: 18px;
+    line-height: 1.6;
+    color: #555555;
+    margin: 0;
+}
+
+/* ========================================== */
+/* RESPONSIVE BREAKPOINTS (Situations)        */
+/* ========================================== */
+
+@media (max-width: 992px) {
+    .situations-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 768px) {
+    .situations-section {
+        padding: 40px 20px; /* Matched to mobile padding of other sections */
+    }
+
+    .situations-grid {
+        grid-template-columns: 1fr;
+        gap: 16px;
+    }
+
+    .situation-card {
+        padding: 20px;
+    }
+
+    .section-header {
+        margin-bottom: 30px;
+    }
+    
+    .section-header h2 {
+        font-size: 30px; /* Matched mobile heading scale */
+    }
+
+    .situations-footer {
+        margin-top: 10px;
+    }
+}
+
+
+
+/* ========================================== */
+/* WHY HOMEOWNERS WORK WITH US SECTION        */
+/* ========================================== */
+
+.why-us-section {
+    padding: 60px 20px;
+    background-color: #f8f9fa; /* Soft gray background to extend left-to-right */
+    width: 100%;
+}
+
+.why-us-header {
+    text-align: center;
+    max-width: 800px;
+    margin: 0 auto 40px;
+}
+
+.why-us-header h2 {
+    font-size: 36px;
+    font-weight: 800;
+    color: #111111;
+    margin-bottom: 15px;
+    line-height: 1.2;
+}
+
+.why-us-header p {
+    font-size: 18px;
+    line-height: 1.6;
+    color: #555555;
+}
+
+.why-us-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+    max-width: 1200px; /* Keeps the cards contained while the background stretches */
+    margin: 0 auto;
+}
+
+.why-us-card {
+    background-color: #ffffff; /* White cards pop against the gray section background */
+    border: 1px solid #f0f0f0;
+    border-radius: 12px;
+    padding: 30px 24px; /* Slightly adjusted padding since numbers are gone */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+    transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.why-us-card:hover {
+    border-color: #e5243b;
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+}
+
+.why-us-card h3 {
+    margin-bottom: 12px;
+    font-size: 20px;
+    font-weight: 700;
+    color: #2E347A;
+}
+
+.why-us-card p {
+    margin: 0;
+    color: #555555;
+    line-height: 1.6;
+    font-size: 15px;
+}
+
+.why-us-statement {
+    margin-top: 40px; /* Tightened from 60px */
+    text-align: center;
+}
+
+.why-us-statement blockquote {
+    font-size: 20px;
+    font-weight: 600;
+    color: #333333;
+    max-width: 800px;
+    margin: 0 auto;
+    font-style: italic;
+}
+
+/* ========================================== */
+/* RESPONSIVE BREAKPOINTS (Why Us)            */
+/* ========================================== */
+
+@media (max-width: 768px) {
+    .why-us-section {
+        padding: 40px 20px;
+    }
+
+    .why-us-grid {
+        grid-template-columns: 1fr;
+        gap: 16px;
+    }
+
+    .why-us-card {
+        padding: 24px 20px;
+    }
+
+    .why-us-header {
+        margin-bottom: 30px;
+    }
+    
+    .why-us-header h2 {
+        font-size: 30px;
+    }
+
+    .why-us-statement {
+        margin-top: 30px;
+    }
+    
+    .why-us-statement blockquote {
+        font-size: 18px;
     }
 }
