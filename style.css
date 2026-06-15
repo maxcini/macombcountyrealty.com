@@ -708,6 +708,7 @@ gmp-place-autocomplete.form-input-address::part(prediction-item-icon) {
 .benefits-section {
     background-color: #ffffff;
     padding: 60px 20px;
+    border-top: 1px solid #eaeaea;
 }
 
 .benefits-container {
@@ -834,7 +835,7 @@ gmp-place-autocomplete.form-input-address::part(prediction-item-icon) {
     position: absolute;
     left: -2%;       /* Extends slightly left of the letter 'E' */
     bottom: -6px;    /* Positions it perfectly beneath the letters */
-    width: 108%;     /* Makes it slightly wider than the word for a premium look */
+    width: 104%;     /* Makes it slightly wider than the word for a premium look */
     height: 14px;    /* Adjusts the thickness of the brush stroke */
     
     /* 100% Browser-Safe URL Encoded SVG Brush Stroke matching your brand red (#e5243b) */
@@ -854,7 +855,7 @@ gmp-place-autocomplete.form-input-address::part(prediction-item-icon) {
     }
     
     .benefits-card {
-        padding: 40px 20px;
+        padding: 25px 20px;
     }
 
     .benefits-title {
@@ -890,77 +891,94 @@ gmp-place-autocomplete.form-input-address::part(prediction-item-icon) {
 }
 
 
-/* ========================================== */
-/* TRUST BADGES SECTION                       */
-/* ========================================== */
-
-.trust-badges-section {
-    background-color: #fcfcfc;
-    padding: 20px 15px; 
-    border-top: 1px solid #eaeaea;
-    border-bottom: 1px solid #eaeaea;
-}
-
 .section-container {
     max-width: 1200px;
     margin: 0 auto;
 }
 
-.trust-badges-grid {
+/* ========================================== */
+/* TRUST BAR SECTION (Text-Based)             */
+/* ========================================== */
+
+.trust-bar-section {
+    background-color: #f8f9fa;
+    padding: 20px 15px; 
+    border-top: 1px solid #eaeaea;
+}
+
+.trust-bar-container {
+    max-width: 1200px;
+    margin: 0 auto;
     display: flex;
-    flex-wrap: nowrap;
-    justify-content: space-evenly; /* Spaces all logos perfectly evenly */
+    flex-wrap: nowrap; /* Keeps items strictly on one line */
+    justify-content: space-evenly; 
     align-items: center;
-    gap: 10px; 
+    gap: 15px; 
     width: 100%;
 }
 
-.trust-badges-grid img {
-    flex: 1 1 0; /* Gives every logo an exactly equal share of the row */
-    min-width: 0; 
-    max-height: 35px; /* This is the key: forces the wide logo to shrink down to the same visual size as the others */
-    width: 100%;
-    object-fit: contain; 
-    filter: grayscale(100%);
-    opacity: 0.6;
-    transition: all 0.3s ease;
+.trust-bar-container .trust-item {
+    flex: 1 1 0; /* Gives every text element an exactly equal share of the row */
+    text-align: center; /* Centers the text within its dedicated block */
+    font-weight: 700; 
+    color: #2E347A; 
+    font-size: 16px;
+    transition: opacity 0.3s ease;
 }
 
-.trust-badges-grid img:hover {
-    filter: grayscale(0%);
-    opacity: 1;
+/* Optional: Gives a slight interaction effect similar to the image hover */
+.trust-bar-container .trust-item:hover {
+    opacity: 0.7;
 }
 
-/* Responsive Desktop Layout - Centers and scales back up uniformly */
-@media (min-width: 768px) {
-    .trust-badges-section {
-        padding: 30px 20px;
+/* --- Mobile Responsiveness --- */
+@media (max-width: 850px) {
+    .trust-bar-container {
+        /* Switch back to flex, but allow wrapping! */
+        display: flex;
+        flex-wrap: wrap; 
+        justify-content: center; /* Centers the whole group */
+        gap: 15px; 
+        padding: 0 10px;
     }
     
-    .trust-badges-grid {
+    .trust-bar-container .trust-item {
+        flex: 0 1 auto; /* Allows items to size themselves based on their text */
+        text-align: center; 
+        font-size: 14px;
+        display: flex;
+        align-items: center; /* Keeps text and checkmarks vertically aligned */
         justify-content: center;
-        gap: 50px; /* Wider, even spacing for desktop */
-    }
-
-    .trust-badges-grid img {
-        flex: 0 1 auto; 
-        max-height: 70px; /* Scales everything up evenly for desktop */
-        max-width: 140px; 
+        /* Optional: Use white-space: nowrap; here if you don't want a single item's text breaking into two lines */
     }
 }
+
+/* For smaller mobile phones (e.g., standard iPhone sizes) */
+@media (max-width: 550px) {
+    .trust-bar-container {
+        /* We removed the grid layout and max-width that forced it into a list */
+        gap: 10px; /* Tighter spacing for small screens */
+    }
+    
+    .trust-bar-container .trust-item {
+        font-size: 13px; /* Slightly smaller text to fit horizontally better */
+    }
+}
+
 /* ========================================== */
 /* WE BUY HOUSES ABOUT SECTION                */
 /* ========================================== */
 
 .about-we-buy-section {
     padding: 60px 20px;
-    background-color: #ffffff;
+    background-color: #f8f9fa;
+    border-top: 1px solid #eaeaea;
 }
 
 .about-container {
     display: flex;
     flex-direction: column;
-    gap: 40px;
+    gap: 20px;
     align-items: center;
 }
 
@@ -1029,6 +1047,7 @@ gmp-place-autocomplete.form-input-address::part(prediction-item-icon) {
     width: 100%;
     margin: 0 auto;
 }
+
 
 .image-wrapper {
     position: relative;
@@ -1202,7 +1221,7 @@ a.cta-phone-link:hover strong {
 /* ========================================== */
 
 .meet-max-section {
-    background-color: #f0f8f8; /* A very light, soft teal/green tint */
+    background-color: #ffffff; /* A very light, soft teal/green tint */
     padding: 60px 20px; 
     border-top: 1px solid #eaeaea;
 }
@@ -1343,9 +1362,9 @@ a.cta-phone-link:hover strong {
     transform: translateY(-1px);
 }
 
-/* ========================================== */
-/* RESPONSIVE BREAKPOINTS                     */
-/* ========================================== */
+.max-image-mobile {
+    display: none;
+}
 
 /* ========================================== */
 /* RESPONSIVE BREAKPOINTS                     */
@@ -1369,12 +1388,6 @@ a.cta-phone-link:hover strong {
 }
 
 @media (max-width: 768px) {
-    /* Shrinks the photo specifically on mobile to reduce scrolling */
-    .meet-max-image {
-        max-width: 220px; 
-        margin: 0 auto; /* Keeps the photo centered */
-    }
-
     .meet-max-content h2 {
         font-size: 30px;
     }
@@ -1392,7 +1405,25 @@ a.cta-phone-link:hover strong {
         box-sizing: border-box; 
         text-align: center;
     }
+
+    /* 1. Style the mobile image to perfectly match the desktop formatting */
+    .max-image-mobile {
+        display: block;
+        width: 100%;
+        max-width: 220px; /* Shrinks the photo to reduce scrolling */
+        margin: 20px auto; /* Keeps it centered with top/bottom space */
+        aspect-ratio: 4 / 5; 
+        object-fit: cover;   
+        border-radius: 8px; /* Round frame */
+        box-shadow: 0 8px 24px rgba(0,0,0,0.08); /* Exact same shadow as desktop */
+    }
+    
+    /* 2. Hide the original desktop image at the bottom using your correct class */
+    .meet-max-image {
+        display: none;
+    }
 }
+
 
 /* ========================================== */
 /* SITUATIONS WE HELP WITH SECTION            */
@@ -1400,7 +1431,8 @@ a.cta-phone-link:hover strong {
 
 .situations-section {
     padding: 60px 20px; /* Matched to previous sections */
-    background-color: #ffffff;
+    background-color: #f8f9fa;
+    border-top: 1px solid #eaeaea;
 }
 
 .section-header {
@@ -1509,8 +1541,6 @@ a.cta-phone-link:hover strong {
     }
 }
 
-
-
 /* ========================================== */
 /* WHY HOMEOWNERS WORK WITH US SECTION        */
 /* ========================================== */
@@ -1518,6 +1548,7 @@ a.cta-phone-link:hover strong {
 .why-us-section {
     padding: 60px 20px;
     background-color: #f8f9fa; /* Soft gray background to extend left-to-right */
+    border-top: 1px solid #eaeaea;
     width: 100%;
 }
 
@@ -1624,5 +1655,832 @@ a.cta-phone-link:hover strong {
     
     .why-us-statement blockquote {
         font-size: 18px;
+    }
+}
+
+
+
+
+
+
+
+
+/* ========================================== */
+/* COMPARISON TABLE SECTION                   */
+/* ========================================== */
+
+.comparison-section {
+    background-color: #ffffff; 
+    padding: 60px 20px;
+    border-top: 1px solid #eaeaea;
+}
+
+.comparison-container {
+    max-width: 1000px; 
+    margin: 0 auto;
+}
+
+.comparison-header {
+    text-align: center;
+    margin-bottom: 45px;
+}
+
+.comparison-title {
+    font-size: 42px;
+    font-weight: 800;
+    color: #111111;
+    line-height: 1.2;
+}
+
+.comparison-subtitle {
+    font-size: 18px;
+    color: #555555;
+    max-width: 750px;
+    margin: 16px auto 0 auto;
+    line-height: 1.6;
+    font-weight: 400;
+}
+
+.comparison-table-wrapper {
+    background-color: #ffffff;
+    border-radius: 24px;
+    box-shadow: 0 4px 25px rgba(0, 0, 0, 0.08); 
+    overflow: hidden; 
+    border: 1px solid #f0f0f0;
+}
+
+.comparison-table {
+    width: 100%;
+    border-collapse: collapse;
+    text-align: left;
+}
+
+.comparison-table th,
+.comparison-table td {
+    padding: 20px 24px;
+    font-size: 16px;
+    border-bottom: 1px solid #f0f0f0;
+}
+
+.comparison-table th {
+    font-weight: 700;
+    font-size: 18px;
+    letter-spacing: 0.5px;
+}
+
+/* --- Column Specific Styles --- */
+.feature-col {
+    width: 30%;
+    color: #333333;
+    font-weight: 700;
+    background-color: #ffffff;
+}
+
+.cash-col {
+    width: 35%;
+    background-color: #eaf6f5; /* Subtle Light Teal */
+    color: #00A79D; /* Brand Teal */
+    text-align: center;
+}
+
+.comparison-table th.cash-col {
+    background-color: #00A79D; /* Brand Teal */
+    color: #ffffff;
+    text-align: center;
+}
+
+.market-col {
+    width: 35%;
+    color: #555555;
+    text-align: center;
+}
+
+.comparison-table th.market-col {
+    background-color: #2E347A; /* Brand Navy Blue */
+    color: #ffffff;
+}
+
+/* Remove bottom border on the last row to keep it flush inside the rounded wrapper */
+.comparison-table tbody tr:last-child td {
+    border-bottom: none;
+}
+
+/* ========================================== */
+/* COMPARISON TABLE RESPONSIVE BREAKPOINTS    */
+/* ========================================== */
+@media (max-width: 768px) {
+    .comparison-section {
+        padding: 40px 10px; /* Reduces side padding on the main section */
+    }
+
+    .comparison-title {
+        font-size: 30px;
+    }
+    
+    .comparison-subtitle {
+        font-size: 15px;
+        padding: 0 5px;
+    }
+
+    .comparison-table-wrapper {
+        border-radius: 16px; /* Slightly smaller border radius on mobile */
+    }
+    
+    .comparison-table {
+        table-layout: fixed; /* Forces the table to stay strictly inside the screen width */
+    }
+    
+    .comparison-table th,
+    .comparison-table td {
+        padding: 12px 8px; /* Tighter padding to save space */
+        font-size: 12px; /* Smaller text so it fits */
+        white-space: normal; /* Allows the text to wrap! */
+        word-wrap: break-word; 
+    }
+    
+    .comparison-table th {
+        font-size: 13px; /* Smaller header text */
+    }
+
+    /* Tweaking mobile column widths to maximize space for the content */
+    .feature-col {
+        width: 28%;
+    }
+
+    .cash-col {
+        width: 36%;
+    }
+
+    .market-col {
+        width: 36%;
+    }
+}
+/* ========================================== */
+/* COMPARISON CTA SECTION                     */
+/* ========================================== */
+
+.comparison-cta {
+    text-align: center;
+    margin-top: 45px;
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Centers the 50% width button */
+}
+
+.comparison-cta-text {
+    font-size: 20px;
+    color: #333333;
+    font-weight: 700;
+    margin-bottom: 20px;
+}
+
+.comparison-cta-btn {
+    display: inline-block;
+    background-color: #e5243b;
+    color: #ffffff;
+    text-decoration: none;
+    padding: 12px 30px;
+    border-radius: 50px;
+    font-size: 16px;
+    font-weight: 700;
+    box-shadow: 0 4px 15px rgba(229, 36, 59, 0.2);
+    transition: background-color 0.2s ease, transform 0.15s ease;
+    margin-top: auto;
+}
+
+.comparison-cta-btn:hover {
+    background-color: #c41e30; /* Slightly darker red on hover */
+    color: #ffffff;
+    transform: translateY(-2px); /* Lifts the button up slightly */
+    box-shadow: 0 6px 20px rgba(229, 36, 59, 0.35);
+}
+
+/* Mobile adjustments for the CTA */
+@media (max-width: 768px) {
+    .comparison-cta {
+        margin-top: 35px;
+    }
+    
+    .comparison-cta-text {
+        font-size: 18px;
+    }
+    
+    .comparison-cta-btn {
+        width: 80%; /* Expands the button on small screens so the text fits comfortably */
+        padding: 14px 30px;
+    }
+}
+
+/* ========================================== */
+/* FAQ SECTION (All-Cash vs. Open Market)    */
+/* ========================================== */
+
+.faq-section {
+    background-color: #fcfcfc; /* Alternates cleanly with pure white sections */
+    padding: 60px 20px;
+    border-top: 1px solid #eaeaea;
+}
+
+.faq-container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.faq-header {
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+.header-pill {
+    display: inline-block;
+    background-color: #fdf3f4; /* Light red background matching brand global theme */
+    color: #e5243b; /* Brand conversion red */
+    font-size: 13px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    padding: 8px 18px;
+    border-radius: 50px;
+    margin-bottom: 20px;
+}
+
+.faq-title {
+    font-size: 42px;
+    font-weight: 800;
+    color: #111111;
+    line-height: 1.2;
+}
+
+.faq-subtitle {
+    font-size: 18px;
+    color: #555555;
+    max-width: 750px;
+    margin: 16px auto 0 auto;
+    line-height: 1.6;
+    font-weight: 400;
+}
+
+.faq-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 40px;
+    align-items: stretch; /* FIXED: Forces both columns to perfectly match heights */
+}
+
+.faq-column {
+    background-color: #ffffff;
+    border: 1px solid #f0f0f0;
+    border-radius: 24px;
+    padding: 35px;
+    box-shadow: 0 4px 25px rgba(0, 0, 0, 0.04);
+    display: flex;          /* Added to handle internal alignment */
+    flex-direction: column; /* Stacks column components vertically */
+}
+
+.faq-path-header {
+    margin-bottom: 30px;
+    border-bottom: 1px solid #eaeaea;
+    padding-bottom: 20px;
+}
+
+.faq-path-badge {
+    display: inline-block;
+    font-size: 12px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    padding: 6px 14px;
+    border-radius: 50px;
+    margin-bottom: 12px;
+}
+
+/* Theme Teal Track */
+.cash-badge {
+    background-color: #eaf6f5; 
+    color: #00A79D; 
+}
+
+/* Theme Navy Track */
+.market-badge {
+    background-color: #eef0fa; 
+    color: #2E347A; 
+}
+
+.faq-column h3 {
+    font-size: 26px;
+    font-weight: 800;
+    color: #111111;
+    margin-bottom: 6px;
+}
+
+.faq-path-desc {
+    font-size: 15px;
+    color: #777777;
+    line-height: 1.4;
+}
+
+.faq-items-list {
+    display: flex;
+    flex-direction: column;
+    gap: 28px;
+    flex-grow: 1; /* Allows the content area to expand equally within the stretched card */
+}
+
+.faq-item {
+    padding-left: 18px;
+}
+
+.cash-path .faq-item {
+    border-left: 3px solid #00A79D; /* Brand Teal */
+}
+
+.market-path .faq-item {
+    border-left: 3px solid #2E347A; /* Brand Navy */
+}
+
+.faq-question {
+    font-size: 18px;
+    font-weight: 700;
+    color: #111111;
+    margin-bottom: 8px;
+    line-height: 1.4;
+}
+
+.faq-answer {
+    font-size: 15px;
+    color: #555555;
+    line-height: 1.6;
+}
+
+/* ========================================== */
+/* FAQ SECTION PRECISION BREAKPOINTS          */
+/* ========================================== */
+
+@media (max-width: 992px) {
+    .faq-title {
+        font-size: 36px;
+    }
+    .faq-column {
+        padding: 25px;
+    }
+    .faq-column h3 {
+        font-size: 22px;
+    }
+}
+
+@media (max-width: 768px) {
+    .faq-section {
+        padding: 40px 20px;
+    }
+    .faq-grid {
+        grid-template-columns: 1fr; /* Stacks cards vertically on tablet/mobile where height matching isn't needed */
+        gap: 30px;
+    }
+    .faq-header {
+        margin-bottom: 35px;
+    }
+}
+
+@media (max-width: 600px) {
+    .faq-title {
+        font-size: 32px;
+    }
+    .faq-subtitle {
+        font-size: 16px;
+        margin-top: 12px;
+    }
+    .faq-question {
+        font-size: 16px;
+    }
+    .faq-answer {
+        font-size: 14px;
+    }
+}
+
+/* ========================================== */
+/* SERVICE AREAS SECTION                      */
+/* ========================================== */
+
+.service-areas-section {
+    background-color: #f8f9fa;
+    padding: 60px 20px;
+    border-top: 1px solid #eaeaea;
+}
+
+.service-areas-container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.service-areas-header {
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+/* 3-column layout */
+.service-areas-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+}
+
+.service-area-card {
+    background-color: #ffffff;
+    border-radius: 12px;
+    padding: 30px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+    border-top: 5px solid transparent; 
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    display: flex;
+    flex-direction: column;
+}
+
+.service-area-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+}
+
+/* Brand Coordinates for Card Tops */
+.macomb-card { border-top-color: #e5243b; }
+.oakland-card { border-top-color: #00A79D; }
+.wayne-card { border-top-color: #2E347A; }
+
+.county-title {
+    font-size: 24px;
+    font-weight: 800;
+    margin-bottom: 20px;
+    border-bottom: 2px solid #f0f0f0;
+    padding-bottom: 12px;
+}
+
+.macomb-card .county-title { color: #e5243b; }
+.oakland-card .county-title { color: #00A79D; }
+.wayne-card .county-title { color: #2E347A; }
+
+/* ------------------------------------------ */
+/* NEW: Scannable "Pill/Tag" Layout           */
+/* ------------------------------------------ */
+.county-city-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px; /* Keeps everything tightly condensed */
+}
+
+.county-city-list li {
+    font-size: 13px;
+    color: #444444;
+    background-color: #f4f6f8;
+    border: 1px solid #e1e5ea;
+    padding: 4px 10px;
+    border-radius: 20px;
+    white-space: nowrap;
+    transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+/* Subtle hover effect referencing your brand colors */
+.macomb-card .county-city-list li:hover { background-color: #e5243b; color: #fff; border-color: #e5243b; }
+.oakland-card .county-city-list li:hover { background-color: #00A79D; color: #fff; border-color: #00A79D; }
+.wayne-card .county-city-list li:hover { background-color: #2E347A; color: #fff; border-color: #2E347A; }
+
+/* ========================================== */
+/* RESPONSIVE LAYOUT                          */
+/* ========================================== */
+
+@media (max-width: 992px) {
+    .service-areas-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    .wayne-card {
+        grid-column: span 2;
+    }
+}
+
+@media (max-width: 768px) {
+    .service-areas-section {
+        padding: 50px 20px;
+    }
+    .service-areas-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+    .wayne-card {
+        grid-column: span 1;
+    }
+    /* Slightly larger tap targets on mobile */
+    .county-city-list li {
+        font-size: 14px;
+        padding: 6px 12px;
+    }
+}
+
+/* ------------------------------------------ */
+/* Scannable "Pill/Tag" Layout with Scroll    */
+/* ------------------------------------------ */
+
+.county-city-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px; 
+    
+    /* NEW: Limits the height and makes it scrollable */
+    max-height: 240px; 
+    overflow-y: auto;
+    padding-right: 8px; /* Adds breathing room for the scrollbar */
+}
+
+/* Custom, sleek scrollbar so it doesn't look like a default browser bar */
+.county-city-list::-webkit-scrollbar {
+    width: 6px;
+}
+
+.county-city-list::-webkit-scrollbar-track {
+    background: #f4f6f8; 
+    border-radius: 10px;
+}
+
+.county-city-list::-webkit-scrollbar-thumb {
+    background: #d1d5db; /* Soft gray */
+    border-radius: 10px;
+}
+
+/* Scrollbar hover effects matching your brand */
+.macomb-card .county-city-list::-webkit-scrollbar-thumb:hover { background: #e5243b; }
+.oakland-card .county-city-list::-webkit-scrollbar-thumb:hover { background: #00A79D; }
+.wayne-card .county-city-list::-webkit-scrollbar-thumb:hover { background: #2E347A; }
+
+.county-city-list li {
+    font-size: 13px;
+    color: #444444;
+    background-color: #f4f6f8;
+    border: 1px solid #e1e5ea;
+    padding: 4px 10px;
+    border-radius: 20px;
+    white-space: nowrap;
+    transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+/* Subtle hover effect referencing your brand colors */
+.macomb-card .county-city-list li:hover { background-color: #e5243b; color: #fff; border-color: #e5243b; }
+.oakland-card .county-city-list li:hover { background-color: #00A79D; color: #fff; border-color: #00A79D; }
+.wayne-card .county-city-list li:hover { background-color: #2E347A; color: #fff; border-color: #2E347A; }
+
+/* ========================================== */
+/* STANDALONE FINAL CTA SECTION               */
+/* ========================================== */
+.final-cta-section {
+    background-color: #ffffff; /* Soft light neutral background */
+    padding: 80px 20px;
+    text-align: center;
+    border-top: 1px solid #eaeaea;
+}
+
+.cta-container {
+    max-width: 850px;
+    margin: 0 auto;
+}
+
+.cta-heading {
+    font-size: 38px;
+    font-weight: 800;
+    color: #2E347A; /* M1 Purple/Dark Blue */
+    line-height: 1.2;
+    margin-bottom: 20px;
+}
+
+.cta-subheading {
+    font-size: 18px;
+    line-height: 1.6;
+    color: #555555;
+    margin-bottom: 35px;
+}
+
+.cta-actions {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 18px; /* Balanced spacing between button and text line */
+}
+
+.btn-final-cta {
+    display: inline-block;
+    background-color: #e5243b; /* Brand Red */
+    color: #ffffff;
+    text-decoration: none;
+    padding: 16px 40px;
+    border-radius: 50px;
+    font-size: 18px;
+    font-weight: 700;
+    box-shadow: 0 4px 15px rgba(229, 36, 59, 0.25);
+    transition: background-color 0.2s ease, transform 0.15s ease;
+}
+
+.btn-final-cta:hover {
+    background-color: #cc1f33;
+    transform: translateY(-2px);
+}
+
+/* Fixes the "funny" look by gathering the phrase into a single readable sentence */
+.cta-secondary-text {
+    font-size: 16px;
+    color: #555555; /* Soft, readable neutral gray */
+    font-weight: 500;
+    margin: 0;
+    line-height: 1.4;
+}
+
+/* Makes the phone number pop out naturally inside the sentence context */
+.cta-phone-link {
+    color: #00A79D; /* Brand Teal */
+    text-decoration: none;
+    font-weight: 700;
+    padding-bottom: 1px;
+    border-bottom: 2px solid transparent;
+    transition: color 0.2s ease, border-color 0.2s ease;
+}
+
+.cta-phone-link:hover {
+    color: #2E347A; /* Shifts cleanly to Brand Purple on hover */
+    border-bottom-color: #2E347A;
+}
+
+/* ========================================== */
+/* COMPREHENSIVE PRODUCTION FOOTER DEFAULT   */
+/* ========================================== */
+.site-footer {
+    background-color: #2E347A; /* Reserved Signature Brand Purple */
+    color: #ffffff;
+    padding: 40px 20px 0 20px;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.footer-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr;
+    gap: 50px;
+    padding-bottom: 40px;
+}
+
+.footer-heading {
+    font-size: 18px;
+    font-weight: 700;
+    margin-bottom: 20px;
+    position: relative;
+    color: #ffffff;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+/* Column 1: Brand details styling */
+.brand-info {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.footer-logo {
+    max-width: 200px;
+    height: auto;
+    filter: brightness(0) invert(1); /* Inverts your logo clean to white for a crisp presentation */
+    margin-bottom: 8px;
+}
+
+.footer-tagline {
+    font-size: 14px;
+    font-weight: 700;
+    color: #00A79D; /* Highlighting tagline with Teal */
+}
+
+.footer-about-snippet {
+    font-size: 14px;
+    line-height: 1.6;
+    color: #d1d5db;
+}
+
+/* Navigation lists & Links configuration */
+.footer-column ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.footer-column ul li {
+    margin-bottom: 12px;
+}
+
+.footer-column a {
+    color: #e5e7eb;
+    text-decoration: none;
+    font-size: 15px;
+    transition: color 0.2s ease;
+}
+
+.footer-column a:hover {
+    color: #00A79D; /* Smooth shift to brand teal on hover */
+}
+
+/* Contact information customization */
+.footer-contact .contact-item {
+    font-size: 15px;
+    margin-bottom: 14px;
+    color: #e5e7eb;
+    line-height: 1.5;
+}
+
+.footer-highlight-link {
+    font-weight: 700;
+    color: #ffffff !important;
+}
+
+.legal-links {
+    margin-top: 24px !important;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    padding-top: 16px;
+}
+
+/* Footer bottom copyright line bar */
+.footer-bottom {
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+    padding: 24px 0;
+}
+
+.footer-bottom-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    text-align: center;
+}
+
+.footer-disclaimer {
+    font-size: 11px;
+    line-height: 1.6;
+    color: #9ca3af;
+}
+
+.footer-copyright {
+    font-size: 13px;
+    color: #9ca3af;
+}
+
+/* ========================================== */
+/* RESPONSIVE FOOTER & CTA MEDIA BREAKPOINTS  */
+/* ========================================== */
+@media (min-width: 768px) {
+    .cta-actions {
+        flex-direction: row;
+        gap: 24px;
+    }
+}
+
+@media (max-width: 992px) {
+    .footer-container {
+        grid-template-columns: 1fr 1fr;
+        gap: 40px;
+    }
+    
+    .brand-info {
+        grid-column: span 2;
+    }
+}
+
+@media (max-width: 600px) {
+    .final-cta-section {
+        padding: 60px 16px;
+    }
+
+    .cta-heading {
+        font-size: 30px;
+    }
+
+    .cta-subheading {
+        font-size: 16px;
+    }
+
+    .btn-final-cta {
+        width: 100%;
+        text-align: center;
+    }
+
+    .footer-container {
+        grid-template-columns: 1fr;
+        gap: 30px;
+    }
+
+    .brand-info {
+        grid-column: span 1;
+    }
+    
+    .footer-heading {
+        margin-bottom: 14px;
     }
 }
