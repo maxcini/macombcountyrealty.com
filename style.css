@@ -11,6 +11,24 @@ body {
     color: #333333;
 }
 
+/* --- Base Resets --- */
+html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 60px; /* Adjust this number based on your header's actual height */
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    line-height: 1.6;
+    color: #333333;
+}
+
 /* Accessibility - Screen Reader Only */
 .sr-only {
     position: absolute;
@@ -1047,7 +1065,26 @@ gmp-place-autocomplete.form-input-address::part(prediction-item-icon) {
     width: 100%;
     margin: 0 auto;
 }
+/* --- Before & After Media Wrapper --- */
+.about-media-wrapper {
+    display: block; /* Prevents the stretching issues caused by Flexbox */
+    width: 100%;
+}
 
+/* --- Caption Styles --- */
+.before-after-caption {
+    grid-column: 1 / -1; /* span both columns so it sits under BOTH photos */
+    text-align: center;
+    font-size: 14px;
+    color: #555555; 
+    line-height: 1.6;
+    width: 100%;
+}
+
+.before-after-caption strong {
+    font-size: 16px;
+    color: #111111;
+}
 
 .image-wrapper {
     position: relative;
@@ -1893,8 +1930,8 @@ a.cta-phone-link:hover strong {
 
 .header-pill {
     display: inline-block;
-    background-color: #fdf3f4; /* Light red background matching brand global theme */
-    color: #e5243b; /* Brand conversion red */
+    background-color: #eaf6f5; /* Light red background matching brand global theme */
+    color: #00A79D; /* Brand conversion red */
     font-size: 13px;
     font-weight: 700;
     text-transform: uppercase;
@@ -2257,7 +2294,8 @@ a.cta-phone-link:hover strong {
     font-size: 18px;
     line-height: 1.6;
     color: #555555;
-    margin-bottom: 35px;
+    margin-top: 15px;
+    margin-bottom: 25px;
 }
 
 .cta-actions {
@@ -2393,6 +2431,10 @@ a.cta-phone-link:hover strong {
     margin-bottom: 14px;
     color: #e5e7eb;
     line-height: 1.5;
+}
+
+.final-cta-phone {
+    padding: 0px 10px;
 }
 
 .footer-highlight-link {
