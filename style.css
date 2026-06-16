@@ -17,6 +17,7 @@ html {
     scroll-padding-top: 60px; /* Adjust this number based on your header's actual height */
 }
 
+
 * {
     box-sizing: border-box;
     margin: 0;
@@ -219,10 +220,12 @@ body {
 }
 
 .hero-person-img {
-    max-width: 100%;
+    max-width: 120%;
     height: auto;
     display: block;
     margin-bottom: -5px; 
+    position: relative;
+    left: -12%;
 }
 
 /* --- Right Column: High-End Frosted UI Card --- */
@@ -606,9 +609,10 @@ gmp-place-autocomplete.form-input-address::part(prediction-item-icon) {
     }
 
     .hero-person-img {
-        max-width: 90%; /* Prevents the image from being overwhelmingly large on small screens */
+        max-width: 110%; /* Prevents the image from being overwhelmingly large on small screens */
         margin-bottom: 0; /* Keeps it flush to the bottom */
         transform: none; /* Resets the slight scaling applied on desktop */
+        position: static;
     }
 
     .hero-card {
@@ -2272,7 +2276,7 @@ a.cta-phone-link:hover strong {
 /* ========================================== */
 .final-cta-section {
     background-color: #ffffff; /* Soft light neutral background */
-    padding: 80px 20px;
+    padding: 60px 20px;
     text-align: center;
     border-top: 1px solid #eaeaea;
 }
@@ -2304,19 +2308,6 @@ a.cta-phone-link:hover strong {
     align-items: center;
     justify-content: center;
     gap: 18px; /* Balanced spacing between button and text line */
-}
-
-.btn-final-cta {
-    display: inline-block;
-    background-color: #e5243b; /* Brand Red */
-    color: #ffffff;
-    text-decoration: none;
-    padding: 16px 40px;
-    border-radius: 50px;
-    font-size: 18px;
-    font-weight: 700;
-    box-shadow: 0 4px 15px rgba(229, 36, 59, 0.25);
-    transition: background-color 0.2s ease, transform 0.15s ease;
 }
 
 .btn-final-cta:hover {
@@ -2451,7 +2442,7 @@ a.cta-phone-link:hover strong {
 /* Footer bottom copyright line bar */
 .footer-bottom {
     border-top: 1px solid rgba(255, 255, 255, 0.08);
-    padding: 24px 0;
+    padding: 12px 0;
 }
 
 .footer-bottom-container {

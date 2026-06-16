@@ -94,3 +94,24 @@ document.addEventListener("DOMContentLoaded", function () {
         }, 300);
     }
 });
+
+document.addEventListener('DOMContentLoaded', () => {
+    // 1. Select all the links inside your navigation menu
+    const navLinks = document.querySelectorAll('#main-nav a');
+    
+    // 2. Select the mobile hamburger button
+    const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+
+    // 3. Loop through each link and add a click event listener
+    navLinks.forEach(link => {
+        link.addEventListener('click', () => {
+            // 4. Check if the menu is currently open 
+            // (Based on your HTML, it uses aria-expanded="true" when open)
+            if (mobileMenuBtn.getAttribute('aria-expanded') === 'true') {
+                
+                // Simulate a click on the hamburger button to close the menu
+                mobileMenuBtn.click(); 
+            }
+        });
+    });
+});
