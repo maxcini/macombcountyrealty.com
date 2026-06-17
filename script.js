@@ -115,3 +115,123 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 });
+
+
+
+// --- 3. Multi-Step Form & Email Submission Logic ---
+document.addEventListener('DOMContentLoaded', () => {
+    const form = document.getElementById('lead-form');
+    const step1 = document.getElementById('step-1');
+    const step2 = document.getElementById('step-2');
+    const successSection = document.getElementById('form-success');
+    
+    const nextBtn = document.getElementById('next-btn');
+    const submitBtn = document.getElementById('submit-btn');
+    const addressInput = document.getElementById('address-input');
+    const hiddenAddressField = document.getElementById('hidden-address-field');
+
+    if (nextBtn && form) {
+        // STEP 1 -> STEP 2 TRANSITION
+        nextBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+
+            // Safely pull the text value directly out of the Google component
+            let addressValue = addressInput.value || '';
+            
+            // Fallback check if the component value is resting inside its shadow DOM input element
+            if (!addressValue && addressInput.shadowRoot) {
+                const innerInput = addressInput.shadowRoot.querySelector('input');
+                if (innerInput) addressValue = innerInput.value;
+            }
+
+            // Prevent blank progress if they clicked ahead accidentally
+            if (!addressValue || addressValue.trim() === '') {
+                // Use our invisible anchor to trigger the native browser bubble!
+                const validationAnchor = document.getElementById('validation-anchor');
+                
+                if (validationAnchor) {
+                    validationAnchor.setCustomValidity("Please fill out this field.");
+                    validationAnchor.reportValidity();
+                    
+                    // Clear the error bubble as soon as they click back into the address bar
+                    addressInput.addEventListener('click', () => {
+                        validationAnchor.setCustomValidity("");
+                    }, { once: true });
+                    
+                    addressInput.addEventListener('keydown', () => {
+                        validationAnchor.setCustomValidity("");
+                    }, { once: true });
+                }
+                return;
+            }
+
+            // Sync the captured Google address to our hidden field so it emails cleanly
+            hiddenAddressField.value = addressValue;
+
+            // Swap visual views
+            step1.classList.add('hidden');
+            step2.classList.remove('hidden');
+        });
+
+        // AJAX EMAIL SUBMISSION HANDLER
+        form.addEventListener('submit', function(e) {
+            e.preventDefault();
+
+            // Visual indicator to avoid duplicate double-clicks
+            submitBtn.disabled = true;
+            submitBtn.innerHTML = 'Sending Details...';
+
+            const formData = new FormData(form);
+            const object = Object.fromEntries(formData);
+            const json = JSON.stringify(object);
+
+            fetch('https://api.web3forms.com/submit', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Accept': 'application/json'
+                },
+                body: json
+            })
+            .then(async (response) => {
+                let res = await response.json();
+                if (response.status == 200) {
+                    // Success! Hide form inputs completely, show nice custom confirmation message
+                    step2.classList.add('hidden');
+                    successSection.classList.remove('hidden');
+                } else {
+                    console.log(res);
+                    alert('Something went wrong. Please try again.');
+                    resetButton();
+                }
+            })
+            .catch(error => {
+                console.log(error);
+                alert('Connection error. Please try again later.');
+                resetButton();
+            });
+        });
+    }
+
+    function resetButton() {
+        submitBtn.disabled = false;
+        submitBtn.innerHTML = 'Submit Info <span class="arrow">➔</span>';
+    }
+});
+
+document.addEventListener('DOMContentLoaded', () => {
+    // Find all links that point to the lead form
+    const scrollLinks = document.querySelectorAll('a[href="#top"]');
+    const addressInput = document.getElementById('address-input');
+
+    scrollLinks.forEach(link => {
+        link.addEventListener('click', () => {
+            // Give the smooth scroll a tiny fraction of a second to finish, then focus the input
+            setTimeout(() => {
+                if (addressInput) {
+                    addressInput.focus();
+                }
+            }, 800); // 800 milliseconds allows the scroll animation to complete
+        });
+    });
+});

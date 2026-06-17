@@ -1,22 +1,9 @@
 /* --- Base Resets --- */
-* {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-}
-
-body {
-    font-family: Arial, Helvetica, sans-serif;
-    line-height: 1.6;
-    color: #333333;
-}
-
-/* --- Base Resets --- */
 html {
+    background-color: #2E347A; /* Adds purple to the bottom mobile overscroll */
     scroll-behavior: smooth;
-    scroll-padding-top: 60px; /* Adjust this number based on your header's actual height */
+    scroll-padding-top: 60px; 
 }
-
 
 * {
     box-sizing: border-box;
@@ -25,6 +12,7 @@ html {
 }
 
 body {
+    background-color: #ffffff; /* Keeps the main page background white */
     font-family: Arial, Helvetica, sans-serif;
     line-height: 1.6;
     color: #333333;
@@ -238,7 +226,7 @@ body {
     border: 2px solid rgba(255, 255, 255, 0.88);
     border-radius: 24px;
     padding: 40px 30px; /* Slightly refined padding to keep the text inside perfectly proportioned */
-    margin-bottom: 45px; 
+    margin: 45px 0px;
     text-align: center;
     color: #ffffff;
     box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
@@ -591,7 +579,7 @@ gmp-place-autocomplete.form-input-address::part(prediction-item-icon) {
     }
 
     .hero-section {
-        padding: 50px 0 0 0; /* Removed bottom padding so the image sits directly on the bottom line */
+        padding: 0px 0 0 0; /* Removed bottom padding so the image sits directly on the bottom line */
         align-items: center;
     }
     
@@ -2516,4 +2504,167 @@ a.cta-phone-link:hover strong {
     .footer-heading {
         margin-bottom: 14px;
     }
+}
+
+/* --- Multi-Step Form Styles --- */
+
+/* This is the magic class that JavaScript toggles */
+.hidden {
+    display: none !important;
+}
+
+/* Styling the back button like the screenshot */
+.btn-back {
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    color: #555;
+    cursor: pointer;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.btn-back:hover {
+    color: #000;
+}
+
+/* --- Multi-Step Logic --- */
+.hidden {
+    display: none !important;
+}
+
+/* --- Step 2 Layout --- */
+.step-2-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    width: 100%;
+}
+
+.step-2-header {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    color: inherit; /* Inherits the white/dark text of your hero section */
+}
+
+.step-2-title {
+    font-weight: 600;
+    font-size: 1.1rem;
+}
+
+.btn-back {
+    background: none;
+    border: none;
+    color: inherit;
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+    padding: 0;
+}
+
+.btn-back:hover {
+    text-decoration: underline;
+}
+
+/* --- Step 2 Layout (Dynamically Stacked) --- */
+.step-2-wrapper {
+    width: 100%;
+    max-width: 500px; /* Keeps the stacked fields from getting too wide on desktop */
+    margin: 0 auto; /* Centers the form inside your hero area */
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.step-2-header {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    color: inherit;
+}
+
+.step-2-title {
+    font-weight: 600;
+    font-size: 1.1rem;
+}
+
+/* This is the magic that forces them to stack dynamically */
+.step-2-inputs {
+    display: flex;
+    flex-direction: column; /* Stacks the items vertically */
+    gap: 15px; /* Adds perfect spacing between each input */
+    width: 100%;
+}
+
+/* Matching the new inputs to your pill-shaped theme */
+.form-input-secondary {
+    width: 100%;
+    padding: 16px 24px;
+    border: none;
+    border-radius: 50px; /* Gives it the same pill shape as your address bar */
+    font-size: 1rem;
+    font-family: inherit;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1); /* Matches your floating element style */
+}
+
+.form-input-secondary:focus {
+    outline: 2px solid #0056b3; /* Adjust to match your exact brand blue */
+}
+
+/* Make the submit button span the full width of the stack */
+.step-2-inputs .btn-next {
+    width: 100%;
+    margin-top: 5px;
+    display: flex;
+    justify-content: center; /* Centers the "Submit" text and arrow */
+}
+
+
+/* --- Form Submission Success State --- */
+.success-message-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 25px 10px;
+    text-align: center;
+    animation: formFadeIn 0.4s ease forwards;
+}
+
+.success-icon {
+    font-size: 38px;
+    color: #39ff14; /* Uses your bright neon green theme accent */
+    background: rgba(57, 255, 20, 0.1);
+    border-radius: 50%;
+    width: 75px;
+    height: 75px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 20px;
+    border: 2px solid #39ff14;
+}
+
+.success-title {
+    font-size: 24px;
+    font-weight: 800;
+    margin-bottom: 12px;
+}
+
+.success-text {
+    font-size: 16px;
+    opacity: 0.95;
+    line-height: 1.6;
+}
+
+@keyframes formFadeIn {
+    from { opacity: 0; transform: translateY(12px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+#lead-form {
+    scroll-margin-top: 350px; /* Increase or decrease this number until it looks perfect */
 }

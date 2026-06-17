@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sell Your Metro Detroit Home YOUR Way!</title>
+    <title>Sell My House Fast in Macomb County, MI</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -13,7 +13,7 @@
             
             <div class="brand-container">
                 <a class="brand" href="https://www.macombcountyrealty.com/">
-                    <img class="brand-logo" src="logo.png" width="220" height="67" alt="Macomb County Realty Logo">
+                    <img class="brand-logo" src="logo.png" width="220" height="67" alt="Macomb County Realty">
                     <div class="brand-text sr-only">
                         <b class="brand-name">Macomb County Realty</b>
                         <span class="tagline">Need To Sell Your House Fast? We Buy Houses!</span>
@@ -56,11 +56,11 @@
     </header>
 
     <main>
-        <section class="hero-section">
+        <section id="top" class="hero-section">
             <div class="hero-container">
                 
                 <div class="hero-image-wrapper">
-                    <img src="hero-cutout-ps.png" alt="Metro Detroit Trusted Home Buyer" class="hero-person-img">
+                    <img src="hero-cutout-ps.png" alt="Metro Detroit Trusted Home Buyers" class="hero-person-img">
                 </div>
                 
                 <div class="hero-card">
@@ -72,20 +72,47 @@
                         <li class="bullet-item"><span class="checkmark">✓</span> 100% Free & No Obligation</li>
                     </ul>
                     
-                    <form class="hero-inline-form" action="#" method="GET">
-                        <div class="inline-form-group">
-                            
+                    <form class="hero-inline-form">
+                        <input type="hidden" name="access_key" value="3a7d522a-4543-4f76-93a8-e1478c789775">
+                        
+                        <input type="hidden" name="Property Address" id="hidden-address-field">
+                        
+                        <input type="hidden" name="from_name" value="Macomb County Realty Leads">
+                        <input type="hidden" name="subject" value="🏡 New Lead From Landing Page!">
+
+                        <div class="inline-form-group" id="step-1" style="position: relative;">
                             <gmp-place-autocomplete 
                                 id="address-input" 
                                 class="form-input-address" 
-                                name="address" 
                                 placeholder="Enter your property address..." 
                                 no-input-icon 
                                 no-clear-button>
                             </gmp-place-autocomplete>
-                            <button type="submit" class="btn-next">
+                            
+                            <input type="text" id="validation-anchor" tabindex="-1" style="position: absolute; left: 15%; top: 50%; width: 1px; height: 1px; opacity: 0; pointer-events: none; border: none; padding: 0;">
+                            
+                            <button type="button" id="next-btn" class="btn-next">
                                 Get My Options <span class="arrow">➔</span>
                             </button>
+                        </div>
+
+                        <div class="step-2-wrapper hidden" id="step-2">
+                            
+                            <div class="step-2-inputs">
+                                <input type="text" name="Name" placeholder="Full Name" required class="form-input-secondary">
+                                <input type="email" name="Email Address" placeholder="Email Address" required class="form-input-secondary">
+                                <input type="tel" name="Phone Number" placeholder="Phone Number" required class="form-input-secondary">
+                                
+                                <button type="submit" id="submit-btn" class="btn-next">
+                                    Submit Info <span class="arrow">➔</span>
+                                </button>
+                            </div>
+                        </div>
+                        
+                        <div class="success-message-wrapper hidden" id="form-success">
+                            <div class="success-icon">✓</div>
+                            <h3 class="success-title">Submission Received!</h3>
+                            <p class="success-text">Thank you. Max will review your property details and contact you shortly with your custom options.</p>
                         </div>
                     </form>
                     
@@ -136,7 +163,7 @@
                 </svg>
                 <h3 class="benefits-card-title">Contact Max Today</h3>
                 <p class="benefits-card-text">Tell us about your property, timeline, and goals. We'll provide a free, confidential, no-obligation consultation to help you understand the best options for your situation.</p>
-                <a href="tel:+15864157355" class="btn-card-cta">Start Now!</a>
+                <a href="#top" class="btn-card-cta">Start Now!</a>
             </div>
             <div class="benefits-card">
                 <svg xmlns="http://www.w3.org/2000/svg" class="benefits-icon" viewBox="0 0 24 24">
@@ -331,7 +358,7 @@
 
         <div class="comparison-cta">
             <p class="comparison-cta-text">Not sure which option is best? We'll help you compare both.</p>
-            <a href="#contact" class="comparison-cta-btn">Get My Options <span class="arrow">➔</span></a>
+            <a href="#top" class="comparison-cta-btn">Get My Options <span class="arrow">➔</span></a>
         </div>
         
     </div>
@@ -462,9 +489,8 @@
                     </div>
                     
                     <div class="faq-item">
-                        <h4 class="faq-question">What happens if my house fails to sell on the market?</h4>
-                        <p class="faq-answer">Because we can give you multiple offers, we provide a built-in safety net. If your home doesn't receive the offers you want on the open market, or your circumstances change, we can pivot immediately and purchase it from you directly with a guaranteed all-cash offer.</p>
-                    </div>
+                        <h4 class="faq-question">How do you determine the listing price?</h4>
+                        <p class="faq-answer">We analyze recent sales of similar homes, current competition, local market conditions, and your property's unique features to recommend a pricing strategy. The right price helps attract qualified buyers and maximize your chances of receiving the strongest possible offers.</p>
                 </div>
             </div>
         </div>
@@ -509,7 +535,7 @@
         <p class="cta-subheading">Skip the hassle. Get the highest cash offer today and close when you’re ready.</p>
         
         <div class="cta-actions">
-            <a href="#address-input" class="comparison-cta-btn">Get My Options ➔</a>
+            <a href="#top" class="comparison-cta-btn">Get My Options ➔</a>
             
             <p class="cta-secondary-text final-cta-phone">
                 <strong>Call or Text:</strong><br> 
