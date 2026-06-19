@@ -422,13 +422,13 @@ gmp-place-autocomplete.form-input-address::part(prediction-item-icon) {
     padding: 8px 16px;
     border-radius: 50px;
     border: 1px solid rgba(255, 255, 255, 0.15);
-    transition: background-color 0.2s ease, transform 0.2s ease;
+    /* transition: background-color 0.2s ease, transform 0.2s ease; */
 }
 
-.rating-badge-item:hover {
+/* .rating-badge-item:hover {
     background-color: rgba(255, 255, 255, 0.2);
     transform: translateY(-2px);
-}
+} */
 
 .badge-icon-google {
     width: 22px;
