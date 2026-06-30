@@ -531,7 +531,7 @@ gmp-place-autocomplete.form-input-address::part(prediction-item-icon) {
     }
 
     .nav-and-actions {
-        gap: 16px; /* Prevents crowding against the logo */
+        gap: 26px; /* Prevents crowding against the logo */
     }
 
     .menu-toggle {
@@ -628,7 +628,7 @@ gmp-place-autocomplete.form-input-address::part(prediction-item-icon) {
     }
 
     .nav-and-actions {
-        gap: 12px;
+        gap: 22px;
     }
 
     .header-actions {
