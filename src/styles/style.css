@@ -1,0 +1,2670 @@
+/* --- Base Resets --- */
+html {
+    background-color: #2E347A; /* Adds purple to the bottom mobile overscroll */
+    scroll-behavior: smooth;
+    scroll-padding-top: 60px; 
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-color: #ffffff; /* Keeps the main page background white */
+    font-family: Arial, Helvetica, sans-serif;
+    line-height: 1.6;
+    color: #333333;
+}
+
+/* Accessibility - Screen Reader Only */
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    border: 0;
+}
+
+.site-header {
+    background-color: #ffffff;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+    position: sticky;
+    top: 0; /* This line is crucial for mobile anchoring! */
+    width: 100%;
+    z-index: 1000;
+}
+
+.header-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 10px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.brand-container {
+    display: flex;
+    align-items: center;
+}
+
+.brand {
+    text-decoration: none;
+    display: inline-block;
+}
+
+.brand-logo {
+    display: block;
+    max-width: 100%;
+    height: auto;
+}
+
+.nav-and-actions {
+    display: flex;
+    align-items: center;
+    gap: 36px;
+}
+
+/* Navigation Links */
+.nav-menu {
+    list-style: none;
+    display: flex;
+    align-items: center;
+    gap: 36px; /* Increased gap to let links breathe */
+}
+
+/* Navigation Links - Matching the Premium Bold, Underlined Look */
+.nav-menu a {
+    color: #000000;
+    text-decoration: none;
+    font-size: 17px; /* Increased font size slightly */
+    font-weight: 700;
+    white-space: nowrap;
+    vertical-align: top;
+    display: inline-block;
+    position: relative;
+    padding: 4px 8px; /* Added horizontal padding */
+    border-bottom: 3px solid transparent; 
+    transition: color 0.2s ease, border-color 0.2s ease;
+}
+
+/* Hover state and Active Page State (recreates the red bar under "Sell a Home") */
+.nav-menu a:hover,
+.nav-menu li.current-menu-item a {
+    color: #000000;
+    border-bottom-color: #e5243b; /* Seamless integration with your brand conversion red */
+}
+
+/* Header Action Right Block */
+.header-actions {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+}
+
+.contact-phone {
+    display: flex;
+    text-decoration: none;
+    color: #111111;
+}
+
+.contact-phone-desktop {
+    display: flex;
+    flex-direction: column;
+    text-align: right;
+}
+
+.contact-phone-mobile {
+    display: none; /* Hidden on desktop */
+    align-items: center;
+    justify-content: center;
+    background-color: #fdf3f4; /* Light red background to make icon pop */
+    padding: 10px;
+    border-radius: 50%;
+}
+
+.contact-phone-text {
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    color: #777777;
+    margin-bottom: -2px;
+}
+
+.contact-phone-number b {
+    font-size: 21px;
+    font-weight: 900;
+}
+
+/* Consolidated Primary Brand Accent CTA (Pill Shape Match) */
+.btn-cta {
+    background-color: #e5243b; 
+    color: #ffffff;
+    text-decoration: none;
+    padding: 12px 24px;
+    border-radius: 50px;
+    font-size: 15px;
+    font-weight: 700;
+    box-shadow: 0 4px 12px rgba(229, 36, 59, 0.2);
+    transition: background-color 0.2s ease, transform 0.15s ease;
+}
+
+.btn-cta:hover {
+    background-color: #cc1f33;
+    transform: translateY(-1px);
+}
+
+.menu-toggle {
+    display: none;
+    background-color: transparent;
+    color: #333333;
+    border: 2px solid #333333;
+    padding: 8px 16px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 700;
+}
+
+/* ========================================== */
+/* OPTIMIZED HERO SECTION (Frosted Glassmorphism UI) */
+/* ========================================== */
+
+.hero-section {
+    position: relative;
+    /* Darkened gradient veil for crisp text contrast without an aggressive black overlay box */
+
+    background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.509)), 
+            url('/images/hero-img.jpg') no-repeat center center/cover;
+
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    min-height: 588px;
+    overflow: hidden;
+}
+
+.hero-container {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    max-width: 1200px;
+    width: 100%;
+    padding: 0 20px;
+}
+
+/* --- Left Column: Team Cutout Placement --- */
+.hero-image-wrapper {
+    flex: 0 0 50%; /* Increased from 38% to give the cutout a much larger presence */
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-end;
+}
+
+.hero-person-img {
+    max-width: 120%;
+    height: auto;
+    display: block;
+    margin-bottom: -5px; 
+    position: relative;
+    left: -12%;
+}
+
+/* --- Right Column: High-End Frosted UI Card --- */
+.hero-card {
+    flex: 0 0 52%; /* Gives the card an explicit width budget so it never overlaps the image */
+    max-width: 600px; /* Reduced from 720px to make the layout feel perfectly balanced */
+    background-color: rgba(0, 0, 0, 0.45);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 2px solid rgba(255, 255, 255, 0.88);
+    border-radius: 24px;
+    padding: 40px 30px; /* Slightly refined padding to keep the text inside perfectly proportioned */
+    margin: 45px 0px;
+    text-align: center;
+    color: #ffffff;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
+}
+
+.hero-card-title {
+    font-size: 38px;
+    font-weight: 800;
+    line-height: 1.2;
+    margin-bottom: 20px;
+    color: #ffffff;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+/* UI Bullet Lists (Conversion Elements) */
+.hero-bullets {
+    list-style: none;
+    display: inline-flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+    margin: 0 auto 30px auto;
+    text-align: left;
+}
+
+.bullet-item {
+    font-size: 18px;
+    font-weight: 600;
+    color: #ffffff;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    text-shadow: 0 1px 3px rgba(0,0,0,0.5);
+}
+
+.checkmark {
+    color: #39ff14; /* Brighter neon green for stronger contrast */
+    font-size: 20px;
+    font-weight: 900;
+}
+
+/* --- Golden Standard Pill Address Form --- */
+.hero-inline-form {
+    width: 100%;
+    max-width: 580px;
+    margin: 0 auto 28px auto;
+}
+
+.inline-form-group {
+    display: flex;
+    background-color: #ffffff;
+    border-radius: 50px;
+    padding: 6px;
+    align-items: center;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.25);
+}
+
+/* Update your existing wrapper to include min-width: 0 */
+gmp-place-autocomplete.form-input-address {
+    background: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
+    outline: none !important;
+    flex: 1;
+    width: 100%;
+    min-width: 0; /* CRITICAL: Allows flex item to shrink and prevents container blowout */
+}
+
+/* Update your existing input part to truncate text */
+gmp-place-autocomplete.form-input-address::part(input) {
+    background-color: transparent !important;
+    border: none !important;
+    outline: none !important;
+    padding: 15px 20px !important;
+    box-sizing: border-box !important;
+    font-family: inherit !important;
+    font-size: 16px !important;
+    color: #333333 !important;
+    width: 100% !important;
+
+    /* Add these to truncate long addresses with an ellipsis (...) */
+    white-space: nowrap !important;
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
+}
+
+gmp-place-autocomplete.form-input-address::part(input)::placeholder {
+    color: #888888 !important;
+}
+
+/* Target Google's dedicated internal focus-ring element and eliminate it completely */
+gmp-place-autocomplete.form-input-address::part(focus-ring) {
+    outline: none !important;
+    box-shadow: none !important;
+    border: none !important;
+    display: none !important;
+}
+
+/* Target the individual dropdown list items to format them nicely */
+gmp-place-autocomplete.form-input-address::part(prediction-item) {
+    text-align: left !important;
+    background-color: #ffffff !important; /* Restores the solid background */
+    color: #333333 !important;
+    /* padding: 12px 16px !important;  */
+    border-bottom: 1px solid #f0f0f0 !important; /* Adds a clean divider between options */
+    margin: 0 !important;
+}
+
+gmp-place-autocomplete.form-input-address::part(prediction-item-main-text) {
+    font-weight: 700 !important;
+    color: #1a1a1a !important;
+}
+
+gmp-place-autocomplete.form-input-address::part(prediction-item-secondary-text) {
+    font-weight: 400 !important;
+    color: #888888 !important;
+    font-size: 13px !important;
+}
+
+
+
+/* Add a subtle hover effect to the dropdown options */
+gmp-place-autocomplete.form-input-address::part(prediction-item):hover {
+    background-color: #f9f9f9 !important;
+    cursor: pointer;
+}
+
+/* Optional: Keep the Google pin icon aligned and spaced properly */
+gmp-place-autocomplete.form-input-address::part(prediction-item-icon) {
+    margin-right: 12px !important;
+    color: #888888 !important;
+}
+
+.btn-next {
+    background-color: #e5243b;
+    color: #ffffff;
+    font-size: 16px;
+    font-weight: 700;
+    border: none;
+    border-radius: 50px;
+    
+    /* Slightly streamlined padding to keep the longer button text looking balanced */
+    padding: 13px 28px; 
+    
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    white-space: nowrap; /* Prevents text from awkwardly wrapping inside the input bar */
+    box-shadow: 0 4px 12px rgba(229, 36, 59, 0.3);
+    transition: background-color 0.2s ease, transform 0.1s ease;
+}
+
+.btn-next:hover {
+    background-color: #cc1f33;
+    transform: scale(1.02);
+}
+
+.btn-next:active {
+    transform: scale(0.98);
+}
+
+.btn-next .arrow {
+    font-size: 14px;
+}
+
+/* --- Social Proof & Badge Layout Elements --- */
+.hero-trusted-tagline {
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    color: #ffffff;
+    opacity: 0.9;
+    margin-bottom: 18px;
+    text-transform: uppercase;
+}
+
+.hero-ratings-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 35px;
+    flex-wrap: wrap;
+}
+
+.rating-badge-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    text-decoration: none;
+    color: #ffffff;
+    background-color: rgba(255, 255, 255, 0.1);
+    padding: 8px 16px;
+    border-radius: 50px;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    /* transition: background-color 0.2s ease, transform 0.2s ease; */
+}
+
+/* .rating-badge-item:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+    transform: translateY(-2px);
+} */
+
+.badge-icon-google {
+    width: 22px;
+    height: 22px;
+}
+
+.badge-icon-bbb {
+    width: 24px;
+    height: 24px;
+    object-fit: contain;
+}
+
+.stars-row {
+    display: flex;
+    color: #ffb400; 
+    font-size: 15px;
+    gap: 2px;
+}
+
+.rating-score {
+    font-size: 14px;
+    font-weight: 700;
+}
+
+/* ========================================== */
+/* PRECISION RESPONSIVE BREAKPOINTS */
+/* ========================================== */
+
+/* --- CSS Hamburger Icon Base Setup --- */
+.menu-toggle {
+    display: none;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 8px;
+    width: 40px;
+    height: 40px;
+    align-items: center;
+    justify-content: center;
+    z-index: 1001;
+}
+
+.hamburger-box {
+    width: 24px;
+    height: 18px;
+    display: inline-block;
+    position: relative;
+}
+
+.hamburger-inner,
+.hamburger-inner::before,
+.hamburger-inner::after {
+    width: 24px;
+    height: 3px;
+    background-color: #000000;
+    border-radius: 4px;
+    position: absolute;
+    transition: transform 0.2s ease, opacity 0.2s ease;
+}
+
+.hamburger-inner {
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.hamburger-inner::before {
+    content: "";
+    top: -7px;
+    left: 0;
+}
+
+.hamburger-inner::after {
+    content: "";
+    bottom: -7px;
+    left: 0;
+}
+
+/* Dynamic Morph Animation into an X */
+.menu-toggle.is-active .hamburger-inner {
+    background-color: transparent;
+}
+
+.menu-toggle.is-active .hamburger-inner::before {
+    transform: translateY(7px) rotate(45deg);
+}
+
+.menu-toggle.is-active .hamburger-inner::after {
+    transform: translateY(-7px) rotate(-45deg);
+}
+
+
+
+/* ========================================== */
+/* PRECISION RESPONSIVE BREAKPOINTS */
+/* ========================================== */
+
+@media (max-width: 992px) {
+    .header-container {
+        padding: 12px 16px;
+    }
+
+    .nav-and-actions {
+        gap: 26px; /* Prevents crowding against the logo */
+    }
+
+    .menu-toggle {
+        display: flex; /* Displays hamburger on tablet/mobile */
+    }
+
+.nav-menu {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        background-color: #f8f9fa; /* Light gray background to make the white buttons pop */
+        flex-direction: column;
+        align-items: stretch; /* Forces the buttons to stretch full width */
+        padding: 20px; /* Adds padding around the edges of the menu */
+        gap: 12px; /* Tighter spacing between buttons */
+        box-shadow: 0 10px 15px rgba(0,0,0,0.08);
+        border-top: 1px solid #e5e5e5;
+    }
+
+    /* Target the list items in the mobile menu */
+    .nav-menu li {
+        width: 100%;
+        list-style: none;
+    }
+
+    /* Style the links to look like distinct white cards */
+    .nav-menu a {
+        display: block;
+        width: 100%;
+        background-color: #ffffff;
+        border: 1px solid #e5e5e5;
+        border-radius: 8px;
+        padding: 16px;
+        text-align: center;
+        font-weight: 600;
+        color: #333333;
+        text-decoration: none;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.02);
+    }
+
+    .nav-menu.active {
+        display: flex;
+    }
+
+    .hero-section {
+        padding: 0px 0 0 0; /* Removed bottom padding so the image sits directly on the bottom line */
+        align-items: center;
+    }
+    
+    .hero-container {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .hero-image-wrapper {
+        display: flex; /* Changed from 'none' so the image appears */
+        order: 2; /* Pushes the image underneath the form */
+        width: 100%;
+        justify-content: center;
+        margin-top: 40px; /* Adds breathing room between the form and the image */
+    }
+
+    .hero-person-img {
+        max-width: 110%; /* Prevents the image from being overwhelmingly large on small screens */
+        margin-bottom: 0; /* Keeps it flush to the bottom */
+        transform: none; /* Resets the slight scaling applied on desktop */
+        position: static;
+    }
+
+    .hero-card {
+        width: 100%;
+        max-width: 640px;
+        margin-bottom: 0;
+        padding: 40px 24px;
+        order: 1; /* Ensures the form stays on top */
+    }
+
+    .hero-card-title {
+        font-size: 32px;
+    }
+}
+
+@media (max-width: 600px) {
+    .header-container {
+        padding: 10px 12px;
+    }
+
+    /* Constrain logo width so it stays out of the phone layout path */
+    .brand-logo {
+        max-width: 135px;
+        height: auto;
+    }
+
+    .nav-and-actions {
+        gap: 22px;
+    }
+
+    .header-actions {
+        gap: 0;
+    }
+
+    /* Force the telephone node to remain on a single line */
+    .contact-phone-desktop {
+        display: none; /* Hides the text layout entirely */
+    }
+
+    .contact-phone-mobile {
+        display: flex; /* Displays the icon */
+        margin-right: 4px;
+    }
+
+    .btn-cta {
+        display: none; 
+    }
+
+    .inline-form-group {
+        flex-direction: column;
+        background: transparent;
+        box-shadow: none;
+        padding: 0;
+        gap: 12px;
+    }
+
+    /* On mobile, the input itself becomes the white standalone pill */
+    gmp-place-autocomplete.form-input-address::part(input) {
+        background-color: #ffffff !important;
+        border-radius: 50px !important;
+        padding: 15px 20px !important;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15) !important;
+    }
+
+/* Tighter Hero Card Padding */
+    .hero-card {
+        padding: 24px 20px; 
+    }
+
+    .btn-next {
+        width: 100%;
+        justify-content: center;
+        padding: 12px; /* Slightly thinner button */
+    }
+
+    /* Tighter Spacing Below Elements */
+    .hero-inline-form {
+        margin: 0 auto 20px auto; 
+    }
+
+    .hero-trusted-tagline {
+        margin-bottom: 12px;
+    }
+
+    /* Tighter Bullet Points */
+    .hero-bullets {
+        align-items: center;
+        gap: 8px; 
+        margin: 0 auto 20px auto;
+    }
+
+    .bullet-item {
+        font-size: 15px; /* Slightly smaller text for mobile */
+    }
+
+    .bullet-item {
+        font-size: 16px;
+    }
+
+    .hero-ratings-container {
+        flex-direction: column;
+        gap: 12px;
+    }
+    
+    .rating-badge-item {
+        width: 100%;
+        justify-content: center;
+    }
+}
+
+/* ========================================== */
+/* BENEFITS SECTION (How We Make It Easy)     */
+/* ========================================== */
+
+.benefits-section {
+    background-color: #ffffff;
+    padding: 60px 20px;
+    border-top: 1px solid #eaeaea;
+}
+
+.benefits-container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.benefits-header {
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+.benefits-pill {
+    display: inline-block;
+    background-color: #fdf3f4; /* Using your existing light red background */
+    color: #e5243b; /* Using your existing brand red */
+    font-size: 13px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    padding: 8px 18px;
+    border-radius: 50px;
+    margin-bottom: 20px;
+}
+
+.benefits-title {
+    font-size: 42px;
+    font-weight: 800;
+    color: #111111;
+    line-height: 1.2;
+}
+
+.benefits-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+}
+
+.benefits-card {
+    background-color: #ffffff;
+    border: 1px solid #f0f0f0;
+    border-radius: 24px;
+    padding: 25px 25px;
+    text-align: center;
+    box-shadow: 0 4px 25px rgba(0, 0, 0, 0.10);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    
+    /* NEW FLEX PROPERTIES TO PUSH BUTTON TO BOTTOM */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.benefits-card-text {
+    font-size: 16px;
+    line-height: 1.7;
+    color: #555555;
+    
+    /* NEW FLEX PROPERTY */
+    flex-grow: 1; 
+    margin-bottom: 24px; /* Adds breathing room before the button */
+}
+
+/* NEW BUTTON STYLES */
+.btn-card-cta {
+    display: inline-block;
+    background-color: #e5243b; /* Your Brand Red */
+    color: #ffffff;
+    text-decoration: none;
+    padding: 12px 30px;
+    border-radius: 50px;
+    font-size: 16px;
+    font-weight: 700;
+    width: 50%; /* Stretches the pill across the card horizontally */
+    box-shadow: 0 4px 15px rgba(229, 36, 59, 0.2);
+    transition: background-color 0.2s ease, transform 0.15s ease;
+    margin-top: auto; /* Anchors it to the bottom */
+}
+
+.btn-card-cta:hover {
+    background-color: #cc1f33;
+    transform: translateY(-2px);
+}
+
+.benefits-icon {
+    width: 80px;
+    height: 80px;
+    margin: 0 auto 14px auto;
+    display: block;
+}
+
+.benefits-card-title {
+    font-size: 24px;
+    font-weight: 700;
+    color: #111111;
+    margin-bottom: 16px;
+}
+
+.benefits-card-text {
+    font-size: 16px;
+    line-height: 1.7;
+    color: #555555;
+}
+
+.benefits-subtitle {
+    font-size: 18px;
+    color: #555555;
+    max-width: 750px; /* Constrains the width so it reads naturally like a paragraph */
+    margin: 16px auto 0 auto; /* Adds space above and centers it perfectly */
+    line-height: 1.6;
+    font-weight: 400;
+}
+
+/* Premium Hand-Drawn Underline Effect */
+.premium-underline {
+    position: relative;
+    display: inline-block;
+    white-space: nowrap;
+    isolation: isolate; /* CRITICAL: Creates a local layer so z-index won't hide it behind the section background */
+}
+
+.premium-underline::after {
+    content: "";
+    position: absolute;
+    left: -2%;       /* Extends slightly left of the letter 'E' */
+    bottom: -6px;    /* Positions it perfectly beneath the letters */
+    width: 104%;     /* Makes it slightly wider than the word for a premium look */
+    height: 14px;    /* Adjusts the thickness of the brush stroke */
+    
+    /* 100% Browser-Safe URL Encoded SVG Brush Stroke matching your brand red (#e5243b) */
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 10' preserveAspectRatio='none'%3E%3Cpath d='M 0,5 Q 50,8 100,3' stroke='%23e5243b' stroke-width='5' stroke-linecap='round' fill='none'/%3E%3C/svg%3E");
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    z-index: -1;     /* Sits cleanly behind the letters without blocking them */
+}
+
+/* ========================================== */
+/* BENEFITS SECTION RESPONSIVE QUERIES        */
+/* ========================================== */
+
+@media (max-width: 992px) {
+    .benefits-grid {
+        gap: 20px;
+    }
+    
+    .benefits-card {
+        padding: 25px 20px;
+    }
+
+    .benefits-title {
+        font-size: 36px;
+    }
+}
+
+@media (max-width: 768px) {
+    .benefits-section {
+        padding: 40px 20px;
+    }
+
+    .benefits-grid {
+        grid-template-columns: 1fr; /* Stacks cards on mobile */
+        gap: 24px;
+    }
+}
+
+@media (max-width: 600px) {
+    .benefits-title {
+        font-size: 32px;
+    }
+    
+    .benefits-header {
+        margin-bottom: 40px;
+    }
+    
+    .benefits-subtitle {
+        font-size: 16px;
+        margin-top: 12px;
+        padding: 0 20px;
+    }
+}
+
+
+.section-container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* ========================================== */
+/* TRUST BAR SECTION (Text-Based)             */
+/* ========================================== */
+
+.trust-bar-section {
+    background-color: #f8f9fa;
+    padding: 20px 15px; 
+    border-top: 1px solid #eaeaea;
+}
+
+.trust-bar-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    flex-wrap: nowrap; /* Keeps items strictly on one line */
+    justify-content: space-evenly; 
+    align-items: center;
+    gap: 15px; 
+    width: 100%;
+}
+
+.trust-bar-container .trust-item {
+    flex: 1 1 0; /* Gives every text element an exactly equal share of the row */
+    text-align: center; /* Centers the text within its dedicated block */
+    font-weight: 700; 
+    color: #2E347A; 
+    font-size: 16px;
+    transition: opacity 0.3s ease;
+}
+
+/* Optional: Gives a slight interaction effect similar to the image hover */
+.trust-bar-container .trust-item:hover {
+    opacity: 0.7;
+}
+
+/* --- Mobile Responsiveness --- */
+@media (max-width: 850px) {
+    .trust-bar-container {
+        /* Switch back to flex, but allow wrapping! */
+        display: flex;
+        flex-wrap: wrap; 
+        justify-content: center; /* Centers the whole group */
+        gap: 15px; 
+        padding: 0 10px;
+    }
+    
+    .trust-bar-container .trust-item {
+        flex: 0 1 auto; /* Allows items to size themselves based on their text */
+        text-align: center; 
+        font-size: 14px;
+        display: flex;
+        align-items: center; /* Keeps text and checkmarks vertically aligned */
+        justify-content: center;
+        /* Optional: Use white-space: nowrap; here if you don't want a single item's text breaking into two lines */
+    }
+}
+
+/* For smaller mobile phones (e.g., standard iPhone sizes) */
+@media (max-width: 550px) {
+    .trust-bar-container {
+        /* We removed the grid layout and max-width that forced it into a list */
+        gap: 10px; /* Tighter spacing for small screens */
+    }
+    
+    .trust-bar-container .trust-item {
+        font-size: 13px; /* Slightly smaller text to fit horizontally better */
+    }
+}
+
+/* ========================================== */
+/* WE BUY HOUSES ABOUT SECTION                */
+/* ========================================== */
+
+.about-we-buy-section {
+    padding: 60px 20px;
+    background-color: #f8f9fa;
+    border-top: 1px solid #eaeaea;
+}
+
+.about-container {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    align-items: center;
+}
+
+.about-content h2 {
+    font-size: 32px;
+    color: #2E347A; /* Brand Navy */
+    margin-bottom: 25px;
+    line-height: 1.3;
+}
+
+.about-content p {
+    font-size: 16px;
+    line-height: 1.8;
+    color: #555555;
+    margin-bottom: 20px;
+}
+
+.about-content a {
+    color: #00A79D; /* Brand Teal */
+    text-decoration: none;
+    transition: color 0.2s ease;
+}
+
+.about-content a:hover {
+    text-decoration: underline;
+    color: #2E347A;
+}
+
+.about-image img {
+    width: 100%;
+    max-width: 600px; /* Prevents the image from getting overly massive on large screens */
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08); /* Soft shadow for depth */
+    display: block;
+    margin: 0 auto;
+}
+
+/* Responsive Desktop Layout */
+@media (min-width: 992px) {
+    .about-container {
+        flex-direction: row;
+        align-items: center; /* Aligns text and image vertically */
+        gap: 60px;
+    }
+
+    .about-content {
+        flex: 1;
+        padding-right: 20px;
+    }
+
+    .about-image {
+        flex: 1;
+    }
+}
+
+/* ========================================== */
+/* BEFORE & AFTER IMAGE GRID                  */
+/* ========================================== */
+
+.before-after-container {
+    display: grid;
+    /* Stacks vertically on mobile, side-by-side on tablet/desktop */
+    grid-template-columns: 1fr; 
+    gap: 20px;
+    width: 100%;
+    margin: 0 auto;
+}
+/* --- Before & After Media Wrapper --- */
+.about-media-wrapper {
+    display: block; /* Prevents the stretching issues caused by Flexbox */
+    width: 100%;
+}
+
+/* --- Caption Styles --- */
+.before-after-caption {
+    grid-column: 1 / -1; /* span both columns so it sits under BOTH photos */
+    text-align: center;
+    font-size: 14px;
+    color: #555555; 
+    line-height: 1.6;
+    width: 100%;
+}
+
+.before-after-caption strong {
+    font-size: 16px;
+    color: #111111;
+}
+
+.image-wrapper {
+    position: relative;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.12);
+    /* Forces both containers to be the exact same uniform size */
+    aspect-ratio: 4 / 3; 
+    width: 100%;
+    background-color: #f4f4f4; /* Placeholder color while loading */
+}
+
+.image-wrapper img {
+    display: block;
+    width: 100%;
+    height: 100%; /* Forces image to fill the aspect-ratio container */
+    object-fit: cover; /* Crops gracefully without stretching */
+    object-position: center; /* Keeps the center of the image visible */
+    transition: transform 0.4s ease;
+}
+/* Specific adjustment for the BEFORE image only */
+.image-wrapper.before img {
+    /* Shifts the visible area UP by anchoring the image's top edge to the frame's top edge */
+    object-position: center top; 
+}
+
+/* Subtle zoom effect on hover */
+.image-wrapper:hover img {
+    transform: scale(1.05);
+}
+
+.image-wrapper .label {
+    position: absolute;
+    bottom: 15px;
+    left: 15px;
+    background-color: #2E347A; /* Brand Navy */
+    color: #ffffff;
+    padding: 6px 16px;
+    border-radius: 4px;
+    font-weight: 700;
+    font-size: 14px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    z-index: 2;
+}
+
+/* Make the 'After' label stand out with Brand Teal */
+.image-wrapper.after .label {
+    background-color: #00A79D; 
+}
+
+/* Responsive adjustments */
+@media (min-width: 600px) {
+    .before-after-container {
+        /* Puts images side-by-side on screens larger than mobile */
+        grid-template-columns: 1fr 1fr; 
+        gap: 15px;
+    }
+}
+
+@media (min-width: 992px) {
+    .before-after-container {
+        flex: 1;
+        gap: 20px;
+    }
+    
+    /* Slightly taller images for desktop layout */
+    .image-wrapper {
+        aspect-ratio: 3 / 4; 
+    }
+}
+
+/* Force the phone number link and the bold text inside it to be CTA red */
+a.cta-phone-link,
+a.cta-phone-link strong {
+    color: #dc3545 !important; 
+    text-decoration: none !important; 
+    /* Subtle red glow: horizontal offset, vertical offset, blur radius, color with transparency */
+    text-shadow: 0 0 6px rgba(220, 53, 69, 0.2); 
+    transition: all 0.2s ease !important;
+}
+
+/* Hover styles */
+a.cta-phone-link:hover,
+a.cta-phone-link:hover strong {
+    color: #bd2130 !important; 
+    text-decoration: underline !important; 
+    text-shadow: 0 0 10px rgba(220, 53, 69, 0.5); /* Intensifies slightly on hover */
+}
+
+/* ========================================== */
+/* LIGHTBOX MODAL OVERLAY                     */
+/* ========================================== */
+
+/* Signal to users that images can be clicked */
+.image-wrapper img {
+    cursor: pointer;
+}
+
+.lightbox-modal {
+    display: none; 
+    position: fixed;
+    z-index: 9999; /* Higher than headers/sticky components */
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.9); /* Dark background overlay */
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+/* Activated class via JavaScript */
+.lightbox-modal.show {
+    display: flex;
+    opacity: 1;
+}
+
+.lightbox-content {
+    margin: auto;
+    display: block;
+    max-width: 90%;
+    max-height: 85vh;
+    object-fit: contain; /* Forces the ENTIRE uncropped image to reveal gracefully */
+    border-radius: 6px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    transform: scale(0.95);
+    transition: transform 0.3s ease;
+}
+
+.lightbox-modal.show .lightbox-content {
+    transform: scale(1);
+}
+
+.lightbox-close {
+    position: absolute;
+    top: 20px;
+    right: 35px;
+    color: #ffffff;
+    font-size: 45px;
+    font-weight: 300;
+    cursor: pointer;
+    line-height: 1;
+    transition: color 0.2s ease;
+    user-select: none;
+}
+
+.lightbox-close:hover {
+    color: #dc3545; /* Changes to your CTA Red on hover */
+}
+
+/* Mobile adjustments for close layout button */
+@media (max-width: 768px) {
+    .lightbox-close {
+        top: 15px;
+        right: 25px;
+        font-size: 40px;
+    }
+    .lightbox-content {
+        max-width: 95%;
+    }
+}
+
+
+
+/* ========================================== */
+/* MEET MAX SECTION                           */
+/* ========================================== */
+
+.meet-max-section {
+    background-color: #ffffff; /* A very light, soft teal/green tint */
+    padding: 60px 20px; 
+    border-top: 1px solid #eaeaea;
+}
+
+.meet-max-container {
+    display: flex;
+    flex-direction: column;
+    gap: 40px; 
+    align-items: center;
+}
+
+/* Forces the text to appear above the image on mobile */
+.meet-max-image {
+    order: 2;
+    width: 100%;
+    max-width: 380px; 
+}
+
+.meet-max-content {
+    order: 1;
+    flex: 1;
+    max-width: 650px;
+}
+
+/* Image Styling - Natural Framing */
+.meet-max-image img {
+    width: 100%;
+    aspect-ratio: 4 / 5; 
+    object-fit: cover;   
+    border-radius: 8px; 
+    box-shadow: 0 8px 24px rgba(0,0,0,0.08); 
+    display: block;
+}
+
+/* Typography & Layout */
+.meet-max-content h2 {
+    font-size: 36px;
+    color: #111111;
+    margin-bottom: 5px; 
+    line-height: 1.2;
+    font-weight: 800;
+}
+
+.meet-subtitle {
+    font-size: 18px;
+    color: #2E347A; /* Brand Navy */
+    font-weight: 700;
+    margin-bottom: 20px;
+    line-height: 1.4;
+}
+
+.meet-max-content p {
+    font-size: 16px;
+    line-height: 1.6;
+    color: #555555;
+    margin-bottom: 16px;
+}
+
+/* Bullet Point Formatting */
+.max-options-list {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 24px 0;
+}
+
+.max-options-list li {
+    position: relative;
+    padding-left: 28px;
+    margin-bottom: 12px;
+    font-size: 16px;
+    line-height: 1.5;
+    color: #444444;
+}
+
+.max-options-list li::before {
+    content: "✓";
+    position: absolute;
+    left: 0;
+    top: 0;
+    color: #00A79D; /* Brand Teal */
+    font-size: 18px;
+    font-weight: 900;
+}
+
+.max-options-list li strong {
+    color: #111111;
+}
+
+/* CTA Buttons */
+.meet-max-actions {
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+    align-items: center;
+    margin-top: 10px;
+}
+
+/* Added specific styling for the Call Button so it doesn't disappear */
+.meet-max-actions .btn-cta {
+    display: inline-block;
+    color: #ffffff;
+    text-decoration: none;
+    padding: 12px 28px;
+    border-radius: 50px;
+    font-size: 15px;
+    font-weight: 700;
+    transition: all 0.2s ease;
+    text-align: center;
+}
+
+/* CTA Buttons Layout */
+.meet-max-actions {
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+    align-items: center;
+    margin-top: 10px;
+}
+
+/* We leave your global .btn-cta alone and ONLY style the secondary email button here */
+.meet-max-actions .btn-secondary {
+    display: inline-block;
+    background-color: #ffffff;
+    color: #111111;
+    text-decoration: none;
+    padding: 12px 28px;
+    border-radius: 50px;
+    font-size: 15px;
+    font-weight: 700;
+    border: 2px solid #e5e5e5;
+    transition: all 0.2s ease;
+    text-align: center;
+}
+
+.meet-max-actions .btn-secondary:hover {
+    border-color: #111111;
+    background-color: #f9f9f9;
+    transform: translateY(-1px);
+}
+
+.max-image-mobile {
+    display: none;
+}
+
+/* ========================================== */
+/* RESPONSIVE BREAKPOINTS                     */
+/* ========================================== */
+
+@media (min-width: 992px) {
+    .meet-max-container {
+        flex-direction: row;
+        align-items: center;
+        gap: 60px;
+    }
+
+    .meet-max-image {
+        order: 1;
+        flex: 0 0 380px;
+    }
+
+    .meet-max-content {
+        order: 2;
+    }
+}
+
+@media (max-width: 768px) {
+    .meet-max-content h2 {
+        font-size: 30px;
+    }
+
+    .meet-max-actions {
+        flex-direction: column;
+        width: 100%;
+        align-items: stretch; 
+    }
+
+    .meet-max-actions .btn-cta,
+    .meet-max-actions .btn-secondary {
+        width: 100%;
+        display: block; 
+        box-sizing: border-box; 
+        text-align: center;
+    }
+
+    /* 1. Style the mobile image to perfectly match the desktop formatting */
+    .max-image-mobile {
+        display: block;
+        width: 100%;
+        max-width: 220px; /* Shrinks the photo to reduce scrolling */
+        margin: 20px auto; /* Keeps it centered with top/bottom space */
+        aspect-ratio: 4 / 5; 
+        object-fit: cover;   
+        border-radius: 8px; /* Round frame */
+        box-shadow: 0 8px 24px rgba(0,0,0,0.08); /* Exact same shadow as desktop */
+    }
+    
+    /* 2. Hide the original desktop image at the bottom using your correct class */
+    .meet-max-image {
+        display: none;
+    }
+}
+
+
+/* ========================================== */
+/* SITUATIONS WE HELP WITH SECTION            */
+/* ========================================== */
+
+.situations-section {
+    padding: 60px 20px; /* Matched to previous sections */
+    background-color: #f8f9fa;
+    border-top: 1px solid #eaeaea;
+}
+
+.section-header {
+    text-align: center;
+    max-width: 800px;
+    margin: 0 auto 40px; /* Tightened from 60px */
+}
+
+.section-header h2 {
+    font-size: 36px;
+    font-weight: 800;
+    color: #111111;
+    margin-bottom: 15px;
+    line-height: 1.2;
+}
+
+.section-header p {
+    font-size: 18px;
+    line-height: 1.6;
+    color: #555555;
+}
+
+.situations-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px; /* Reduced gap */
+    margin-bottom: 40px; /* Tightened from 60px */
+}
+
+.situation-card {
+    background-color: #ffffff;
+    border: 1px solid #f0f0f0; /* Matched to benefits-card */
+    border-radius: 12px;
+    padding: 24px 20px; /* Reduced padding for a more compact card */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05); /* Added subtle shadow matching theme */
+    transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.situation-card:hover {
+    border-color: #e5243b; /* Replaced missing variable with Brand Red */
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+}
+
+.situation-card h3 {
+    margin-bottom: 10px;
+    font-size: 20px;
+    font-weight: 700;
+    color: #2E347A; /* Brand Navy */
+}
+
+.situation-card p {
+    margin: 0;
+    color: #555555;
+    line-height: 1.6;
+    font-size: 15px; /* Slightly smaller to keep text blocks concise */
+}
+
+.situations-footer {
+    max-width: 800px;
+    margin: 20px auto;
+    text-align: center;
+}
+
+.situations-footer p {
+    font-size: 18px;
+    line-height: 1.6;
+    color: #555555;
+    margin: 0;
+}
+
+/* ========================================== */
+/* RESPONSIVE BREAKPOINTS (Situations)        */
+/* ========================================== */
+
+@media (max-width: 992px) {
+    .situations-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 768px) {
+    .situations-section {
+        padding: 40px 20px; /* Matched to mobile padding of other sections */
+    }
+
+    .situations-grid {
+        grid-template-columns: 1fr;
+        gap: 16px;
+    }
+
+    .situation-card {
+        padding: 20px;
+    }
+
+    .section-header {
+        margin-bottom: 30px;
+    }
+    
+    .section-header h2 {
+        font-size: 30px; /* Matched mobile heading scale */
+    }
+
+    .situations-footer {
+        margin-top: 10px;
+    }
+}
+
+/* ========================================== */
+/* WHY HOMEOWNERS WORK WITH US SECTION        */
+/* ========================================== */
+
+.why-us-section {
+    padding: 60px 20px;
+    background-color: #f8f9fa; /* Soft gray background to extend left-to-right */
+    border-top: 1px solid #eaeaea;
+    width: 100%;
+}
+
+.why-us-header {
+    text-align: center;
+    max-width: 800px;
+    margin: 0 auto 40px;
+}
+
+.why-us-header h2 {
+    font-size: 36px;
+    font-weight: 800;
+    color: #111111;
+    margin-bottom: 15px;
+    line-height: 1.2;
+}
+
+.why-us-header p {
+    font-size: 18px;
+    line-height: 1.6;
+    color: #555555;
+}
+
+.why-us-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+    max-width: 1200px; /* Keeps the cards contained while the background stretches */
+    margin: 0 auto;
+}
+
+.why-us-card {
+    background-color: #ffffff; /* White cards pop against the gray section background */
+    border: 1px solid #f0f0f0;
+    border-radius: 12px;
+    padding: 30px 24px; /* Slightly adjusted padding since numbers are gone */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+    transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.why-us-card:hover {
+    border-color: #e5243b;
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+}
+
+.why-us-card h3 {
+    margin-bottom: 12px;
+    font-size: 20px;
+    font-weight: 700;
+    color: #2E347A;
+}
+
+.why-us-card p {
+    margin: 0;
+    color: #555555;
+    line-height: 1.6;
+    font-size: 15px;
+}
+
+.why-us-statement {
+    margin-top: 40px; /* Tightened from 60px */
+    text-align: center;
+}
+
+.why-us-statement blockquote {
+    font-size: 20px;
+    font-weight: 600;
+    color: #333333;
+    max-width: 800px;
+    margin: 0 auto;
+    font-style: italic;
+}
+
+/* ========================================== */
+/* RESPONSIVE BREAKPOINTS (Why Us)            */
+/* ========================================== */
+
+@media (max-width: 768px) {
+    .why-us-section {
+        padding: 40px 20px;
+    }
+
+    .why-us-grid {
+        grid-template-columns: 1fr;
+        gap: 16px;
+    }
+
+    .why-us-card {
+        padding: 24px 20px;
+    }
+
+    .why-us-header {
+        margin-bottom: 30px;
+    }
+    
+    .why-us-header h2 {
+        font-size: 30px;
+    }
+
+    .why-us-statement {
+        margin-top: 30px;
+    }
+    
+    .why-us-statement blockquote {
+        font-size: 18px;
+    }
+}
+
+
+
+
+
+
+
+
+/* ========================================== */
+/* COMPARISON TABLE SECTION                   */
+/* ========================================== */
+
+.comparison-section {
+    background-color: #ffffff; 
+    padding: 60px 20px;
+    border-top: 1px solid #eaeaea;
+}
+
+.comparison-container {
+    max-width: 1000px; 
+    margin: 0 auto;
+}
+
+.comparison-header {
+    text-align: center;
+    margin-bottom: 45px;
+}
+
+.comparison-title {
+    font-size: 42px;
+    font-weight: 800;
+    color: #111111;
+    line-height: 1.2;
+}
+
+.comparison-subtitle {
+    font-size: 18px;
+    color: #555555;
+    max-width: 750px;
+    margin: 16px auto 0 auto;
+    line-height: 1.6;
+    font-weight: 400;
+}
+
+.comparison-table-wrapper {
+    background-color: #ffffff;
+    border-radius: 24px;
+    box-shadow: 0 4px 25px rgba(0, 0, 0, 0.08); 
+    overflow: hidden; 
+    border: 1px solid #f0f0f0;
+}
+
+.comparison-table {
+    width: 100%;
+    border-collapse: collapse;
+    text-align: left;
+}
+
+.comparison-table th,
+.comparison-table td {
+    padding: 20px 24px;
+    font-size: 16px;
+    border-bottom: 1px solid #f0f0f0;
+}
+
+.comparison-table th {
+    font-weight: 700;
+    font-size: 18px;
+    letter-spacing: 0.5px;
+}
+
+/* --- Column Specific Styles --- */
+.feature-col {
+    width: 30%;
+    color: #333333;
+    font-weight: 700;
+    background-color: #ffffff;
+}
+
+.cash-col {
+    width: 35%;
+    background-color: #eaf6f5; /* Subtle Light Teal */
+    color: #00A79D; /* Brand Teal */
+    text-align: center;
+}
+
+.comparison-table th.cash-col {
+    background-color: #00A79D; /* Brand Teal */
+    color: #ffffff;
+    text-align: center;
+}
+
+.market-col {
+    width: 35%;
+    color: #555555;
+    text-align: center;
+}
+
+.comparison-table th.market-col {
+    background-color: #2E347A; /* Brand Navy Blue */
+    color: #ffffff;
+}
+
+/* Remove bottom border on the last row to keep it flush inside the rounded wrapper */
+.comparison-table tbody tr:last-child td {
+    border-bottom: none;
+}
+
+/* ========================================== */
+/* COMPARISON TABLE RESPONSIVE BREAKPOINTS    */
+/* ========================================== */
+@media (max-width: 768px) {
+    .comparison-section {
+        padding: 40px 10px; /* Reduces side padding on the main section */
+    }
+
+    .comparison-title {
+        font-size: 30px;
+    }
+    
+    .comparison-subtitle {
+        font-size: 15px;
+        padding: 0 5px;
+    }
+
+    .comparison-table-wrapper {
+        border-radius: 16px; /* Slightly smaller border radius on mobile */
+    }
+    
+    .comparison-table {
+        table-layout: fixed; /* Forces the table to stay strictly inside the screen width */
+    }
+    
+    .comparison-table th,
+    .comparison-table td {
+        padding: 12px 8px; /* Tighter padding to save space */
+        font-size: 12px; /* Smaller text so it fits */
+        white-space: normal; /* Allows the text to wrap! */
+        word-wrap: break-word; 
+    }
+    
+    .comparison-table th {
+        font-size: 13px; /* Smaller header text */
+    }
+
+    /* Tweaking mobile column widths to maximize space for the content */
+    .feature-col {
+        width: 28%;
+    }
+
+    .cash-col {
+        width: 36%;
+    }
+
+    .market-col {
+        width: 36%;
+    }
+}
+/* ========================================== */
+/* COMPARISON CTA SECTION                     */
+/* ========================================== */
+
+.comparison-cta {
+    text-align: center;
+    margin-top: 45px;
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Centers the 50% width button */
+}
+
+.comparison-cta-text {
+    font-size: 20px;
+    color: #333333;
+    font-weight: 700;
+    margin-bottom: 20px;
+}
+
+.comparison-cta-btn {
+    display: inline-block;
+    background-color: #e5243b;
+    color: #ffffff;
+    text-decoration: none;
+    padding: 12px 30px;
+    border-radius: 50px;
+    font-size: 16px;
+    font-weight: 700;
+    box-shadow: 0 4px 15px rgba(229, 36, 59, 0.2);
+    transition: background-color 0.2s ease, transform 0.15s ease;
+    margin-top: auto;
+}
+
+.comparison-cta-btn:hover {
+    background-color: #c41e30; /* Slightly darker red on hover */
+    color: #ffffff;
+    transform: translateY(-2px); /* Lifts the button up slightly */
+    box-shadow: 0 6px 20px rgba(229, 36, 59, 0.35);
+}
+
+/* Mobile adjustments for the CTA */
+@media (max-width: 768px) {
+    .comparison-cta {
+        margin-top: 35px;
+    }
+    
+    .comparison-cta-text {
+        font-size: 18px;
+    }
+    
+    .comparison-cta-btn {
+        width: 80%; /* Expands the button on small screens so the text fits comfortably */
+        padding: 14px 30px;
+    }
+}
+
+/* ========================================== */
+/* FAQ SECTION (All-Cash vs. Open Market)    */
+/* ========================================== */
+
+.faq-section {
+    background-color: #fcfcfc; /* Alternates cleanly with pure white sections */
+    padding: 60px 20px;
+    border-top: 1px solid #eaeaea;
+}
+
+.faq-container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.faq-header {
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+.header-pill {
+    display: inline-block;
+    background-color: #eaf6f5; /* Light red background matching brand global theme */
+    color: #00A79D; /* Brand conversion red */
+    font-size: 13px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    padding: 8px 18px;
+    border-radius: 50px;
+    margin-bottom: 20px;
+}
+
+.faq-title {
+    font-size: 42px;
+    font-weight: 800;
+    color: #111111;
+    line-height: 1.2;
+}
+
+.faq-subtitle {
+    font-size: 18px;
+    color: #555555;
+    max-width: 750px;
+    margin: 16px auto 0 auto;
+    line-height: 1.6;
+    font-weight: 400;
+}
+
+.faq-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 40px;
+    align-items: stretch; /* FIXED: Forces both columns to perfectly match heights */
+}
+
+.faq-column {
+    background-color: #ffffff;
+    border: 1px solid #f0f0f0;
+    border-radius: 24px;
+    padding: 35px;
+    box-shadow: 0 4px 25px rgba(0, 0, 0, 0.04);
+    display: flex;          /* Added to handle internal alignment */
+    flex-direction: column; /* Stacks column components vertically */
+}
+
+.faq-path-header {
+    margin-bottom: 30px;
+    border-bottom: 1px solid #eaeaea;
+    padding-bottom: 20px;
+}
+
+.faq-path-badge {
+    display: inline-block;
+    font-size: 12px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    padding: 6px 14px;
+    border-radius: 50px;
+    margin-bottom: 12px;
+}
+
+/* Theme Teal Track */
+.cash-badge {
+    background-color: #eaf6f5; 
+    color: #00A79D; 
+}
+
+/* Theme Navy Track */
+.market-badge {
+    background-color: #eef0fa; 
+    color: #2E347A; 
+}
+
+.faq-column h3 {
+    font-size: 26px;
+    font-weight: 800;
+    color: #111111;
+    margin-bottom: 6px;
+}
+
+.faq-path-desc {
+    font-size: 15px;
+    color: #777777;
+    line-height: 1.4;
+}
+
+.faq-items-list {
+    display: flex;
+    flex-direction: column;
+    gap: 28px;
+    flex-grow: 1; /* Allows the content area to expand equally within the stretched card */
+}
+
+.faq-item {
+    padding-left: 18px;
+}
+
+.cash-path .faq-item {
+    border-left: 3px solid #00A79D; /* Brand Teal */
+}
+
+.market-path .faq-item {
+    border-left: 3px solid #2E347A; /* Brand Navy */
+}
+
+.faq-question {
+    font-size: 18px;
+    font-weight: 700;
+    color: #111111;
+    margin-bottom: 8px;
+    line-height: 1.4;
+}
+
+.faq-answer {
+    font-size: 15px;
+    color: #555555;
+    line-height: 1.6;
+}
+
+/* ========================================== */
+/* FAQ SECTION PRECISION BREAKPOINTS          */
+/* ========================================== */
+
+@media (max-width: 992px) {
+    .faq-title {
+        font-size: 36px;
+    }
+    .faq-column {
+        padding: 25px;
+    }
+    .faq-column h3 {
+        font-size: 22px;
+    }
+}
+
+@media (max-width: 768px) {
+    .faq-section {
+        padding: 40px 20px;
+    }
+    .faq-grid {
+        grid-template-columns: 1fr; /* Stacks cards vertically on tablet/mobile where height matching isn't needed */
+        gap: 30px;
+    }
+    .faq-header {
+        margin-bottom: 35px;
+    }
+}
+
+@media (max-width: 600px) {
+    .faq-title {
+        font-size: 32px;
+    }
+    .faq-subtitle {
+        font-size: 16px;
+        margin-top: 12px;
+    }
+    .faq-question {
+        font-size: 16px;
+    }
+    .faq-answer {
+        font-size: 14px;
+    }
+}
+
+/* ========================================== */
+/* SERVICE AREAS SECTION                      */
+/* ========================================== */
+
+.service-areas-section {
+    background-color: #f8f9fa;
+    padding: 60px 20px;
+    border-top: 1px solid #eaeaea;
+}
+
+.service-areas-container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.service-areas-header {
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+/* 3-column layout */
+.service-areas-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+}
+
+.service-area-card {
+    background-color: #ffffff;
+    border-radius: 12px;
+    padding: 30px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+    border-top: 5px solid transparent; 
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    display: flex;
+    flex-direction: column;
+}
+
+.service-area-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+}
+
+/* Brand Coordinates for Card Tops */
+.macomb-card { border-top-color: #e5243b; }
+.oakland-card { border-top-color: #00A79D; }
+.wayne-card { border-top-color: #2E347A; }
+
+.county-title {
+    font-size: 24px;
+    font-weight: 800;
+    margin-bottom: 20px;
+    border-bottom: 2px solid #f0f0f0;
+    padding-bottom: 12px;
+}
+
+.macomb-card .county-title { color: #e5243b; }
+.oakland-card .county-title { color: #00A79D; }
+.wayne-card .county-title { color: #2E347A; }
+
+/* ------------------------------------------ */
+/* NEW: Scannable "Pill/Tag" Layout           */
+/* ------------------------------------------ */
+.county-city-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px; /* Keeps everything tightly condensed */
+}
+
+.county-city-list li {
+    font-size: 13px;
+    color: #444444;
+    background-color: #f4f6f8;
+    border: 1px solid #e1e5ea;
+    padding: 4px 10px;
+    border-radius: 20px;
+    white-space: nowrap;
+    transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+/* Subtle hover effect referencing your brand colors */
+.macomb-card .county-city-list li:hover { background-color: #e5243b; color: #fff; border-color: #e5243b; }
+.oakland-card .county-city-list li:hover { background-color: #00A79D; color: #fff; border-color: #00A79D; }
+.wayne-card .county-city-list li:hover { background-color: #2E347A; color: #fff; border-color: #2E347A; }
+
+/* ========================================== */
+/* RESPONSIVE LAYOUT                          */
+/* ========================================== */
+
+@media (max-width: 992px) {
+    .service-areas-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    .wayne-card {
+        grid-column: span 2;
+    }
+}
+
+@media (max-width: 768px) {
+    .service-areas-section {
+        padding: 50px 20px;
+    }
+    .service-areas-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+    .wayne-card {
+        grid-column: span 1;
+    }
+    /* Slightly larger tap targets on mobile */
+    .county-city-list li {
+        font-size: 14px;
+        padding: 6px 12px;
+    }
+}
+
+/* ------------------------------------------ */
+/* Scannable "Pill/Tag" Layout with Scroll    */
+/* ------------------------------------------ */
+
+.county-city-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px; 
+    
+    /* NEW: Limits the height and makes it scrollable */
+    max-height: 240px; 
+    overflow-y: auto;
+    padding-right: 8px; /* Adds breathing room for the scrollbar */
+}
+
+/* Custom, sleek scrollbar so it doesn't look like a default browser bar */
+.county-city-list::-webkit-scrollbar {
+    width: 6px;
+}
+
+.county-city-list::-webkit-scrollbar-track {
+    background: #f4f6f8; 
+    border-radius: 10px;
+}
+
+.county-city-list::-webkit-scrollbar-thumb {
+    background: #d1d5db; /* Soft gray */
+    border-radius: 10px;
+}
+
+/* Scrollbar hover effects matching your brand */
+.macomb-card .county-city-list::-webkit-scrollbar-thumb:hover { background: #e5243b; }
+.oakland-card .county-city-list::-webkit-scrollbar-thumb:hover { background: #00A79D; }
+.wayne-card .county-city-list::-webkit-scrollbar-thumb:hover { background: #2E347A; }
+
+.county-city-list li {
+    font-size: 13px;
+    color: #444444;
+    background-color: #f4f6f8;
+    border: 1px solid #e1e5ea;
+    padding: 4px 10px;
+    border-radius: 20px;
+    white-space: nowrap;
+    transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+/* Subtle hover effect referencing your brand colors */
+.macomb-card .county-city-list li:hover { background-color: #e5243b; color: #fff; border-color: #e5243b; }
+.oakland-card .county-city-list li:hover { background-color: #00A79D; color: #fff; border-color: #00A79D; }
+.wayne-card .county-city-list li:hover { background-color: #2E347A; color: #fff; border-color: #2E347A; }
+
+/* ========================================== */
+/* STANDALONE FINAL CTA SECTION               */
+/* ========================================== */
+.final-cta-section {
+    background-color: #ffffff; /* Soft light neutral background */
+    padding: 60px 20px;
+    text-align: center;
+    border-top: 1px solid #eaeaea;
+}
+
+.cta-container {
+    max-width: 850px;
+    margin: 0 auto;
+}
+
+.cta-heading {
+    font-size: 38px;
+    font-weight: 800;
+    color: #2E347A; /* M1 Purple/Dark Blue */
+    line-height: 1.2;
+    margin-bottom: 20px;
+}
+
+.cta-subheading {
+    font-size: 18px;
+    line-height: 1.6;
+    color: #555555;
+    margin-top: 15px;
+    margin-bottom: 25px;
+}
+
+.cta-actions {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 18px; /* Balanced spacing between button and text line */
+}
+
+.btn-final-cta:hover {
+    background-color: #cc1f33;
+    transform: translateY(-2px);
+}
+
+/* Fixes the "funny" look by gathering the phrase into a single readable sentence */
+.cta-secondary-text {
+    font-size: 16px;
+    color: #555555; /* Soft, readable neutral gray */
+    font-weight: 500;
+    margin: 0;
+    line-height: 1.4;
+}
+
+/* Makes the phone number pop out naturally inside the sentence context */
+.cta-phone-link {
+    color: #00A79D; /* Brand Teal */
+    text-decoration: none;
+    font-weight: 700;
+    padding-bottom: 1px;
+    border-bottom: 2px solid transparent;
+    transition: color 0.2s ease, border-color 0.2s ease;
+}
+
+.cta-phone-link:hover {
+    color: #2E347A; /* Shifts cleanly to Brand Purple on hover */
+    border-bottom-color: #2E347A;
+}
+
+/* ========================================== */
+/* COMPREHENSIVE PRODUCTION FOOTER DEFAULT   */
+/* ========================================== */
+.site-footer {
+    background-color: #2E347A; /* Reserved Signature Brand Purple */
+    color: #ffffff;
+    padding: 40px 20px 0 20px;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.footer-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr;
+    gap: 50px;
+    padding-bottom: 40px;
+}
+
+.footer-heading {
+    font-size: 18px;
+    font-weight: 700;
+    margin-bottom: 20px;
+    position: relative;
+    color: #ffffff;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+/* Column 1: Brand details styling */
+.brand-info {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.footer-logo {
+    max-width: 200px;
+    height: auto;
+    filter: brightness(0) invert(1); /* Inverts your logo clean to white for a crisp presentation */
+    margin-bottom: 8px;
+}
+
+.footer-tagline {
+    font-size: 14px;
+    font-weight: 700;
+    color: #00A79D; /* Highlighting tagline with Teal */
+}
+
+.footer-about-snippet {
+    font-size: 14px;
+    line-height: 1.6;
+    color: #d1d5db;
+}
+
+/* Navigation lists & Links configuration */
+.footer-column ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.footer-column ul li {
+    margin-bottom: 12px;
+}
+
+.footer-column a {
+    color: #e5e7eb;
+    text-decoration: none;
+    font-size: 15px;
+    transition: color 0.2s ease;
+}
+
+.footer-column a:hover {
+    color: #00A79D; /* Smooth shift to brand teal on hover */
+}
+
+/* Contact information customization */
+.footer-contact .contact-item {
+    font-size: 15px;
+    margin-bottom: 14px;
+    color: #e5e7eb;
+    line-height: 1.5;
+}
+
+.final-cta-phone {
+    padding: 0px 10px;
+}
+
+.footer-highlight-link {
+    font-weight: 700;
+    color: #ffffff !important;
+}
+
+.legal-links {
+    margin-top: 24px !important;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    padding-top: 16px;
+}
+
+/* Footer bottom copyright line bar */
+.footer-bottom {
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+    padding: 12px 0;
+}
+
+.footer-bottom-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    text-align: center;
+}
+
+.footer-disclaimer {
+    font-size: 11px;
+    line-height: 1.6;
+    color: #9ca3af;
+}
+
+.footer-copyright {
+    font-size: 13px;
+    color: #9ca3af;
+}
+
+/* ========================================== */
+/* RESPONSIVE FOOTER & CTA MEDIA BREAKPOINTS  */
+/* ========================================== */
+@media (min-width: 768px) {
+    .cta-actions {
+        flex-direction: row;
+        gap: 24px;
+    }
+}
+
+@media (max-width: 992px) {
+    .footer-container {
+        grid-template-columns: 1fr 1fr;
+        gap: 40px;
+    }
+    
+    .brand-info {
+        grid-column: span 2;
+    }
+}
+
+@media (max-width: 600px) {
+    .final-cta-section {
+        padding: 60px 16px;
+    }
+
+    .cta-heading {
+        font-size: 30px;
+    }
+
+    .cta-subheading {
+        font-size: 16px;
+    }
+
+    .btn-final-cta {
+        width: 100%;
+        text-align: center;
+    }
+
+    .footer-container {
+        grid-template-columns: 1fr;
+        gap: 30px;
+    }
+
+    .brand-info {
+        grid-column: span 1;
+    }
+    
+    .footer-heading {
+        margin-bottom: 14px;
+    }
+}
+
+/* --- Multi-Step Form Styles --- */
+
+/* This is the magic class that JavaScript toggles */
+.hidden {
+    display: none !important;
+}
+
+/* Styling the back button like the screenshot */
+.btn-back {
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    color: #555;
+    cursor: pointer;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.btn-back:hover {
+    color: #000;
+}
+
+/* --- Multi-Step Logic --- */
+.hidden {
+    display: none !important;
+}
+
+/* --- Step 2 Layout --- */
+.step-2-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    width: 100%;
+}
+
+.step-2-header {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    color: inherit; /* Inherits the white/dark text of your hero section */
+}
+
+.step-2-title {
+    font-weight: 600;
+    font-size: 1.1rem;
+}
+
+.btn-back {
+    background: none;
+    border: none;
+    color: inherit;
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+    padding: 0;
+}
+
+.btn-back:hover {
+    text-decoration: underline;
+}
+
+/* --- Step 2 Layout (Dynamically Stacked) --- */
+.step-2-wrapper {
+    width: 100%;
+    max-width: 500px; /* Keeps the stacked fields from getting too wide on desktop */
+    margin: 0 auto; /* Centers the form inside your hero area */
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.step-2-header {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    color: inherit;
+}
+
+.step-2-title {
+    font-weight: 600;
+    font-size: 1.1rem;
+}
+
+/* This is the magic that forces them to stack dynamically */
+.step-2-inputs {
+    display: flex;
+    flex-direction: column; /* Stacks the items vertically */
+    gap: 15px; /* Adds perfect spacing between each input */
+    width: 100%;
+}
+
+/* Matching the new inputs to your pill-shaped theme */
+.form-input-secondary {
+    width: 100%;
+    padding: 16px 24px;
+    border: none;
+    border-radius: 50px; /* Gives it the same pill shape as your address bar */
+    font-size: 1rem;
+    font-family: inherit;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1); /* Matches your floating element style */
+}
+
+.form-input-secondary:focus {
+    outline: 2px solid #0056b3; /* Adjust to match your exact brand blue */
+}
+
+/* Make the submit button span the full width of the stack */
+.step-2-inputs .btn-next {
+    width: 100%;
+    margin-top: 5px;
+    display: flex;
+    justify-content: center; /* Centers the "Submit" text and arrow */
+}
+
+
+/* --- Form Submission Success State --- */
+.success-message-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 25px 10px;
+    text-align: center;
+    animation: formFadeIn 0.4s ease forwards;
+}
+
+.success-icon {
+    font-size: 38px;
+    color: #39ff14; /* Uses your bright neon green theme accent */
+    background: rgba(57, 255, 20, 0.1);
+    border-radius: 50%;
+    width: 75px;
+    height: 75px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 20px;
+    border: 2px solid #39ff14;
+}
+
+.success-title {
+    font-size: 24px;
+    font-weight: 800;
+    margin-bottom: 12px;
+}
+
+.success-text {
+    font-size: 16px;
+    opacity: 0.95;
+    line-height: 1.6;
+}
+
+@keyframes formFadeIn {
+    from { opacity: 0; transform: translateY(12px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+#lead-form {
+    scroll-margin-top: 350px; /* Increase or decrease this number until it looks perfect */
+}
