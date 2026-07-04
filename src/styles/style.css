@@ -2335,7 +2335,7 @@ a.cta-phone-link:hover strong {
 
 .footer-highlight-link {
     font-weight: 700;
-    color: #ffffff !important;
+    /* color: #ffffff !important; */
 }
 
 .legal-links {
@@ -2582,6 +2582,84 @@ a.cta-phone-link:hover strong {
     to { opacity: 1; transform: translateY(0); }
 }
 
-#lead-form {
-    scroll-margin-top: 350px; /* Increase or decrease this number until it looks perfect */
+/* ==========================================
+   GOOGLE PLACES ADDRESS AUTOCOMPLETE (custom dropdown)
+   ========================================== */
+
+/* Wraps just the address <input> (not the "Get My Options" button) so the
+   suggestions dropdown anchors under the input only. */
+.address-field-wrapper {
+    position: relative;
+    flex: 1 1 auto;
+    align-self: stretch; /* fills the full width even when the parent switches
+                             to align-items: center on mobile's column layout */
+    min-width: 0;
+}
+
+.address-predictions-list {
+    display: none;
+    position: absolute;
+    top: calc(100% + 8px);
+    left: 0;
+    right: 0;
+    margin: 0;
+    padding: 6px;
+    list-style: none;
+    background-color: #ffffff;
+    border-radius: 16px;
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.25);
+    max-height: 280px;
+    overflow-y: auto;
+    text-align: left;
+    z-index: 20;
+}
+
+.address-predictions-list.is-open {
+    display: block;
+}
+
+.address-prediction-item {
+    padding: 10px 14px;
+    border-radius: 10px;
+    cursor: pointer;
+    color: #1a1a1a;
+    font-size: 14px;
+    line-height: 1.4;
+}
+
+.address-prediction-item:hover,
+.address-prediction-item:active {
+    background-color: #f2f2f2;
+}
+
+.address-prediction-main {
+    font-weight: 600;
+}
+
+.address-prediction-secondary {
+    color: #6b7280;
+    font-size: 13px;
+}
+
+/* FIX: Stop the dropdown from getting cut off */
+/* Your hero containers (including the section itself) have 'overflow: hidden'
+   which would slice off the dropdown menu. This forces them to allow it to
+   visually break out of the container boundaries. */
+.hero-section,
+.hero-card, 
+.hero-inline-form, 
+.hero-container,
+.inline-form-group,
+#step-1 {
+    overflow: visible !important;
+}
+
+/* FIX: Stop the next section from covering the dropdown */
+/* Even with overflow allowed, the Trust Bar section that follows in the HTML
+   paints on top of anything spilling out of the hero section because it comes
+   later in the document. Lifting the hero section into its own stacking
+   context (it's already position: relative) with a z-index puts the
+   dropdown above the content below it. */
+.hero-section {
+    z-index: 5;
 }

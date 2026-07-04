@@ -266,3 +266,155 @@ document.addEventListener('DOMContentLoaded', () => {
         submitBtn.innerHTML = originalBtnHTML;
     }
 });
+
+// ==========================================
+// GOOGLE PLACES ADDRESS AUTOCOMPLETE (Data API, custom dropdown)
+// ==========================================
+// We deliberately do NOT use <gmp-place-autocomplete> (PlaceAutocompleteElement)
+// here. That widget switches to a fullscreen takeover UI on narrow/mobile
+// viewports as part of its built-in "mobile support" behavior, and there's no
+// public option to turn that off since it lives inside a closed shadow DOM.
+// Instead we use the same underlying Autocomplete (New) data (AutocompleteSuggestion)
+// against your original <input>, and render our own simple dropdown. This gives
+// identical, non-fullscreen behavior on every screen size.
+async function initGoogleAutocomplete() {
+    const addressInput = document.getElementById('address-input');
+    const suggestionsList = document.getElementById('address-predictions');
+
+    // Safety check: only run if these exist on the current page
+    if (!addressInput || !suggestionsList) return;
+
+    try {
+        const { AutocompleteSessionToken, AutocompleteSuggestion } = await google.maps.importLibrary("places");
+
+        // Sessions group a search + selection together for billing purposes.
+        // We mint a new one after each completed selection.
+        let sessionToken = new AutocompleteSessionToken();
+
+        let debounceTimer = null;
+        let activeRequestId = 0; // guards against slow/out-of-order responses
+
+        function closeSuggestions() {
+            suggestionsList.innerHTML = '';
+            suggestionsList.classList.remove('is-open');
+        }
+
+        function renderSuggestions(suggestions) {
+            suggestionsList.innerHTML = '';
+
+            if (!suggestions || suggestions.length === 0) {
+                closeSuggestions();
+                return;
+            }
+
+            suggestions.forEach(suggestion => {
+                const prediction = suggestion.placePrediction;
+                if (!prediction) return;
+
+                const item = document.createElement('li');
+                item.className = 'address-prediction-item';
+                item.setAttribute('role', 'option');
+
+                const mainText = document.createElement('span');
+                mainText.className = 'address-prediction-main';
+                mainText.textContent = prediction.mainText ? prediction.mainText.text : prediction.text.text;
+                item.appendChild(mainText);
+
+                if (prediction.secondaryText && prediction.secondaryText.text) {
+                    const secondaryText = document.createElement('span');
+                    secondaryText.className = 'address-prediction-secondary';
+                    secondaryText.textContent = prediction.secondaryText.text;
+                    item.appendChild(document.createElement('br'));
+                    item.appendChild(secondaryText);
+                }
+
+                // Use mousedown (fires before the input's blur) so the selection
+                // registers before any blur-triggered close logic runs.
+                item.addEventListener('mousedown', async (e) => {
+                    e.preventDefault();
+
+                    try {
+                        const place = prediction.toPlace();
+                        await place.fetchFields({ fields: ['formattedAddress'] });
+                        addressInput.value = place.formattedAddress || prediction.text.text;
+                    } catch (err) {
+                        // Fall back to the prediction's own text if fetchFields fails
+                        addressInput.value = prediction.text.text;
+                    }
+
+                    closeSuggestions();
+
+                    // Clear any validation error state now that we have a value
+                    const validationAnchor = document.getElementById('validation-anchor');
+                    if (validationAnchor) {
+                        validationAnchor.setCustomValidity("");
+                    }
+
+                    // Start a fresh session for the next search
+                    sessionToken = new AutocompleteSessionToken();
+                });
+
+                suggestionsList.appendChild(item);
+            });
+
+            suggestionsList.classList.add('is-open');
+        }
+
+        async function fetchSuggestions(value) {
+            const requestId = ++activeRequestId;
+
+            const request = {
+                input: value,
+                sessionToken: sessionToken,
+                includedRegionCodes: ['us'], // Restrict results to the United States
+            };
+
+            try {
+                const { suggestions } = await AutocompleteSuggestion.fetchAutocompleteSuggestions(request);
+
+                // Ignore this response if the user kept typing and a newer request is in flight
+                if (requestId !== activeRequestId) return;
+
+                renderSuggestions(suggestions);
+            } catch (error) {
+                console.error("Error fetching address suggestions:", error);
+            }
+        }
+
+        addressInput.addEventListener('input', () => {
+            const value = addressInput.value.trim();
+
+            clearTimeout(debounceTimer);
+
+            if (!value) {
+                closeSuggestions();
+                return;
+            }
+
+            // Small debounce so we're not firing a request on every keystroke
+            debounceTimer = setTimeout(() => fetchSuggestions(value), 200);
+        });
+
+        // Close the dropdown when clicking anywhere outside of it
+        document.addEventListener('click', (e) => {
+            if (e.target !== addressInput && !suggestionsList.contains(e.target)) {
+                closeSuggestions();
+            }
+        });
+
+        // Close the dropdown on Escape
+        addressInput.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') {
+                closeSuggestions();
+            }
+        });
+
+    } catch (error) {
+        console.error("Error loading Google Places API:", error);
+    }
+}
+
+// Initialize when the window loads
+window.addEventListener('load', () => {
+    initGoogleAutocomplete();
+});

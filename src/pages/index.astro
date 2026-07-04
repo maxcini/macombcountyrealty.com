@@ -36,15 +36,19 @@ import Layout from '../layouts/Layout.astro';
                         <input type="hidden" name="subject" value="🏡 New Lead From Landing Page!">
 
                         <div class="inline-form-group" id="step-1" style="position: relative;">
-                            <input
-                                type="text"
-                                id="address-input"
-                                placeholder="Enter your property address..."
-                                autocomplete="off"
-                                class="form-input-secondary form-input-address">
-                            
-                            <input type="text" id="validation-anchor" tabindex="-1" style="position: absolute; left: 15%; top: 50%; width: 1px; height: 1px; opacity: 0; pointer-events: none; border: none; padding: 0;">
-                            
+                            <div class="address-field-wrapper">
+                                <input
+                                    type="text"
+                                    id="address-input"
+                                    placeholder="Enter your property address..."
+                                    autocomplete="off"
+                                    class="form-input-secondary form-input-address">
+
+                                <input type="text" id="validation-anchor" tabindex="-1" style="position: absolute; left: 15%; top: 50%; width: 1px; height: 1px; opacity: 0; pointer-events: none; border: none; padding: 0;">
+
+                                <ul id="address-predictions" class="address-predictions-list" role="listbox"></ul>
+                            </div>
+
                             <button type="button" id="next-btn" class="btn-next">
                                 Get My Options <span class="arrow">➔</span>
                             </button>
@@ -53,9 +57,9 @@ import Layout from '../layouts/Layout.astro';
                         <div class="step-2-wrapper hidden" id="step-2">
                             
                             <div class="step-2-inputs">
-                                <input type="text" name="Name" placeholder="Full Name" required class="form-input-secondary">
-                                <input type="email" name="Email Address" placeholder="Email Address" required class="form-input-secondary">
-                                <input type="tel" name="Phone Number" placeholder="Phone Number" required class="form-input-secondary">
+                                <input type="text" name="Name" placeholder="Name*" required class="form-input-secondary">
+                                <input type="email" name="Email Address" placeholder="Email*" required class="form-input-secondary">
+                                <input type="tel" name="Phone Number" placeholder="Phone Number*" required class="form-input-secondary">
                                 
                                 <button type="submit" id="submit-btn" class="btn-next">
                                     Submit Info <span class="arrow">➔</span>
@@ -501,6 +505,8 @@ import Layout from '../layouts/Layout.astro';
         </div>
     </div>
 </section>
+
+<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVONT4LRbhFxSLXnH9XOXAMzRyedjlnxM&libraries=places&loading=async"></script>
 
 </Layout>
 
