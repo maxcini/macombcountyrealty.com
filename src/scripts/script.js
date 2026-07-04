@@ -18,10 +18,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
 // --- 2. Google Places Autocomplete Setup ---
-// Notice how this is now OUTSIDE the DOMContentLoaded block above!
-let autocomplete;
-
-function initAutocomplete() {
+document.addEventListener('DOMContentLoaded', () => {
     const addressInput = document.querySelector('gmp-place-autocomplete.form-input-address');
     
     if (addressInput) {
@@ -36,13 +33,13 @@ function initAutocomplete() {
         addressInput.addEventListener('gmp-select', async function(event) {
             const place = event.placePrediction.toPlace();
             
-            // FIX: Removed 'location'. Requesting ONLY Essentials data keeps it free.
+            // Requesting ONLY Essentials data keeps it free.
             await place.fetchFields({ fields: ['displayName', 'formattedAddress'] });
             
             console.log("User selected address:", place.formattedAddress);
         });
     }
-}
+});
 
 // ==========================================
 // BEFORE & AFTER LIGHTBOX MODAL CAPABILITIES
