@@ -211,9 +211,8 @@ body {
     max-width: 120%;
     height: auto;
     display: block;
-    margin-bottom: -5px; 
     position: relative;
-    left: -12%;
+    left: -15%;
 }
 
 /* --- Right Column: High-End Frosted UI Card --- */
