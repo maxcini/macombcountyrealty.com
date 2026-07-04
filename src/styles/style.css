@@ -914,6 +914,7 @@ body {
     color: #2E347A; /* Brand Navy */
     margin-bottom: 25px;
     line-height: 1.3;
+    font-weight: 800;
 }
 
 .about-content p {
@@ -2041,11 +2042,6 @@ a.cta-phone-link:hover strong {
     flex-direction: column;
 }
 
-.service-area-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
-}
-
 /* Brand Coordinates for Card Tops */
 .macomb-card { border-top-color: #e5243b; }
 .oakland-card { border-top-color: #00A79D; }
@@ -2662,4 +2658,17 @@ a.cta-phone-link:hover strong {
    dropdown above the content below it. */
 .hero-section {
     z-index: 5;
+}
+
+/* Screen-reader only class for accessibility */
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
 }
