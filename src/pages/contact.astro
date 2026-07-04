@@ -1,0 +1,207 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout 
+    title="Contact Us | Macomb County Realty" 
+    description="Get in touch with Max at Macomb County Realty. Fill out our form to get your cash offer today."
+>
+    
+    <main class="contact-page-wrapper">
+        <div class="contact-container">
+            
+            <form id="contact-page-form" class="full-contact-form" action="https://api.web3forms.com/submit" method="POST">
+                <input type="hidden" name="access_key" value="3a7d522a-4543-4f76-93a8-e1478c789775">
+                <input type="checkbox" name="botcheck" class="hidden" style="display: none;">
+                <input type="hidden" name="from_name" value="Macomb County Realty Leads">
+                <input type="hidden" name="subject" value="🏡 New Lead From Contact Page!">
+                <input type="hidden" name="redirect" value="https://web3forms.com/success"> 
+
+                <h1 class="contact-title">Get Your Cash Offer</h1>
+                
+                <div class="contact-split-content">
+                    
+                    <div class="contact-form-column">
+                        <p class="contact-subtitle">Fill out the form below and Max will reach out to you within 24 hours.</p>
+                        
+                        <div class="form-fields-stack">
+                            <div class="form-group">
+                                <input type="text" name="Name" placeholder="Name*" required class="form-input-secondary">
+                            </div>
+                            <div class="form-group">
+                                <input type="text" id="contact-address" name="Property Address" placeholder="Address*" required class="form-input-secondary">
+                            </div>
+                            <div class="form-group">
+                                <input type="email" name="Email Address" placeholder="Email*" required class="form-input-secondary">
+                            </div>
+                            <div class="form-group">
+                                <input type="tel" name="Phone Number" placeholder="Phone Number*" required class="form-input-secondary">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="contact-image-column">
+                        <img src="/images/mark-closing.png" alt="House Placeholder" class="contact-house-img">
+                    </div>
+
+                </div>
+
+                <div class="contact-button-row">
+                    <button type="submit" class="btn-next submit-btn-full">
+                        Submit Info <span class="arrow">➔</span>
+                    </button>
+                </div>
+            </form>
+
+        </div>
+    </main>
+
+</Layout>
+
+<script defer src="https://maps.googleapis.com/maps/api/js?key=YOUR_ACTUAL_API_KEY&libraries=places"></script>
+<script>
+    // This clears the red underline by telling VS Code that 'google' is defined externally
+    declare const google: any;
+
+    document.addEventListener("DOMContentLoaded", function() {
+        const addressInput = document.getElementById('contact-address');
+        if (addressInput) {
+            new google.maps.places.Autocomplete(addressInput, {
+                types: ['address'],
+                componentRestrictions: { country: 'us' }
+            });
+        }
+    });
+</script>
+
+<style>
+    .contact-page-wrapper {
+        padding: 80px 20px;
+        background-color: #f4f7f6;
+        min-height: 80vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .contact-container {
+        max-width: 1000px;
+        width: 100%;
+        margin: 0 auto;
+        padding: 50px; 
+        background: #ffffff;
+        border-radius: 12px;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+    }
+
+    .contact-title {
+        font-size: 2.5rem;
+        color: #2E347A;
+        margin-bottom: 25px;
+        line-height: 1.2;
+    }
+
+    /* --- Split Container Row --- */
+    .contact-split-content {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 50px; 
+        align-items: stretch;
+    }
+
+    /* --- Left Side --- */
+    .contact-form-column {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+    }
+
+    .contact-subtitle {
+        font-size: 1.1rem;
+        color: #4A6D7C;
+        margin-top: 0;
+        margin-bottom: 20px;
+    }
+
+    .form-fields-stack {
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .form-input-secondary {
+        width: 100%;
+        padding: 16px;
+        border: 2px solid #e1e1e1;
+        border-radius: 6px;
+        font-size: 1rem;
+        box-sizing: border-box;
+    }
+
+    .form-input-secondary:focus {
+        outline: none;
+        border-color: #2E347A;
+    }
+
+    /* --- Right Side (Now perfectly square-proportioned) --- */
+    .contact-image-column {
+        width: 100%;
+        display: flex;
+    }
+
+    .contact-house-img {
+        width: 100%;
+        height: 100%; 
+        object-fit: cover; 
+        border-radius: 12px;
+        box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    }
+
+    /* --- Bottom Button Row --- */
+    .contact-button-row {
+        display: grid;
+        grid-template-columns: 1fr 1fr; /* Matches layout structure of split content row */
+        gap: 50px;
+        margin-top: 25px;
+    }
+
+    .submit-btn-full {
+        grid-column: 1; /* Forces button to stay strictly on left side width */
+        width: 100%;
+        padding: 16px;
+        font-size: 1.1rem;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 10px;
+        cursor: pointer;
+    }
+
+    /* --- Mobile View --- */
+    @media (max-width: 768px) {
+        .contact-container {
+            padding: 30px 20px;
+        }
+        
+        .contact-split-content {
+            grid-template-columns: 1fr;
+        }
+        
+        .contact-image-column {
+            display: none; 
+        }
+
+        .contact-button-row {
+            grid-template-columns: 1fr;
+            margin-top: 20px;
+        }
+
+        .submit-btn-full {
+            grid-column: span 1;
+        }
+        
+        .contact-title {
+            font-size: 2rem;
+        }
+    }
+</style>
