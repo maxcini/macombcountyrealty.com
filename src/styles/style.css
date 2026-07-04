@@ -222,6 +222,7 @@ body {
     background-color: rgba(0, 0, 0, 0.45);
     backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);
+    backdrop-filter: blur(12px);         /* Adds standard support for Chrome, Edge, Firefox */
     border: 2px solid rgba(255, 255, 255, 0.88);
     border-radius: 24px;
     padding: 40px 30px; /* Slightly refined padding to keep the text inside perfectly proportioned */
