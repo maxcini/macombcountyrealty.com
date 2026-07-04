@@ -18,38 +18,46 @@ import Layout from '../layouts/Layout.astro';
                 <input type="hidden" name="redirect" value="https://web3forms.com/success"> 
 
                 <h1 class="contact-title">Get Your Cash Offer</h1>
-                
-                <div class="contact-split-content">
-                    
-                    <div class="contact-form-column">
-                        <p class="contact-subtitle">Fill out the form below and Max will reach out to you within 24 hours.</p>
+
+                <div id="contact-form-content">
+                    <div class="contact-split-content">
                         
-                        <div class="form-fields-stack">
-                            <div class="form-group">
-                                <input type="text" name="Name" placeholder="Name*" required class="form-input-secondary">
-                            </div>
-                            <div class="form-group">
-                                <input type="text" id="contact-address" name="Property Address" placeholder="Address*" required class="form-input-secondary">
-                            </div>
-                            <div class="form-group">
-                                <input type="email" name="Email Address" placeholder="Email*" required class="form-input-secondary">
-                            </div>
-                            <div class="form-group">
-                                <input type="tel" name="Phone Number" placeholder="Phone Number*" required class="form-input-secondary">
+                        <div class="contact-form-column">
+                            <p class="contact-subtitle">Fill out the form below and Max will reach out to you within 24 hours.</p>
+                            
+                            <div class="form-fields-stack">
+                                <div class="form-group">
+                                    <input type="text" name="Name" placeholder="Name*" required class="form-input-secondary">
+                                </div>
+                                <div class="form-group">
+                                    <input type="text" id="contact-address" name="Property Address" placeholder="Address*" required class="form-input-secondary">
+                                </div>
+                                <div class="form-group">
+                                    <input type="email" name="Email Address" placeholder="Email*" required class="form-input-secondary">
+                                </div>
+                                <div class="form-group">
+                                    <input type="tel" name="Phone Number" placeholder="Phone Number*" required class="form-input-secondary">
+                                </div>
                             </div>
                         </div>
+
+                        <div class="contact-image-column">
+                            <img src="/images/mark-closing.webp" alt="House Placeholder" class="contact-house-img" >
+                        </div>
+
                     </div>
 
-                    <div class="contact-image-column">
-                        <img src="/images/mark-closing.webp" alt="House Placeholder" class="contact-house-img" >
+                    <div class="contact-button-row">
+                        <button type="submit" class="btn-next submit-btn-full">
+                            Submit Info <span class="arrow">➔</span>
+                        </button>
                     </div>
-
                 </div>
 
-                <div class="contact-button-row">
-                    <button type="submit" class="btn-next submit-btn-full">
-                        Submit Info <span class="arrow">➔</span>
-                    </button>
+                <div class="success-message-wrapper hidden" id="contact-form-success">
+                    <div class="success-icon">✓</div>
+                    <h3 class="success-title">Submission Received!</h3>
+                    <p class="success-text">Thank you. Max will review your property details and contact you shortly with your custom options.</p>
                 </div>
             </form>
 

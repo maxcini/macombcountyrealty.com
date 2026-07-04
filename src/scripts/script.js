@@ -211,3 +211,58 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 });
+
+
+// --- 4. Contact Page Form Submission Logic ---
+document.addEventListener('DOMContentLoaded', () => {
+    const form = document.getElementById('contact-page-form');
+    if (!form) return; // Not on the contact page, skip
+
+    const submitBtn = form.querySelector('.submit-btn-full');
+    const formContent = document.getElementById('contact-form-content');
+    const successSection = document.getElementById('contact-form-success');
+    const originalBtnHTML = submitBtn.innerHTML;
+
+    form.addEventListener('submit', function (e) {
+        e.preventDefault();
+
+        // Visual indicator to avoid duplicate double-clicks
+        submitBtn.disabled = true;
+        submitBtn.innerHTML = 'Sending Details...';
+
+        const formData = new FormData(form);
+        const object = Object.fromEntries(formData);
+        const json = JSON.stringify(object);
+
+        fetch('https://api.web3forms.com/submit', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'Accept': 'application/json'
+            },
+            body: json
+        })
+        .then(async (response) => {
+            let res = await response.json();
+            if (response.status == 200) {
+                // Success! Hide the form fields and image, show the confirmation message
+                formContent.classList.add('hidden');
+                successSection.classList.remove('hidden');
+            } else {
+                console.log(res);
+                alert('Something went wrong. Please try again.');
+                resetContactButton();
+            }
+        })
+        .catch(error => {
+            console.log(error);
+            alert('Connection error. Please try again later.');
+            resetContactButton();
+        });
+    });
+
+    function resetContactButton() {
+        submitBtn.disabled = false;
+        submitBtn.innerHTML = originalBtnHTML;
+    }
+});
