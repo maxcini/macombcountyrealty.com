@@ -36,13 +36,12 @@ import Layout from '../layouts/Layout.astro';
                         <input type="hidden" name="subject" value="🏡 New Lead From Landing Page!">
 
                         <div class="inline-form-group" id="step-1" style="position: relative;">
-                            <gmp-place-autocomplete 
-                                id="address-input" 
-                                class="form-input-address" 
-                                placeholder="Enter your property address..." 
-                                no-input-icon 
-                                no-clear-button>
-                            </gmp-place-autocomplete>
+                            <input
+                                type="text"
+                                id="address-input"
+                                placeholder="Enter your property address..."
+                                autocomplete="off"
+                                class="form-input-secondary form-input-address">
                             
                             <input type="text" id="validation-anchor" tabindex="-1" style="position: absolute; left: 15%; top: 50%; width: 1px; height: 1px; opacity: 0; pointer-events: none; border: none; padding: 0;">
                             

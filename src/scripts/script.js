@@ -17,30 +17,6 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 
-// --- 2. Google Places Autocomplete Setup ---
-document.addEventListener('DOMContentLoaded', () => {
-    const addressInput = document.querySelector('gmp-place-autocomplete.form-input-address');
-    
-    if (addressInput) {
-        // Prevent form submission on enter
-        addressInput.addEventListener('keydown', function(e) {
-            if (e.key === 'Enter') {
-                e.preventDefault(); 
-            }
-        });
-
-        // Listen for when a user selects a place from the dropdown
-        addressInput.addEventListener('gmp-select', async function(event) {
-            const place = event.placePrediction.toPlace();
-            
-            // Requesting ONLY Essentials data keeps it free.
-            await place.fetchFields({ fields: ['displayName', 'formattedAddress'] });
-            
-            console.log("User selected address:", place.formattedAddress);
-        });
-    }
-});
-
 // ==========================================
 // BEFORE & AFTER LIGHTBOX MODAL CAPABILITIES
 // ==========================================
@@ -127,19 +103,22 @@ document.addEventListener('DOMContentLoaded', () => {
     const addressInput = document.getElementById('address-input');
     const hiddenAddressField = document.getElementById('hidden-address-field');
 
+    // Prevent Enter from submitting the form while the user is still typing the address
+    if (addressInput) {
+        addressInput.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter') {
+                e.preventDefault();
+            }
+        });
+    }
+
     if (nextBtn && form) {
         // STEP 1 -> STEP 2 TRANSITION
         nextBtn.addEventListener('click', (e) => {
             e.preventDefault();
 
-            // Safely pull the text value directly out of the Google component
+            // Pull the text value directly out of the address input
             let addressValue = addressInput.value || '';
-            
-            // Fallback check if the component value is resting inside its shadow DOM input element
-            if (!addressValue && addressInput.shadowRoot) {
-                const innerInput = addressInput.shadowRoot.querySelector('input');
-                if (innerInput) addressValue = innerInput.value;
-            }
 
             // Prevent blank progress if they clicked ahead accidentally
             if (!addressValue || addressValue.trim() === '') {
@@ -162,7 +141,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 return;
             }
 
-            // Sync the captured Google address to our hidden field so it emails cleanly
+            // Sync the captured address to our hidden field so it emails cleanly
             hiddenAddressField.value = addressValue;
 
             // Swap visual views
