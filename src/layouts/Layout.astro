@@ -23,6 +23,24 @@ const { title, description } = Astro.props;
     <link rel="icon" type="image/png" sizes="16x16" href="/favicon/favicon-16x16.png">
     <link rel="manifest" href="/favicon/site.webmanifest">
     <link rel="shortcut icon" href="/favicon/favicon.ico">
+
+    <!-- Google tag (gtag.js) -->
+    <script is:inline async src="https://www.googletagmanager.com/gtag/js?id=G-KKYC22CVDW"></script>
+    <script is:inline>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        // This tracks the initial page load
+        gtag('config', 'G-KKYC22CVDW');
+
+        // This tracks subsequent page changes if you use Astro's ClientRouter
+        document.addEventListener('astro:page-load', () => {
+            gtag('config', 'G-KKYC22CVDW', {
+                page_path: window.location.pathname
+            });
+        });
+    </script>
     
 </head>
 <body>

@@ -1517,6 +1517,7 @@ a.cta-phone-link:hover strong {
     font-size: 18px;
     line-height: 1.6;
     color: #555555;
+    max-width: 750px;
 }
 
 .why-us-grid {
@@ -2080,6 +2081,18 @@ a.cta-phone-link:hover strong {
     border-radius: 20px;
     white-space: nowrap;
     transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.county-city-list li a {
+    color: inherit;
+    text-decoration: none;
+    display: block;
+}
+
+.county-city-list li:hover {
+    background-color: #00a9a5; /* or county-specific color */
+    color: #fff;
+    border-color: #00a9a5;
 }
 
 /* Subtle hover effect referencing your brand colors */
