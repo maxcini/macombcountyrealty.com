@@ -6,6 +6,9 @@ import '../styles/style.css';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 
+// 2. Updated to ClientRouter for Astro 5+
+import { ClientRouter } from 'astro:transitions';
+
 const { title, description } = Astro.props;
 ---
 
@@ -24,7 +27,8 @@ const { title, description } = Astro.props;
     <link rel="manifest" href="/favicon/site.webmanifest">
     <link rel="shortcut icon" href="/favicon/favicon.ico">
 
-    <!-- Google tag (gtag.js) -->
+    <ClientRouter />
+
     <script is:inline async src="https://www.googletagmanager.com/gtag/js?id=G-KKYC22CVDW"></script>
     <script is:inline>
         window.dataLayer = window.dataLayer || [];
@@ -53,7 +57,7 @@ const { title, description } = Astro.props;
 
     <div id="image-modal" class="lightbox-modal" aria-hidden="true">
         <span class="lightbox-close" aria-label="Close overlay">&times;</span>
-        <!-- <img class="lightbox-content" id="modal-img" src="" alt="" > -->
     </div>
+
 </body>
 </html>

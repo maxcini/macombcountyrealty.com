@@ -417,6 +417,7 @@ body {
 .hamburger-inner {
     top: 50%;
     transform: translateY(-50%);
+    left: 0;
 }
 
 .hamburger-inner::before {
@@ -463,46 +464,77 @@ body {
         display: flex; /* Displays hamburger on tablet/mobile */
     }
 
-.nav-menu {
-        display: none;
+    .nav-menu {
+        /* Positioning it right below the header */
         position: absolute;
-        top: 100%;
+        top: 100%; 
         left: 0;
-        width: 100%;
-        background-color: #f8f9fa; /* Light gray background to make the white buttons pop */
+        right: 0;
+        
+        /* Modern styling: white background, drop shadow, rounded bottom corners */
+        background-color: #ffffff;
+        box-shadow: 0 12px 24px rgba(0, 0, 0, 0.1);
+        border-radius: 0 0 12px 12px;
+        padding: 20px;
+        
+        /* Layout */
+        display: flex;
         flex-direction: column;
-        align-items: stretch; /* Forces the buttons to stretch full width */
-        padding: 20px; /* Adds padding around the edges of the menu */
-        gap: 12px; /* Tighter spacing between buttons */
-        box-shadow: 0 10px 15px rgba(0,0,0,0.08);
-        border-top: 1px solid #e5e5e5;
+        gap: 15px;
+        text-align: center;
+        
+        /* THE ANIMATION MAGIC */
+        /* Start invisible and slightly pushed up */
+        opacity: 0;
+        visibility: hidden;
+        transform: translateY(-15px);
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     }
 
-    /* Target the list items in the mobile menu */
+    /* When the JavaScript adds the .active class... */
+    .nav-menu.active {
+        /* ...fade in and slide down into place! */
+        opacity: 1;
+        visibility: visible;
+        transform: translateY(0);
+    }
+
+    /* Clean up the links */
     .nav-menu li {
-        width: 100%;
         list-style: none;
     }
 
-    /* Style the links to look like distinct white cards */
     .nav-menu a {
-        display: block;
-        width: 100%;
-        background-color: #ffffff;
-        border: 1px solid #e5e5e5;
-        border-radius: 8px;
-        padding: 16px;
-        text-align: center;
-        font-weight: 600;
-        color: #333333;
         text-decoration: none;
-        box-shadow: 0 2px 4px rgba(0,0,0,0.02);
+        color: #333333;
+        font-size: 1.1rem;
+        font-weight: 600;
+        display: block;
+        padding: 10px;
     }
 
-    .nav-menu.active {
-        display: flex;
+    /* --- THE "GET MY OFFER" BUTTON --- */
+    .mobile-cta-container {
+        margin-top: 10px;
+        padding-top: 20px;
+        border-top: 1px solid #eeeeee; /* Gives separation from the normal links */
     }
 
+    .mobile-cta-container .btn-get-offer {
+        background-color: #e5243b; /* Red brand color based on your SVG icon */
+        color: #ffffff;
+        padding: 14px 24px;
+        border-radius: 8px;
+        font-weight: bold;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+        transition: background-color 0.2s ease;
+    }
+
+    .mobile-cta-container .btn-get-offer:active {
+        background-color: #c41e30; /* Slightly darker on tap */
+    }
+    
     .hero-section {
         padding: 0px 0 0 0; /* Removed bottom padding so the image sits directly on the bottom line */
         align-items: center;
@@ -553,7 +585,7 @@ body {
     }
 
     .nav-and-actions {
-        gap: 22px;
+        gap: 16px;
     }
 
     .header-actions {
@@ -620,6 +652,7 @@ body {
     .hero-ratings-container {
         flex-direction: column;
         gap: 12px;
+        display: none;
     }
     
     .rating-badge-item {
@@ -731,7 +764,7 @@ body {
     font-size: 24px;
     font-weight: 700;
     color: #111111;
-    margin-bottom: 16px;
+    margin-bottom: 8px;
 }
 
 .benefits-card-text {
@@ -924,13 +957,15 @@ body {
     margin-bottom: 20px;
 }
 
-.about-content a {
+.about-content a,
+.hyper-link{
     color: #00A79D; /* Brand Teal */
     text-decoration: none;
     transition: color 0.2s ease;
 }
 
-.about-content a:hover {
+.about-content a:hover, 
+.hyper-link:hover{
     text-decoration: underline;
     color: #2E347A;
 }
@@ -2684,4 +2719,389 @@ a.cta-phone-link:hover strong {
     clip: rect(0, 0, 0, 0);
     white-space: nowrap;
     border: 0;
+}
+
+/* =========================================
+   ABOUT PAGE STYLES
+   ========================================= */
+
+/* Hero Section */
+.about-hero-section { 
+    padding: 60px 20px; 
+    border-top: none; 
+    background-color: #ffffff; 
+}
+.about-hero-header { margin-bottom: 0; }
+.about-hero-title { font-size: 46px; margin-bottom: 24px; }
+.about-hero-subtitle { font-size: 22px; max-width: 900px; color: #333; }
+
+/* Layout & Containers */
+.about-section-padding { 
+    padding: 60px 20px; 
+    border-top: 1px solid #eaeaea; 
+    background-color: #F8F9FA; 
+}
+.about-section-light { 
+    background: #ffffff; 
+    padding: 60px 20px; 
+    border-top: 1px solid #eaeaea; 
+}
+.about-container-narrow { max-width: 900px; }
+.about-header-margin { margin-bottom: 50px; }
+.about-header-margin-lg { margin-bottom: 60px; }
+
+/* Typography & Grids */
+.about-text-lead { font-size: 20px; line-height: 1.9; }
+.about-text-lead.mb-30 { margin-bottom: 30px; }
+.about-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 30px; margin-top: 60px; }
+
+/* Team Section Container */
+.team-section { 
+    /* Using your global background color variable */
+    background-color: #F8F9FA; 
+    padding: 60px 20px; 
+    border-top: 1px solid #eaeaea; 
+}
+
+.team-container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.team-header {
+    text-align: center; /* Centered to match your other section headers */
+    margin-bottom: 50px;
+}
+
+/* Grid Layout */
+.team-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px;
+}
+
+/* Individual Team Card */
+.team-card {
+    background-color: var(--white);
+    border-radius: 8px; /* Matched to your .step card border-radius */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Matched to your .step card shadow */
+    overflow: hidden; /* Ensures the image stays within the rounded corners */
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Optional hover effect for modern feel */
+.team-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.15);
+}
+
+/* Team Images */
+.team-img { 
+    width: 100%; 
+    aspect-ratio: 1 / .9; 
+    object-fit: cover; 
+    display: block;
+}
+.team-img.bg-light { 
+    background-color: #e5e5e5; 
+}
+
+/* Text Content Area */
+.team-card-content {
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+}
+
+/* Typography */
+.team-name { 
+    color: var(--primary-color); 
+    font-size: 1.5rem; 
+    font-weight: 700; 
+    margin: 0 0 5px 0;
+}
+
+.team-role { 
+    color: var(--secondary-color); 
+    font-size: 1rem; 
+    font-weight: 600; 
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin: 0 0 20px 0; 
+}
+
+.team-bio { 
+    font-size: 1rem; 
+    color: var(--text-light); 
+    line-height: 1.6; 
+    margin: 0;
+}
+
+/* --- HIDE MOBILE CTA ON DESKTOP --- */
+@media (min-width: 769px) {
+    .mobile-cta-container {
+        display: none;
+    }
+}
+
+/* ========================================== */
+/* THE OLD WAY VS OUR WAY SPLIT               */
+/* ========================================== */
+
+.way-split-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 30px;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.way-card {
+    border-radius: 16px;
+    padding: 15px 35px 35px 35px;
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+/* FIX: Changed to pure white to contrast against the off-white section, 
+   but with a distinct, muted border to keep it visually "secondary". */
+.way-card.old-way {
+    background-color: #ffffff; 
+    border: 1px solid #d1d5db; 
+    color: #555555;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+}
+
+.way-card.our-way {
+    background-color: #ffffff;
+    border: 2px solid #00A79D; /* Brand Teal */
+    box-shadow: 0 12px 35px rgba(0, 167, 157, 0.12);
+}
+
+/* FIX: Flexbox layout to put the emoji and title side-by-side */
+.way-card-header {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 25px;
+    padding-bottom: 20px;
+    min-height: 100px; /* Forces both headers to be the exact same height */
+}
+
+.old-way .way-card-header {
+    border-bottom: 2px solid #e1e5ea;
+}
+
+.our-way .way-card-header {
+    border-bottom: 2px solid #eaf6f5; /* Light Teal underline */
+}
+
+.way-icon {
+    font-size: 42px;
+    line-height: 1;
+    flex-shrink: 0; /* Prevents the emoji from getting squished if text wraps */
+    align-items: center;
+}
+
+/* FIX: Adjusted font size slightly and removed the old bottom border */
+.way-title {
+    font-size: 24px;
+    font-weight: 800;
+    margin: 0;
+    line-height: 1.3;
+}
+
+.old-way .way-title {
+    color: #555555;
+}
+
+.our-way .way-title {
+    color: #2E347A; /* Brand Navy */
+}
+
+.way-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+.way-list li {
+    font-size: 15px;
+    line-height: 1.6;
+    position: relative;
+    padding-left: 35px;
+}
+
+.way-list li strong {
+    display: block;
+    font-size: 17px;
+    margin-bottom: 4px;
+}
+
+.old-way .way-list li strong {
+    color: #333333;
+}
+
+.our-way .way-list li strong {
+    color: #111111;
+}
+
+/* Custom Bullet Points */
+.old-way .way-list li::before {
+    content: "✕"; 
+    position: absolute;
+    left: 0;
+    top: 2px;
+    color: #a0aab5;
+    font-size: 18px;
+    font-weight: 900;
+}
+
+.our-way .way-list li::before {
+    content: "✓"; 
+    position: absolute;
+    left: 0;
+    top: 2px;
+    color: #00A79D; /* Brand Teal */
+    font-size: 18px;
+    font-weight: 900;
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 850px) {
+    .way-split-grid {
+        grid-template-columns: 1fr; /* Stacks the cards on mobile */
+        gap: 25px;
+    }
+    
+    .way-card {
+        padding: 30px 24px;
+    }
+    
+    .way-card-header {
+        min-height: auto; /* Removes the forced height on mobile since they stack vertically */
+    }
+    
+    .way-title {
+        font-size: 22px;
+    }
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 850px) {
+    .way-split-grid {
+        grid-template-columns: 1fr; /* Stacks the cards on mobile */
+        gap: 25px;
+    }
+    
+    .way-card {
+        padding: 30px 24px;
+    }
+    
+    .way-title {
+        font-size: 22px;
+    }
+}
+
+/* ========================================== */
+/* WHY HOMEOWNERS CHOOSE US (CARDS)           */
+/* ========================================== */
+
+.bg-light-gray {
+    background-color: #ffffff;
+}
+
+.choose-us-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 25px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.choose-card {
+    background-color: #ffffff;
+    border-radius: 12px;
+    padding: 35px 25px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.04);
+    border-top: 4px solid #00A79D;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.choose-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 25px rgba(0, 0, 0, 0.08);
+}
+
+.choose-icon {
+    width: 40px;
+    height: 40px;
+    color: #00A79D;
+    margin-bottom: 20px;
+}
+
+.choose-card h3 {
+    color: #2E347A;
+    font-size: 20px;
+    font-weight: 700;
+    margin-top: 0;
+    margin-bottom: 12px;
+    line-height: 1.3;
+}
+
+.choose-card p {
+    color: #555555;
+    font-size: 15px;
+    line-height: 1.6;
+    margin: 0;
+}
+
+/* Tablets and small laptops (Drops to 2x2 grid) */
+@media (max-width: 1024px) {
+    .choose-us-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+/* Mobile devices (Drops to 1 column, aligns header side-by-side) */
+@media (max-width: 650px) {
+    .choose-us-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .choose-card {
+        padding: 25px 20px; /* Slightly tighter padding on mobile to save space */
+    }
+
+    /* Flexbox wizardry to put icon and text side-by-side */
+    .choose-card-header {
+        display: flex;
+        align-items: center;
+        gap: 15px;
+        margin-bottom: 12px;
+    }
+    
+    /* Removes the bottom margin from the icon and prevents it from squishing */
+    .choose-icon {
+        margin-bottom: 0;
+        flex-shrink: 0;
+    }
+    
+    /* Removes the bottom margin from the title so it centers perfectly with the icon */
+    .choose-card h3 {
+        margin-bottom: 0;
+    }
+}
+
+@media (max-width: 600px) {
+    .cta-heading-about {
+        font-size: 25px;
+    }
 }
