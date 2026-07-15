@@ -1,84 +1,88 @@
 // ==========================================
 // BEFORE & AFTER LIGHTBOX MODAL CAPABILITIES
 // ==========================================
-document.addEventListener("DOMContentLoaded", function () {
+{
     const modal = document.getElementById("image-modal");
     const modalImg = document.getElementById("modal-img");
     const closeBtn = document.querySelector(".lightbox-close");
     const triggerImages = document.querySelectorAll(".image-wrapper img");
 
-    if (!modal || !modalImg || triggerImages.length === 0) return;
-
-    // Loop through before and after images to register open commands
-    triggerImages.forEach(img => {
-        img.addEventListener("click", function () {
-            modalImg.src = this.src;
-            modalImg.alt = this.alt;
-            modal.classList.add("show");
-            modal.setAttribute("aria-hidden", "false");
-            document.body.style.overflow = "hidden"; // Stop background page scrolling
+    if (modal && modalImg && triggerImages.length > 0) {
+        // Loop through before and after images to register open commands
+        triggerImages.forEach(img => {
+            img.addEventListener("click", function () {
+                modalImg.src = this.src;
+                modalImg.alt = this.alt;
+                modal.classList.add("show");
+                modal.setAttribute("aria-hidden", "false");
+                document.body.style.overflow = "hidden"; // Stop background page scrolling
+            });
         });
-    });
 
-    // Close window execution when clicking the 'X' button
-    closeBtn.addEventListener("click", closeModal);
+        // Close window execution when clicking the 'X' button
+        closeBtn.addEventListener("click", closeModal);
 
-    // Close window execution when clicking anywhere in the dark backdrop space
-    modal.addEventListener("click", function (e) {
-        if (e.target === modal) {
-            closeModal();
+        // Close window execution when clicking anywhere in the dark backdrop space
+        modal.addEventListener("click", function (e) {
+            if (e.target === modal) {
+                closeModal();
+            }
+        });
+
+        // Close window execution if escape button key is tapped
+        document.addEventListener("keydown", function (e) {
+            if (e.key === "Escape" && modal.classList.contains("show")) {
+                closeModal();
+            }
+        });
+
+        function closeModal() {
+            modal.classList.remove("show");
+            modal.setAttribute("aria-hidden", "true");
+            document.body.style.overflow = ""; // Re-enable background page scrolling
+
+            // Wait for the fade fade-out style transition to conclude before stripping out source asset target maps
+            setTimeout(() => {
+                modalImg.src = "";
+            }, 300);
         }
-    });
-
-    // Close window execution if escape button key is tapped
-    document.addEventListener("keydown", function (e) {
-        if (e.key === "Escape" && modal.classList.contains("show")) {
-            closeModal();
-        }
-    });
-
-    function closeModal() {
-        modal.classList.remove("show");
-        modal.setAttribute("aria-hidden", "true");
-        document.body.style.overflow = ""; // Re-enable background page scrolling
-        
-        // Wait for the fade fade-out style transition to conclude before stripping out source asset target maps
-        setTimeout(() => {
-            modalImg.src = "";
-        }, 300);
     }
-});
+}
 
-document.addEventListener('DOMContentLoaded', () => {
+// ==========================================
+// MOBILE MENU NAVIGATION LOGIC
+// ==========================================
+{
     // 1. Select all the links inside your navigation menu
     const navLinks = document.querySelectorAll('#main-nav a');
-    
+
     // 2. Select the mobile hamburger button
     const mobileMenuBtn = document.getElementById('mobile-menu-btn');
 
-    // 3. Loop through each link and add a click event listener
-    navLinks.forEach(link => {
-        link.addEventListener('click', () => {
-            // 4. Check if the menu is currently open 
-            // (Based on your HTML, it uses aria-expanded="true" when open)
-            if (mobileMenuBtn.getAttribute('aria-expanded') === 'true') {
-                
-                // Simulate a click on the hamburger button to close the menu
-                mobileMenuBtn.click(); 
-            }
-        });
-    });
-});
+    if (navLinks.length > 0 && mobileMenuBtn) {
+        // 3. Loop through each link and add a click event listener
+        navLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                // 4. Check if the menu is currently open 
+                // (Based on your HTML, it uses aria-expanded="true" when open)
+                if (mobileMenuBtn.getAttribute('aria-expanded') === 'true') {
 
+                    // Simulate a click on the hamburger button to close the menu
+                    mobileMenuBtn.click();
+                }
+            });
+        });
+    }
+}
 
 
 // --- 3. Multi-Step Form & Email Submission Logic ---
-document.addEventListener('DOMContentLoaded', () => {
+{
     const form = document.getElementById('lead-form');
     const step1 = document.getElementById('step-1');
     const step2 = document.getElementById('step-2');
     const successSection = document.getElementById('form-success');
-    
+
     const nextBtn = document.getElementById('next-btn');
     const submitBtn = document.getElementById('submit-btn');
     const addressInput = document.getElementById('address-input');
@@ -105,16 +109,16 @@ document.addEventListener('DOMContentLoaded', () => {
             if (!addressValue || addressValue.trim() === '') {
                 // Use our invisible anchor to trigger the native browser bubble!
                 const validationAnchor = document.getElementById('validation-anchor');
-                
+
                 if (validationAnchor) {
                     validationAnchor.setCustomValidity("Please fill out this field.");
                     validationAnchor.reportValidity();
-                    
+
                     // Clear the error bubble as soon as they click back into the address bar
                     addressInput.addEventListener('click', () => {
                         validationAnchor.setCustomValidity("");
                     }, { once: true });
-                    
+
                     addressInput.addEventListener('keydown', () => {
                         validationAnchor.setCustomValidity("");
                     }, { once: true });
@@ -131,7 +135,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
 
         // AJAX EMAIL SUBMISSION HANDLER
-        form.addEventListener('submit', function(e) {
+        form.addEventListener('submit', function (e) {
             e.preventDefault();
 
             // Visual indicator to avoid duplicate double-clicks
@@ -150,23 +154,23 @@ document.addEventListener('DOMContentLoaded', () => {
                 },
                 body: json
             })
-            .then(async (response) => {
-                let res = await response.json();
-                if (response.status == 200) {
-                    // Success! Hide form inputs completely, show nice custom confirmation message
-                    step2.classList.add('hidden');
-                    successSection.classList.remove('hidden');
-                } else {
-                    console.log(res);
-                    alert('Something went wrong. Please try again.');
+                .then(async (response) => {
+                    let res = await response.json();
+                    if (response.status == 200) {
+                        // Success! Hide form inputs completely, show nice custom confirmation message
+                        step2.classList.add('hidden');
+                        successSection.classList.remove('hidden');
+                    } else {
+                        console.log(res);
+                        alert('Something went wrong. Please try again.');
+                        resetButton();
+                    }
+                })
+                .catch(error => {
+                    console.log(error);
+                    alert('Connection error. Please try again later.');
                     resetButton();
-                }
-            })
-            .catch(error => {
-                console.log(error);
-                alert('Connection error. Please try again later.');
-                resetButton();
-            });
+                });
         });
     }
 
@@ -174,79 +178,82 @@ document.addEventListener('DOMContentLoaded', () => {
         submitBtn.disabled = false;
         submitBtn.innerHTML = 'Submit Info <span class="arrow">➔</span>';
     }
-});
+}
 
-document.addEventListener('DOMContentLoaded', () => {
+// Smooth scroll target focusing
+{
     // Find all links that point to the lead form
     const scrollLinks = document.querySelectorAll('a[href="#top"]');
     const addressInput = document.getElementById('address-input');
 
-    scrollLinks.forEach(link => {
-        link.addEventListener('click', () => {
-            // Give the smooth scroll a tiny fraction of a second to finish, then focus the input
-            setTimeout(() => {
-                if (addressInput) {
+    if (scrollLinks.length > 0 && addressInput) {
+        scrollLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                // Give the smooth scroll a tiny fraction of a second to finish, then focus the input
+                setTimeout(() => {
                     addressInput.focus();
-                }
-            }, 800); // 800 milliseconds allows the scroll animation to complete
+                }, 800); // 800 milliseconds allows the scroll animation to complete
+            });
         });
-    });
-});
+    }
+}
 
 
 // --- 4. Contact Page Form Submission Logic ---
-document.addEventListener('DOMContentLoaded', () => {
+{
     const form = document.getElementById('contact-page-form');
-    if (!form) return; // Not on the contact page, skip
 
-    const submitBtn = form.querySelector('.submit-btn-full');
-    const formContent = document.getElementById('contact-form-content');
-    const successSection = document.getElementById('contact-form-success');
-    const originalBtnHTML = submitBtn.innerHTML;
+    // Only run if the form exists on the current page
+    if (form) {
+        const submitBtn = form.querySelector('.submit-btn-full');
+        const formContent = document.getElementById('contact-form-content');
+        const successSection = document.getElementById('contact-form-success');
+        const originalBtnHTML = submitBtn.innerHTML;
 
-    form.addEventListener('submit', function (e) {
-        e.preventDefault();
+        form.addEventListener('submit', function (e) {
+            e.preventDefault();
 
-        // Visual indicator to avoid duplicate double-clicks
-        submitBtn.disabled = true;
-        submitBtn.innerHTML = 'Sending Details...';
+            // Visual indicator to avoid duplicate double-clicks
+            submitBtn.disabled = true;
+            submitBtn.innerHTML = 'Sending Details...';
 
-        const formData = new FormData(form);
-        const object = Object.fromEntries(formData);
-        const json = JSON.stringify(object);
+            const formData = new FormData(form);
+            const object = Object.fromEntries(formData);
+            const json = JSON.stringify(object);
 
-        fetch('https://api.web3forms.com/submit', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-                'Accept': 'application/json'
-            },
-            body: json
-        })
-        .then(async (response) => {
-            let res = await response.json();
-            if (response.status == 200) {
-                // Success! Hide the form fields and image, show the confirmation message
-                formContent.classList.add('hidden');
-                successSection.classList.remove('hidden');
-            } else {
-                console.log(res);
-                alert('Something went wrong. Please try again.');
-                resetContactButton();
-            }
-        })
-        .catch(error => {
-            console.log(error);
-            alert('Connection error. Please try again later.');
-            resetContactButton();
+            fetch('https://api.web3forms.com/submit', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Accept': 'application/json'
+                },
+                body: json
+            })
+                .then(async (response) => {
+                    let res = await response.json();
+                    if (response.status == 200) {
+                        // Success! Hide the form fields and image, show the confirmation message
+                        formContent.classList.add('hidden');
+                        successSection.classList.remove('hidden');
+                    } else {
+                        console.log(res);
+                        alert('Something went wrong. Please try again.');
+                        resetContactButton();
+                    }
+                })
+                .catch(error => {
+                    console.log(error);
+                    alert('Connection error. Please try again later.');
+                    resetContactButton();
+                });
         });
-    });
 
-    function resetContactButton() {
-        submitBtn.disabled = false;
-        submitBtn.innerHTML = originalBtnHTML;
+        function resetContactButton() {
+            submitBtn.disabled = false;
+            submitBtn.innerHTML = originalBtnHTML;
+        }
     }
-});
+}
 
 // ==========================================
 // GOOGLE PLACES ADDRESS AUTOCOMPLETE (Data API, custom dropdown)
@@ -395,7 +402,5 @@ async function initGoogleAutocomplete() {
     }
 }
 
-// Initialize when the window loads
-window.addEventListener('load', () => {
-    initGoogleAutocomplete();
-});
+// Call directly since Astro defers script execution natively
+initGoogleAutocomplete();
