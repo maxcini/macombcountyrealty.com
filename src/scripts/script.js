@@ -1,83 +1,79 @@
 // ==========================================
 // BEFORE & AFTER LIGHTBOX MODAL CAPABILITIES
 // ==========================================
-{
+document.addEventListener("DOMContentLoaded", function () {
     const modal = document.getElementById("image-modal");
     const modalImg = document.getElementById("modal-img");
     const closeBtn = document.querySelector(".lightbox-close");
     const triggerImages = document.querySelectorAll(".image-wrapper img");
 
-    if (modal && modalImg && triggerImages.length > 0) {
-        // Loop through before and after images to register open commands
-        triggerImages.forEach(img => {
-            img.addEventListener("click", function () {
-                modalImg.src = this.src;
-                modalImg.alt = this.alt;
-                modal.classList.add("show");
-                modal.setAttribute("aria-hidden", "false");
-                document.body.style.overflow = "hidden"; // Stop background page scrolling
-            });
+    if (!modal || !modalImg || triggerImages.length === 0) return;
+
+    // Loop through before and after images to register open commands
+    triggerImages.forEach(img => {
+        img.addEventListener("click", function () {
+            modalImg.src = this.src;
+            modalImg.alt = this.alt;
+            modal.classList.add("show");
+            modal.setAttribute("aria-hidden", "false");
+            document.body.style.overflow = "hidden"; // Stop background page scrolling
         });
+    });
 
-        // Close window execution when clicking the 'X' button
-        closeBtn.addEventListener("click", closeModal);
+    // Close window execution when clicking the 'X' button
+    closeBtn.addEventListener("click", closeModal);
 
-        // Close window execution when clicking anywhere in the dark backdrop space
-        modal.addEventListener("click", function (e) {
-            if (e.target === modal) {
-                closeModal();
-            }
-        });
-
-        // Close window execution if escape button key is tapped
-        document.addEventListener("keydown", function (e) {
-            if (e.key === "Escape" && modal.classList.contains("show")) {
-                closeModal();
-            }
-        });
-
-        function closeModal() {
-            modal.classList.remove("show");
-            modal.setAttribute("aria-hidden", "true");
-            document.body.style.overflow = ""; // Re-enable background page scrolling
-
-            // Wait for the fade fade-out style transition to conclude before stripping out source asset target maps
-            setTimeout(() => {
-                modalImg.src = "";
-            }, 300);
+    // Close window execution when clicking anywhere in the dark backdrop space
+    modal.addEventListener("click", function (e) {
+        if (e.target === modal) {
+            closeModal();
         }
-    }
-}
+    });
 
-// ==========================================
-// MOBILE MENU NAVIGATION LOGIC
-// ==========================================
-{
+    // Close window execution if escape button key is tapped
+    document.addEventListener("keydown", function (e) {
+        if (e.key === "Escape" && modal.classList.contains("show")) {
+            closeModal();
+        }
+    });
+
+    function closeModal() {
+        modal.classList.remove("show");
+        modal.setAttribute("aria-hidden", "true");
+        document.body.style.overflow = ""; // Re-enable background page scrolling
+
+        // Wait for the fade fade-out style transition to conclude before stripping out source asset target maps
+        setTimeout(() => {
+            modalImg.src = "";
+        }, 300);
+    }
+});
+
+document.addEventListener('DOMContentLoaded', () => {
     // 1. Select all the links inside your navigation menu
     const navLinks = document.querySelectorAll('#main-nav a');
 
     // 2. Select the mobile hamburger button
     const mobileMenuBtn = document.getElementById('mobile-menu-btn');
 
-    if (navLinks.length > 0 && mobileMenuBtn) {
-        // 3. Loop through each link and add a click event listener
-        navLinks.forEach(link => {
-            link.addEventListener('click', () => {
-                // 4. Check if the menu is currently open 
-                // (Based on your HTML, it uses aria-expanded="true" when open)
-                if (mobileMenuBtn.getAttribute('aria-expanded') === 'true') {
+    // 3. Loop through each link and add a click event listener
+    navLinks.forEach(link => {
+        link.addEventListener('click', () => {
+            // 4. Check if the menu is currently open 
+            // (Based on your HTML, it uses aria-expanded="true" when open)
+            if (mobileMenuBtn.getAttribute('aria-expanded') === 'true') {
 
-                    // Simulate a click on the hamburger button to close the menu
-                    mobileMenuBtn.click();
-                }
-            });
+                // Simulate a click on the hamburger button to close the menu
+                mobileMenuBtn.click();
+            }
         });
-    }
-}
+    });
+});
+
 
 
 // --- 3. Multi-Step Form & Email Submission Logic ---
-{
+document.addEventListener('DOMContentLoaded', () => {
     const form = document.getElementById('lead-form');
     const step1 = document.getElementById('step-1');
     const step2 = document.getElementById('step-2');
@@ -178,25 +174,24 @@
         submitBtn.disabled = false;
         submitBtn.innerHTML = 'Submit Info <span class="arrow">➔</span>';
     }
-}
+});
 
-// Smooth scroll target focusing
-{
+document.addEventListener('DOMContentLoaded', () => {
     // Find all links that point to the lead form
     const scrollLinks = document.querySelectorAll('a[href="#top"]');
     const addressInput = document.getElementById('address-input');
 
-    if (scrollLinks.length > 0 && addressInput) {
-        scrollLinks.forEach(link => {
-            link.addEventListener('click', () => {
-                // Give the smooth scroll a tiny fraction of a second to finish, then focus the input
-                setTimeout(() => {
+    scrollLinks.forEach(link => {
+        link.addEventListener('click', () => {
+            // Give the smooth scroll a tiny fraction of a second to finish, then focus the input
+            setTimeout(() => {
+                if (addressInput) {
                     addressInput.focus();
-                }, 800); // 800 milliseconds allows the scroll animation to complete
-            });
+                }
+            }, 800); // 800 milliseconds allows the scroll animation to complete
         });
-    }
-}
+    });
+});
 
 
 // --- 4. Contact Page Form Submission Logic ---
@@ -402,5 +397,7 @@ async function initGoogleAutocomplete() {
     }
 }
 
-// Call directly since Astro defers script execution natively
-initGoogleAutocomplete();
+// Initialize when the window loads
+window.addEventListener('load', () => {
+    initGoogleAutocomplete();
+});

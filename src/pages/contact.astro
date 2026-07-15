@@ -1,53 +1,114 @@
 ---
-import Layout from '../layouts/Layout.astro';
+import Layout from "../layouts/Layout.astro";
 ---
 
-<Layout 
-    title="Contact Us | Macomb County Realty" 
-    description="Get in touch with Max at Macomb County Realty. Fill out our form to get your cash offer today."
+<Layout
+    title="Contact Us | Macomb County Realty"
+    description="Get in touch with Max at Macomb County Realty. Fill out our form to get your options today - cash offer or list on market."
 >
-    
     <main class="contact-page-wrapper">
         <div class="contact-container">
-            
-            <form id="contact-page-form" class="full-contact-form" action="https://api.web3forms.com/submit" method="POST">
-                <input type="hidden" name="access_key" value="3a7d522a-4543-4f76-93a8-e1478c789775">
-                <input type="checkbox" name="botcheck" class="hidden" style="display: none;">
-                <input type="hidden" name="from_name" value="Macomb County Realty Leads">
-                <input type="hidden" name="subject" value="🏡 New Lead From Contact Page!">
+            <form
+                id="contact-page-form"
+                class="full-contact-form"
+                action="https://api.web3forms.com/submit"
+                method="POST"
+            >
+                <input
+                    type="hidden"
+                    name="access_key"
+                    value="3a7d522a-4543-4f76-93a8-e1478c789775"
+                />
+                <input
+                    type="checkbox"
+                    name="botcheck"
+                    class="hidden"
+                    style="display: none;"
+                />
+                <input
+                    type="hidden"
+                    name="from_name"
+                    value="Macomb County Realty Leads"
+                />
+                <input
+                    type="hidden"
+                    name="subject"
+                    value="🏡 New Lead From Contact Page!"
+                />
 
-                <h1 class="contact-title">Get Your Cash Offer</h1>
+                <h1 class="contact-title">Get Your Options</h1>
 
                 <div id="contact-form-content">
                     <div class="contact-split-content">
-                        
                         <div class="contact-form-column">
-                            <p class="contact-subtitle">Fill out the form below and Max will reach out to you within 24 hours.</p>
-                            
+                            <p class="contact-subtitle">
+                                Fill out the form below and Max will reach out
+                                to you within 24 hours.
+                            </p>
+
                             <div class="form-fields-stack">
                                 <div class="form-group">
-                                    <label class="sr-only" for="name-2">Name</label>
-                                    <input type="text" id="name-2" name="Name" placeholder="Name*" required class="form-input-secondary">
+                                    <label class="sr-only" for="name-2"
+                                        >Name</label
+                                    >
+                                    <input
+                                        type="text"
+                                        id="name-2"
+                                        name="Name"
+                                        placeholder="Name*"
+                                        required
+                                        class="form-input-secondary"
+                                    />
                                 </div>
                                 <div class="form-group">
-                                    <label class="sr-only" for="address-2">Property Address</label>
-                                    <input type="text" id="address-2" name="Property Address" placeholder="Address*" required class="form-input-secondary">
+                                    <label class="sr-only" for="address-2"
+                                        >Property Address</label
+                                    >
+                                    <input
+                                        type="text"
+                                        id="address-2"
+                                        name="Property Address"
+                                        placeholder="Address*"
+                                        required
+                                        class="form-input-secondary"
+                                    />
                                 </div>
                                 <div class="form-group">
-                                    <label class="sr-only" for="email-2">Email Address</label>
-                                    <input type="email" id="email-2" name="Email Address" placeholder="Email*" required class="form-input-secondary">
+                                    <label class="sr-only" for="email-2"
+                                        >Email Address</label
+                                    >
+                                    <input
+                                        type="email"
+                                        id="email-2"
+                                        name="Email Address"
+                                        placeholder="Email*"
+                                        required
+                                        class="form-input-secondary"
+                                    />
                                 </div>
                                 <div class="form-group">
-                                    <label class="sr-only" for="phone-2">Phone Number</label>
-                                    <input type="tel" id="phone-2" name="Phone Number" placeholder="Phone Number*" required class="form-input-secondary">
+                                    <label class="sr-only" for="phone-2"
+                                        >Phone Number</label
+                                    >
+                                    <input
+                                        type="tel"
+                                        id="phone-2"
+                                        name="Phone Number"
+                                        placeholder="Phone Number*"
+                                        required
+                                        class="form-input-secondary"
+                                    />
                                 </div>
                             </div>
                         </div>
 
                         <div class="contact-image-column">
-                            <img src="/images/mark-closing.webp" alt="House Placeholder" class="contact-house-img" >
+                            <img
+                                src="/images/mark-closing.webp"
+                                alt="House Placeholder"
+                                class="contact-house-img"
+                            />
                         </div>
-
                     </div>
 
                     <div class="contact-button-row">
@@ -57,21 +118,25 @@ import Layout from '../layouts/Layout.astro';
                     </div>
                 </div>
 
-                <div class="success-message-wrapper hidden" id="contact-form-success">
+                <div
+                    class="success-message-wrapper hidden"
+                    id="contact-form-success"
+                >
                     <div class="success-icon">✓</div>
                     <h3 class="success-title">Submission Received!</h3>
-                    <p class="success-text">Thank you. Max will review your property details and contact you shortly with your custom options.</p>
+                    <p class="success-text">
+                        Thank you. Max will review your property details and
+                        contact you shortly with your custom options.
+                    </p>
                 </div>
             </form>
-
         </div>
     </main>
-
 </Layout>
 
 <script>
     // Astro will bundle your scripts automatically
-    import '../scripts/script.js';
+    import "../scripts/script.js";
 </script>
 
 <style>
@@ -88,10 +153,10 @@ import Layout from '../layouts/Layout.astro';
         max-width: 1000px;
         width: 100%;
         margin: 0 auto;
-        padding: 50px; 
+        padding: 50px;
         background: #ffffff;
         border-radius: 12px;
-        box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
     }
 
     .contact-title {
@@ -106,7 +171,7 @@ import Layout from '../layouts/Layout.astro';
     .contact-split-content {
         display: grid;
         grid-template-columns: 1fr 1fr;
-        gap: 50px; 
+        gap: 50px;
         align-items: stretch;
     }
 
@@ -119,7 +184,7 @@ import Layout from '../layouts/Layout.astro';
 
     .contact-subtitle {
         font-size: 1.1rem;
-        color: #4A6D7C;
+        color: #4a6d7c;
         margin-top: 0;
         margin-bottom: 20px;
     }
@@ -141,7 +206,7 @@ import Layout from '../layouts/Layout.astro';
 
     .form-input-secondary:focus {
         outline: none;
-        border-color: #2E347A;
+        border-color: #2e347a;
     }
 
     /* --- Right Side (Now perfectly square-proportioned) --- */
@@ -152,10 +217,10 @@ import Layout from '../layouts/Layout.astro';
 
     .contact-house-img {
         width: 100%;
-        height: 100%; 
-        object-fit: cover; 
+        height: 100%;
+        object-fit: cover;
         border-radius: 12px;
-        box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
     }
 
     /* --- Bottom Button Row --- */
@@ -183,13 +248,13 @@ import Layout from '../layouts/Layout.astro';
         .contact-container {
             padding: 30px 20px;
         }
-        
+
         .contact-split-content {
             grid-template-columns: 1fr;
         }
-        
+
         .contact-image-column {
-            display: none; 
+            display: none;
         }
 
         .contact-button-row {
@@ -200,7 +265,7 @@ import Layout from '../layouts/Layout.astro';
         .submit-btn-full {
             grid-column: span 1;
         }
-        
+
         .contact-title {
             font-size: 2rem;
         }
