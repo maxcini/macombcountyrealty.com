@@ -3,4 +3,4 @@ Disallow: /admin/
 Disallow: /private/
 Disallow: /temp/
 
-Sitemap: https://macombcountyrealty.com/sitemap.xml
+Sitemap: https://macombcountyrealty.com/sitemap-index.xml
