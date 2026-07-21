@@ -50,7 +50,7 @@ document.addEventListener("astro:page-load", function () {
     }
 });
 
-document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener('astro:page-load', () => {
     // 1. Select all the links inside your navigation menu
     const navLinks = document.querySelectorAll('#main-nav a');
 
@@ -74,7 +74,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
 // --- 3. Multi-Step Form & Email Submission Logic ---
-document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener('astro:page-load', () => {
     const form = document.getElementById('lead-form');
     const step1 = document.getElementById('step-1');
     const step2 = document.getElementById('step-2');
@@ -177,7 +177,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 });
 
-document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener('astro:page-load', () => {
     // Find all links that point to the lead form
     const scrollLinks = document.querySelectorAll('a[href="#top"]');
     const addressInput = document.getElementById('address-input');
