@@ -181,12 +181,12 @@ body {
     /* Darkened gradient veil for crisp text contrast without an aggressive black overlay box */
 
     background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.509)), 
-            url('/images/hero-img.jpg') no-repeat center center/cover;
+            url('/images/Sell-My-House-Fast.jpg') no-repeat center center/cover;
 
     display: flex;
     justify-content: center;
     align-items: flex-end;
-    min-height: 588px;
+    min-height: 500px;
     overflow: hidden;
 }
 
@@ -218,14 +218,14 @@ body {
 /* --- Right Column: High-End Frosted UI Card --- */
 .hero-card {
     flex: 0 0 52%; /* Gives the card an explicit width budget so it never overlaps the image */
-    max-width: 600px; /* Reduced from 720px to make the layout feel perfectly balanced */
+    max-width: 550px; /* Reduced from 720px to make the layout feel perfectly balanced */
     background-color: rgba(0, 0, 0, 0.45);
     backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);
     backdrop-filter: blur(12px);         /* Adds standard support for Chrome, Edge, Firefox */
     border: 2px solid rgba(255, 255, 255, 0.88);
     border-radius: 24px;
-    padding: 40px 30px; /* Slightly refined padding to keep the text inside perfectly proportioned */
+    padding: 30px 40px; /* Slightly refined padding to keep the text inside perfectly proportioned */
     margin: 45px 0px;
     text-align: center;
     color: #ffffff;
@@ -247,8 +247,8 @@ body {
     display: inline-flex;
     flex-direction: column;
     align-items: flex-start;
-    gap: 12px;
-    margin: 0 auto 30px auto;
+    gap: 8px;
+    margin: 0 auto 20px auto;
     text-align: left;
 }
 
@@ -272,7 +272,7 @@ body {
 .hero-inline-form {
     width: 100%;
     max-width: 580px;
-    margin: 0 auto 28px auto;
+    margin: 0 auto 18px auto;
 }
 
 .inline-form-group {
@@ -294,7 +294,7 @@ body {
     border-radius: 50px;
     
     /* Slightly streamlined padding to keep the longer button text looking balanced */
-    padding: 13px 28px; 
+    padding: 13px 20px; 
     
     cursor: pointer;
     display: flex;
@@ -325,7 +325,6 @@ body {
     letter-spacing: 1.5px;
     color: #ffffff;
     opacity: 0.9;
-    margin-bottom: 18px;
     text-transform: uppercase;
 }
 
@@ -563,7 +562,7 @@ body {
     .hero-card {
         width: 100%;
         max-width: 640px;
-        margin-bottom: 0;
+        margin-bottom: -15px;
         padding: 40px 24px;
         order: 1; /* Ensures the form stays on top */
     }
@@ -580,7 +579,7 @@ body {
 
     /* Constrain logo width so it stays out of the phone layout path */
     .brand-logo {
-        max-width: 135px;
+        max-width: 155px;
         height: auto;
     }
 
@@ -630,14 +629,9 @@ body {
         margin: 0 auto 20px auto; 
     }
 
-    .hero-trusted-tagline {
-        margin-bottom: 12px;
-    }
-
     /* Tighter Bullet Points */
     .hero-bullets {
-        align-items: center;
-        gap: 8px; 
+        gap: 5px; 
         margin: 0 auto 20px auto;
     }
 
@@ -742,10 +736,13 @@ body {
     border-radius: 50px;
     font-size: 16px;
     font-weight: 700;
-    width: 50%; /* Stretches the pill across the card horizontally */
+    /* width: 50%; Stretches the pill across the card horizontally */
     box-shadow: 0 4px 15px rgba(229, 36, 59, 0.2);
     transition: background-color 0.2s ease, transform 0.15s ease;
     margin-top: auto; /* Anchors it to the bottom */
+
+    border: none; 
+    cursor: pointer;
 }
 
 .btn-card-cta:hover {
@@ -1267,6 +1264,12 @@ a.cta-phone-link:hover strong {
     list-style: none;
     padding: 0;
     margin: 0 0 24px 0;
+}
+
+.max-options-list h4 {
+    display: inline;
+    margin: 0; /* Prevents default heading margins from breaking alignment */
+    font-size: 16px; /* Matches your list font size, adjust if needed */
 }
 
 .max-options-list li {
@@ -1908,6 +1911,7 @@ a.cta-phone-link:hover strong {
     grid-template-columns: repeat(2, 1fr);
     gap: 40px;
     align-items: stretch; /* FIXED: Forces both columns to perfectly match heights */
+    margin-bottom: 40px;
 }
 
 .faq-column {
@@ -2063,8 +2067,10 @@ a.cta-phone-link:hover strong {
 /* 3-column layout */
 .service-areas-grid {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(2, 1fr);
     gap: 30px;
+    max-width: 900px;
+    margin: 0 auto;
 }
 
 .service-area-card {
