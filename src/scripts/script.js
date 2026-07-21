@@ -1,7 +1,8 @@
 // ==========================================
 // BEFORE & AFTER LIGHTBOX MODAL CAPABILITIES
 // ==========================================
-document.addEventListener("DOMContentLoaded", function () {
+// CHANGE THIS LINE: from "DOMContentLoaded" to "astro:page-load"
+document.addEventListener("astro:page-load", function () {
     const modal = document.getElementById("image-modal");
     const modalImg = document.getElementById("modal-img");
     const closeBtn = document.querySelector(".lightbox-close");
