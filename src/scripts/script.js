@@ -196,11 +196,15 @@ document.addEventListener('astro:page-load', () => {
 
 
 // --- 4. Contact Page Form Submission Logic ---
-{
+document.addEventListener('astro:page-load', () => {
     const form = document.getElementById('contact-page-form');
 
     // Only run if the form exists on the current page
     if (form) {
+        // Prevent duplicate event listener bindings just in case!
+        if (form.dataset.listenerAttached === 'true') return;
+        form.dataset.listenerAttached = 'true';
+
         const submitBtn = form.querySelector('.submit-btn-full');
         const formContent = document.getElementById('contact-form-content');
         const successSection = document.getElementById('contact-form-success');
@@ -249,7 +253,7 @@ document.addEventListener('astro:page-load', () => {
             submitBtn.innerHTML = originalBtnHTML;
         }
     }
-}
+});
 
 // ==========================================
 // GOOGLE PLACES ADDRESS AUTOCOMPLETE (Data API, custom dropdown)
