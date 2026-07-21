@@ -398,7 +398,14 @@ async function initGoogleAutocomplete() {
     }
 }
 
-// Initialize when the window loads
-window.addEventListener('load', () => {
+// ✅ NEW CODE (in src/scripts/script.js)
+document.addEventListener('astro:page-load', async () => {
+    // Retry helper in case the Google API script tag hasn't finished loading yet
+    let retries = 0;
+    while ((typeof google === 'undefined' || !google.maps) && retries < 10) {
+        await new Promise((resolve) => setTimeout(resolve, 200));
+        retries++;
+    }
+
     initGoogleAutocomplete();
 });
